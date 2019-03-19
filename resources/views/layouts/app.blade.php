@@ -33,11 +33,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a id="clientsDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Clients') }} <span class="caret"></span>
+                            </a>
 
+                            <div class="dropdown-menu" aria-labelledby="clientsDropdown">
+                                <a class="dropdown-item" href="{{ route('clients.index') }}">{{ __('Clients List') }}</a>
+                                <a class="dropdown-item" href="{{ route('clients.create') }}">{{ __('Add New') }}</a>
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    {{-- <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -67,7 +76,7 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </nav>
