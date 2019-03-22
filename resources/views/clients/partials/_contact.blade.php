@@ -1,6 +1,6 @@
 <div class="tab-pane fade" id="list-contact" role="tabpanel" aria-labelledby="list-contact-list">
     <div class="card">
-        <div class="card-header">Contact Details</div>
+        <div class="card-header">Individual Details</div>
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col">
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group d-flex justify-content-between">
                 <a class="btn btn-outline-primary" href="#">Add Another Contact</a>
-                <a class="btn btn-primary next-tab" href="#">Add RAP Association</a>
+                <a class="btn btn-primary next-tab" href="#">Add Additional Details</a>
             </div>
         </div>
     </div>

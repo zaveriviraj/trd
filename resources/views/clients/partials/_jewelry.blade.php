@@ -1,4 +1,4 @@
-<div class="tab-pane fade active show" id="list-jewelry" role="tabpanel" aria-labelledby="list-jewelry-list">
+<div class="tab-pane fade" id="list-jewelry" role="tabpanel" aria-labelledby="list-jewelry-list">
     <div class="card">
         <div class="card-header">Jewelry Details</div>
         <div class="card-body">
@@ -19,6 +19,10 @@
                 <div class="custom-control custom-checkbox custom-control-inline">
                     <input class="custom-control-input" type="checkbox" id="jewlery_prod_rings">
                     <label class="custom-control-label" for="jewlery_prod_rings">Rings</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input class="custom-control-input" type="checkbox" id="jewlery_prod_earrings">
+                    <label class="custom-control-label" for="jewlery_prod_earrings">Earrings</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
                     <input class="custom-control-input" type="checkbox" id="jewlery_prod_bracelets">

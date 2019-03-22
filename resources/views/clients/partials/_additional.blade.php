@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="form-group d-flex justify-content-end">
-                <a class="btn btn-primary next-tab" href="#">Add Contact Details</a>
+                <a class="btn btn-primary next-tab" href="#">Add Trading Details</a>
             </div>
         </div>
     </div>

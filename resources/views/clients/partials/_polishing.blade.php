@@ -27,6 +27,10 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="size_comments">Size Comments</label>
+                <textarea class="form-control" id="size_comments" placeholder="Enter Size Comments"></textarea>
+            </div>
+            <div class="form-group">
                 <label>Shape</label>
                 <br>
                 <div class="custom-control custom-checkbox custom-control-inline">
@@ -46,9 +50,17 @@
                     <label class="custom-control-label" for="shape_baguettes">Baguettes</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
+                    <input class="custom-control-input" type="checkbox" id="shape_pie">
+                    <label class="custom-control-label" for="shape_pie">Pie</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
                     <input class="custom-control-input" type="checkbox" id="shape_specials">
                     <label class="custom-control-label" for="shape_specials">Specials</label>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="shape_comments">Shape Comments</label>
+                <textarea class="form-control" id="shape_comments" placeholder="Enter Shape Comments"></textarea>
             </div>
             <div class="form-group">
                 <label>Color</label>
@@ -131,6 +143,10 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="clarity_comments">Clarity Comments</label>
+                <textarea class="form-control" id="clarity_comments" placeholder="Enter Clarity Comments"></textarea>
+            </div>
+            <div class="form-group">
                 <label>Cut</label>
                 <br>
                 <div class="custom-control custom-checkbox custom-control-inline">
@@ -141,6 +157,10 @@
                     <input class="custom-control-input" type="checkbox" id="cut_xvgvg">
                     <label class="custom-control-label" for="cut_xvgvg">XVGVG</label>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="cut_comments">Cut Comments</label>
+                <textarea class="form-control" id="cut_comments" placeholder="Enter Cut Comments"></textarea>
             </div>
             <div class="form-group">
                 <label>Certs</label>
@@ -160,6 +180,14 @@
                 <div class="custom-control custom-checkbox custom-control-inline">
                     <input class="custom-control-input" type="checkbox" id="cert_hrd">
                     <label class="custom-control-label" for="cert_hrd">HRD</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input class="custom-control-input" type="checkbox" id="cert_gsi">
+                    <label class="custom-control-label" for="cert_gsi">GSI</label>
+                </div>
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input class="custom-control-input" type="checkbox" id="cert_ags">
+                    <label class="custom-control-label" for="cert_ags">AGS</label>
                 </div>
                 <div class="custom-control custom-checkbox custom-control-inline">
                     <input class="custom-control-input" type="checkbox" id="cert_none">
