@@ -3,15 +3,45 @@
         <div class="card-header">Stone Details</div>
         <div class="card-body">
             <div class="form-group">
-                    <label>Sieve Size</label>
-                    <br>
-                    @foreach ($sieves as $sieve_size)
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input class="custom-control-input" type="checkbox" id="sieve_{{ $loop->index + 1 }}">
-                            <label class="custom-control-label" for="sieve_{{ $loop->index + 1 }}">{{ $sieve_size }}</label>
-                        </div>
-                    @endforeach
-                </div>
+                <label>Select Size</label>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Sieve Size</th>
+                            <th>Size in mm</th>
+                            <th>Size in Carat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($sizes as $size)
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="size_{{ $loop->index + 1 }}" name="size" class="custom-control-input">
+                                        <label class="custom-control-label" for="size_{{ $loop->index + 1 }}"></label>
+                                    </div>
+                                </td>
+                                <td>{{ $size['sieve'] }}</td>
+                                <td>{{ $size['mm'] }}</td>
+                                <td>{{ $size['carat'] }}</td>
+                            </tr>
+                        @endforeach
+                        <tr>
+                            <td colspan="4">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="size_other" name="size" class="custom-control-input">
+                                    <label class="custom-control-label" for="size_other">Other</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <label for="other_size">Other Size</label>
+                <input type="text" class="form-control" id="other_size" placeholder="Any other size not listed in table above">
+            </div>
             <div class="form-group">
                 <label>Size</label>
                 <br>
@@ -206,6 +236,26 @@
                 <div class="custom-control custom-checkbox custom-control-inline">
                     <input class="custom-control-input" type="checkbox" id="cert_none">
                     <label class="custom-control-label" for="cert_none">None</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="buying_quantity_cts">Buying Quantity (Cts.)</label>
+                    <input type="text" class="form-control" id="buying_quantity_cts" placeholder="Enter Buying Quantity in Carats">
+                </div>
+                <div class="form-group col">
+                    <label for="buying_quantity_pcs">Buying Quantity (Pcs.)</label>
+                    <input type="text" class="form-control" id="buying_quantity_pcs" placeholder="Enter Buying Quantity in Pieces">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="buying_price_request">Buyer Price Req. ($/ct.)</label>
+                    <input type="text" class="form-control" id="buying_price_request" placeholder="Enter Buying Pricing Request">
+                </div>
+                <div class="form-group col">
+                    <label for="buying_offer_ppc">Buyer's offer PPC</label>
+                    <input type="text" class="form-control" id="buying_offer_ppc" placeholder="Enter Buying Offer">
                 </div>
             </div>
             <div class="form-group">
