@@ -14,7 +14,7 @@ class BuyerController extends Controller
      */
     public function index()
     {
-        //
+        return view('buyers.index');
     }
 
     /**

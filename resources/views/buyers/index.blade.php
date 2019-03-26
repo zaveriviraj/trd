@@ -10,10 +10,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Clients List</div>
+                <div class="card-header">Buyer Request List</div>
 
                 <div class="card-body">
-                    @include('clients.partials._table')
+                    @include('buyers.partials._table')
                 </div>
             </div>
         </div>
@@ -44,15 +44,15 @@
             }, {
                 extend: 'colvis',
                 text: 'Select Columns',
-                collectionLayout: 'fixed four-column'
+                collectionLayout: 'fixed three-column'
             }
         ],
-        scrollX:        true,
-        scrollCollapse: true,
-        columnDefs: [{
-            targets: [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57],
-            visible: false
-        }]
+        // scrollX:        true,
+        // scrollCollapse: true,
+        // columnDefs: [{
+        //     targets: [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57],
+        //     visible: false
+        // }]
     });
 </script>
 @endpush

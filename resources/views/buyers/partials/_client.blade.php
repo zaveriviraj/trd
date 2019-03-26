@@ -40,15 +40,25 @@
                     <input type="text" class="form-control" id="client_contact_number" readonly>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Request Status</label> <br>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" name="request_status" id="request_open" class="custom-control-input" checked>
-                    <label class="custom-control-label" for="request_open">Open</label>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Request Status</label> <br>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" name="request_status" id="request_open" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="request_open">Open</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" name="request_status" id="request_close" class="custom-control-input">
+                        <label class="custom-control-label" for="request_close">Close</label>
+                    </div>
                 </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" name="request_status" id="request_close" class="custom-control-input">
-                    <label class="custom-control-label" for="request_close">Close</label>
+                <div class="form-group col">
+                    <label for="br_priority">Priority</label>
+                    <select name="br_priority" id="br_priority" class="form-control custom-select">
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group d-flex justify-content-end">
