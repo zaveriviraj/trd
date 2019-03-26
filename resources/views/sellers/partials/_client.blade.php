@@ -8,8 +8,8 @@
                     <input type="text" class="form-control date_input" id="date" placeholder="Select Date">
                 </div>
                 <div class="form-group col">
-                    <label for="br_no">Buy Request # <small>(Auto Generated)</small></label>
-                    <input type="text" class="form-control" id="br_no" value="10001" readonly>
+                    <label for="so_no">Seller Offer # <small>(Auto Generated)</small></label>
+                    <input type="text" class="form-control" id="so_no" value="10001" readonly>
                 </div>
             </div>
             <div class="form-group">
@@ -41,14 +41,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Request Status</label> <br>
+                <label>Offer Status</label> <br>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" name="request_status" id="request_open" class="custom-control-input" checked>
-                    <label class="custom-control-label" for="request_open">Open</label>
+                    <input type="radio" name="offer_status" id="offer_open" class="custom-control-input" checked>
+                    <label class="custom-control-label" for="offer_open">Open</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" name="request_status" id="request_close" class="custom-control-input">
-                    <label class="custom-control-label" for="request_close">Close</label>
+                    <input type="radio" name="offer_status" id="offer_close" class="custom-control-input">
+                    <label class="custom-control-label" for="offer_close">Close</label>
                 </div>
             </div>
             <div class="form-group d-flex justify-content-end">

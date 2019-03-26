@@ -52,6 +52,16 @@
                                 <a class="dropdown-item" href="{{ route('buyers.create') }}">{{ __('Add New') }}</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a id="sellersDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Seller Offers') }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="sellersDropdown">
+                                <a class="dropdown-item" href="{{ route('sellers.index') }}">{{ __('Offers List') }}</a>
+                                <a class="dropdown-item" href="{{ route('sellers.create') }}">{{ __('Add New') }}</a>
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
