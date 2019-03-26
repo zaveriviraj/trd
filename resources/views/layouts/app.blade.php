@@ -42,6 +42,16 @@
                                 <a class="dropdown-item" href="{{ route('clients.create') }}">{{ __('Add New') }}</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a id="buyersDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Buy Requests') }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="buyersDropdown">
+                                <a class="dropdown-item" href="{{ route('buyers.index') }}">{{ __('Requests List') }}</a>
+                                <a class="dropdown-item" href="{{ route('buyers.create') }}">{{ __('Add New') }}</a>
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

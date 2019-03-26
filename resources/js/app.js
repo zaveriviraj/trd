@@ -35,3 +35,20 @@ const app = new Vue({
 $('.next-tab').click(function(){
     $('.list-group > .active').next('a').trigger('click');
 });
+
+const flatpickr = require("flatpickr");
+
+$(".date_input").flatpickr({
+    dateFormat: 'm/d/Y'
+});
+
+require('select2');
+
+$('.select2').select2();
+
+$('.select2').on('select2:select', function (e) {
+    $('#client_type').val('Manufacturer');
+    $('#client_location').val('Mumbai, India');
+    $('#client_contact').val('Amit Shah');
+    $('#client_contact_number').val('+91 9898989898');
+});

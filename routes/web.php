@@ -17,3 +17,4 @@ Auth::routes();
 
 Route::get('/dashboard', 'PagesController@dashboard')->name('dashboard');
 Route::resource('clients', 'ClientController');
+Route::resource('buyers', 'BuyerController');
