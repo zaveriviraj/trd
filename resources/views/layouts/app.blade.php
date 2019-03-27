@@ -62,6 +62,12 @@
                                 <a class="dropdown-item" href="{{ route('sellers.create') }}">{{ __('Add New') }}</a>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('link') }}">{{ __('Link Buyer / Seller') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('inventory') }}">{{ __('Inventory') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

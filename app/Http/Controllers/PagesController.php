@@ -10,4 +10,13 @@ class PagesController extends Controller
     {
         return view('dashboard');
     }
+
+    public function link()
+    {
+        return view('link');
+    }
+    public function inventory()
+    {
+        return view('inventory');
+    }
 }
