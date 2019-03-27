@@ -18,8 +18,8 @@
             </div>
             <div class="col-4">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action" id="list-client-list" data-toggle="list" href="#list-client">Client Details</a>
-                    <a class="list-group-item list-group-item-action active" id="list-stone-list" data-toggle="list" href="#list-stone">Stone Details</a>
+                    <a class="list-group-item list-group-item-action active" id="list-client-list" data-toggle="list" href="#list-client">Client Details</a>
+                    <a class="list-group-item list-group-item-action" id="list-stone-list" data-toggle="list" href="#list-stone">Stone Details</a>
                 </div>
 
                 {{-- <div class="list-group mt-4">
