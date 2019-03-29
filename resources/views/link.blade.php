@@ -7,10 +7,10 @@
 @endpush
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <form action="">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-3">
                 <div class="card">
                     <div class="card-header">Select Buy Request</div>
 
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-9">
                 <div class="card">
                     <div class="card-header">Select Sell Offers</div>
 

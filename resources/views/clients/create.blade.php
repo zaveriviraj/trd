@@ -1,9 +1,9 @@
 @extends('layouts.app') 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <form action="">
         <div class="row">
-            <div class="col-8">
+            <div class="col-9">
                 <div class="tab-content" id="nav-tabContent">
                     @include('clients.partials._company')
                     @include('clients.partials._contact')
@@ -13,7 +13,7 @@
                     @include('clients.partials._jewelry')
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-company-list" data-toggle="list" href="#list-company">Company Details</a>
                     <a class="list-group-item list-group-item-action" id="list-contact-list" data-toggle="list" href="#list-contact">Individual Details</a>

@@ -7,16 +7,16 @@
 @endpush
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <form action="">
         <div class="row">
-            <div class="col-8">
+            <div class="col-9">
                 <div class="tab-content" id="nav-tabContent">
                     @include('buyers.partials._client')
                     @include('buyers.partials._stone')
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-client-list" data-toggle="list" href="#list-client">Client Details</a>
                     <a class="list-group-item list-group-item-action" id="list-stone-list" data-toggle="list" href="#list-stone">Stone Details</a>

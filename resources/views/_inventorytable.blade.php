@@ -36,7 +36,7 @@
     </thead>
     <tbody>
         <tr class="bg-light">
-            <td>101</td>
+            <td>BR #101</td>
             <td>Buy</td>
             <td>02/20/2019</td>
             <td>High</td>
@@ -71,7 +71,7 @@
             </td>
         </tr>
         <tr class="">
-            <td>1</td>
+            <td>SO #1</td>
             <td>Sell</td>
             <td>02/20/2019</td>
             <td>High</td>
@@ -80,7 +80,7 @@
             <td>Amrit Corporation</td>
             <td>11111</td>
             <td>Sameer Shah</td>
-            <td>+514 9898989898</td>
+            <td>+91 9898989898</td>
             <td>0.80mm</td>
             <td>0000-000</td>
             <td>0.003</td>

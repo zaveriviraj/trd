@@ -30,6 +30,12 @@
         dom: "<'row'<'col-sm-12 col-md-4'l><'col-sm-12 col-md-4 text-center'B><'col-sm-12 col-md-4'f>>" +
 "<'row'<'col-sm-12'tr>>" +
 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+        columnDefs: [
+            {
+                targets: -1,
+                className: 'noVis'
+            }
+        ],
         buttons: [
             {
                 extend: 'csv',
@@ -44,7 +50,8 @@
             }, {
                 extend: 'colvis',
                 text: 'Select Columns',
-                collectionLayout: 'fixed three-column'
+                collectionLayout: 'fixed three-column',
+                columns: ':not(.noVis)'
             }
         ],
         scrollX:        true,
