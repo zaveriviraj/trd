@@ -16,6 +16,7 @@ use App\Clarity;
 use App\Cut;
 use App\Cert;
 use App\Product;
+use App\Color;
 
 class CompanyController extends Controller
 {
@@ -34,6 +35,7 @@ class CompanyController extends Controller
             'state',
             'sizes',
             'shapes',
+            'colors',
             'cuts',
             'certs',
             'products',
@@ -58,6 +60,7 @@ class CompanyController extends Controller
 
         $sizes = Size::oldest()->get();
         $shapes = Shape::oldest()->get();
+        $colors = Color::oldest('id')->get();
         $clarities = Clarity::oldest()->get();
         $cuts = Cut::oldest()->get();
         $certs = Cert::oldest()->get();
@@ -73,6 +76,7 @@ class CompanyController extends Controller
             'countries',
             'sizes',
             'shapes',
+            'colors',
             'clarities',
             'cuts',
             'certs',
@@ -102,6 +106,7 @@ class CompanyController extends Controller
         $company->clarities()->sync($request->clarities);
         $company->products()->sync($request->products);
         $company->shapes()->sync($request->shapes);
+        $company->colors()->sync($request->colors);
         $company->sizes()->sync($request->sizes);
 
         return redirect()->route('companies.index');

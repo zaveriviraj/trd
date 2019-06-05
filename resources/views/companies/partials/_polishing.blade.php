@@ -1,6 +1,6 @@
 <div class="tab-pane fade" id="list-polishing" role="tabpanel" aria-labelledby="list-polishing-list">
     <div class="card">
-        <div class="card-header">Polishing Details</div>
+        <div class="card-header">Polished Details</div>
         <div class="card-body">
             <div class="form-group">
                 <label>Size</label>
@@ -13,8 +13,8 @@
                 @endforeach
             </div>
             <div class="form-group">
-                <label for="size_comments">Size Comments</label>
-                <textarea class="form-control" id="size_comments" name="size_comments" placeholder="Enter Size Comments"></textarea>
+                <label for="size_comments">Size Extra Comments</label>
+                <textarea class="form-control" id="size_comments" name="size_comments" placeholder="Enter Size Extra Comments"></textarea>
             </div>
             <div class="form-group">
                 <label>Shape</label>
@@ -27,56 +27,22 @@
                 @endforeach
             </div>
             <div class="form-group">
-                <label for="shape_comments">Shape Comments</label>
-                <textarea class="form-control" id="shape_comments" name="shape_comments" placeholder="Enter Shape Comments"></textarea>
+                <label for="shape_comments">Shape Extra Comments</label>
+                <textarea class="form-control" id="shape_comments" name="shape_comments" placeholder="Enter Shape Extra Comments"></textarea>
             </div>
             <div class="form-group">
                 <label>Color</label>
                 <br>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_d-f" name="colors_arr[]" value="D-F">
-                    <label class="custom-control-label" for="color_d-f">D-F</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_g-h" name="colors_arr[]" value="G-H">
-                    <label class="custom-control-label" for="color_g-h">G-H</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_i-k" name="colors_arr[]" value="I-K">
-                    <label class="custom-control-label" for="color_i-k">I-K</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_l-n" name="colors_arr[]" value="L-N">
-                    <label class="custom-control-label" for="color_l-n">L-N</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_dark" name="colors_arr[]" value="Dark">
-                    <label class="custom-control-label" for="color_dark">Dark</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_ttlb" name="colors_arr[]" value="TTLB">
-                    <label class="custom-control-label" for="color_ttlb">TTLB</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_tlb" name="colors_arr[]" value="TLB">
-                    <label class="custom-control-label" for="color_tlb">TLB</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_ttlc" name="colors_arr[]" value="TTLC">
-                    <label class="custom-control-label" for="color_ttlc">TTLC</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_tlc" name="colors_arr[]" value="TLC">
-                    <label class="custom-control-label" for="color_tlc">TLC</label>
-                </div>
-                <div class="custom-control custom-checkbox custom-control-inline">
-                    <input class="custom-control-input" type="checkbox" id="color_fc" name="colors_arr[]" value="FC">
-                    <label class="custom-control-label" for="color_fc">FC</label>
-                </div>
+                @foreach ($colors as $color)
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input class="custom-control-input" type="checkbox" id="{{ $color->name }}" name="colors[]" value="{{ $color->id }}">
+                        <label class="custom-control-label" for="{{ $color->name }}">{{ $color->name }}</label>
+                    </div>
+                @endforeach
             </div>
             <div class="form-group">
-                <label for="color_comments">Color Comments</label>
-                <textarea class="form-control" id="color_comments" name="color_comments" placeholder="Enter Color Comments"></textarea>
+                <label for="color_comments">Color Extra Comments</label>
+                <textarea class="form-control" id="color_comments" name="color_comments" placeholder="Enter Color Extra Comments"></textarea>
             </div>
             <div class="form-group">
                 <label>Clarity</label>
@@ -89,8 +55,8 @@
                 @endforeach
             </div>
             <div class="form-group">
-                <label for="clarity_comments">Clarity Comments</label>
-                <textarea class="form-control" id="clarity_comments" name="clarity_comments" placeholder="Enter Clarity Comments"></textarea>
+                <label for="clarity_comments">Clarity Extra Comments</label>
+                <textarea class="form-control" id="clarity_comments" name="clarity_comments" placeholder="Enter Clarity Extra Comments"></textarea>
             </div>
             <div class="form-group">
                 <label>Cut</label>
@@ -103,8 +69,8 @@
                 @endforeach
             </div>
             <div class="form-group">
-                <label for="cut_comments">Cut Comments</label>
-                <textarea class="form-control" id="cut_comments" name="cut_comments" placeholder="Enter Cut Comments"></textarea>
+                <label for="cut_comments">Cut Extra Comments</label>
+                <textarea class="form-control" id="cut_comments" name="cut_comments" placeholder="Enter Cut Extra Comments"></textarea>
             </div>
             <div class="form-group">
                 <label>Certs</label>
@@ -117,19 +83,20 @@
                 @endforeach
             </div>
             <div class="form-group">
-                <label for="certs_comments">Certs Comments</label>
-                <textarea class="form-control" id="certs_comments" name="certs_comments" placeholder="Enter Certs Comments"></textarea>
+                <label for="certs_comments">Certs Extra Comments</label>
+                <textarea class="form-control" id="certs_comments" name="certs_comments" placeholder="Enter Certs Extra Comments"></textarea>
             </div>
+            {{-- <div class="form-group">
+                <label for="branches_comments">Branches Extra Comments</label>
+                <textarea class="form-control" id="branches_comments" name="branches_comments" placeholder="Enter Branches Extra Comments"></textarea>
+            </div> --}}
             <div class="form-group">
-                <label for="branches_comments">Branches Comments</label>
-                <textarea class="form-control" id="branches_comments" name="branches_comments" placeholder="Enter Branches Comments"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="product_comments">Product Comments</label>
-                <textarea class="form-control" id="product_comments" name="product_comments" placeholder="Enter Product Comments"></textarea>
+                <label for="product_comments">Product Extra Comments</label>
+                <textarea class="form-control" id="product_comments" name="product_comments" placeholder="Enter Product Extra Comments"></textarea>
             </div>
             <div class="form-group d-flex justify-content-end">
-                <a class="btn btn-primary next-tab" href="#">Add Jewlery Details</a>
+                <a class="btn btn-primary next-tab" href="#">Next</a>
+                {{-- <a class="btn btn-primary next-tab" href="#">Add Jewlery Details</a> --}}
             </div>
         </div>
     </div>

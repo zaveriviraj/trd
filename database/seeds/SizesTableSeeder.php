@@ -11,10 +11,9 @@ class SizesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Size')->create(['name' => 'Stars']);
-        factory('App\Size')->create(['name' => 'Melee']);
-        factory('App\Size')->create(['name' => 'Carats']);
-        factory('App\Size')->create(['name' => 'Large']);
-        factory('App\Size')->create(['name' => 'Specials']);
+        factory('App\Size')->create(['name' => 'Stars, Melee to 0.30ct.']);
+        factory('App\Size')->create(['name' => '0.30 to 2ct.']);
+        factory('App\Size')->create(['name' => '2 to 5ct.']);
+        factory('App\Size')->create(['name' => '5ct. & above']);
     }
 }

@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="website">Website</label>
-                <input type="url" class="form-control" id="website" name="website" placeholder="Enter Company Website">
+                <input type="text" class="form-control" id="website" name="website" placeholder="Enter Company Website">
             </div>
             <div class="form-row">
                 <div class="form-group col">
@@ -59,7 +59,7 @@
             <div class="form-row">
                 <div class="form-group col">
                     <label for="promotions">Promotions &amp; Trade Shows</label>
-                    <input type="text" class="form-control" id="promotions" name="promotions" placeholder="Details of promotions & trade shows">
+                    <input type="text" class="form-control" id="promotions" name="promotions" placeholder="Please add names of Trade Shows manually">
                 </div>
                 <div class="form-group col">
                     <label for="brands">Brands</label>
@@ -93,7 +93,8 @@
                 <input type="text" class="form-control" id="advt_acc" name="advt" placeholder="Enter ADVT Account #">
             </div>
             <div class="form-group d-flex justify-content-end">
-                <a class="btn btn-primary next-tab" href="#">Add Individual Details</a>
+                {{-- <a class="btn btn-primary next-tab" href="#">Add Individual Details</a> --}}
+                <a class="btn btn-primary next-tab" href="#">Next</a>
             </div>
         </div>
     </div>

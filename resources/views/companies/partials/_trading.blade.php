@@ -1,6 +1,6 @@
 <div class="tab-pane fade" id="list-trading" role="tabpanel" aria-labelledby="list-trading-list">
     <div class="card">
-        <div class="card-header">Trading Details</div>
+        <div class="card-header">Rough Details</div>
         <div class="card-body">
             <div class="form-group">
                 <label for="rough">Rough</label>
@@ -30,7 +30,8 @@
                 <input type="text" class="form-control" id="rough_deals" name="rough_deals" placeholder="Enter Rough Deals Details">
             </div>
             <div class="form-group d-flex justify-content-end">
-                <a class="btn btn-primary next-tab" href="#">Add Polishing Details</a>
+                <a class="btn btn-primary next-tab" href="#">Next</a>
+                {{-- <a class="btn btn-primary next-tab" href="#">Add Polishing Details</a> --}}
             </div>
         </div>
     </div>

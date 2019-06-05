@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label for="jewelry_locations">Jewelry Locations</label>
-                <textarea class="form-control" id="jewelry_locations" name="jewelry_locations" placeholder="Enter Jewelry Locations"></textarea>
+                <textarea class="form-control" id="jewelry_locations" name="jewelry_locations" placeholder="Please write locations manually"></textarea>
             </div>
             <div class="form-group">
                 <label for="jewelery_comments">Jewelery Comments</label>

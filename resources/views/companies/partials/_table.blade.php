@@ -108,8 +108,8 @@
                 <td>{{ $company->size_comments }}</td>
                 <td>{!! implode(', ' , $company->shapes->pluck('name')->toArray()) !!}</td>
                 <td>{{ $company->shape_comments }}</td>
-                <td></td>
-                <td></td>
+                <td>{!! implode(', ' , $company->colors->pluck('name')->toArray()) !!}</td>
+                <td>{{ $company->color_comments }}</td>
                 <td>{!! implode(', ' , $company->clarities->pluck('name')->toArray()) !!}</td>
                 <td>{{ $company->clarity_comments }}</td>
                 <td>{!! implode(', ' , $company->cuts->pluck('name')->toArray()) !!}</td>

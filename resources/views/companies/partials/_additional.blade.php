@@ -50,7 +50,8 @@
                 </div>
             </div>
             <div class="form-group d-flex justify-content-end">
-                <a class="btn btn-primary next-tab" href="#">Add Trading Details</a>
+                {{-- <a class="btn btn-primary next-tab" href="#">Add Trading Details</a> --}}
+                <a class="btn btn-primary next-tab" href="#">Next</a>
             </div>
         </div>
     </div>

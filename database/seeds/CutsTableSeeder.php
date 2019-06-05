@@ -11,7 +11,9 @@ class CutsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Cut')->create(['name' => 'XXX']);
-        factory('App\Cut')->create(['name' => 'XVGVG']);
+        factory('App\Cut')->create(['name' => 'Ideal']);
+        factory('App\Cut')->create(['name' => 'EX']);
+        factory('App\Cut')->create(['name' => 'VG']);
+        factory('App\Cut')->create(['name' => 'GD']);
     }
 }

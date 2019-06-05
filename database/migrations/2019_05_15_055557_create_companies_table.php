@@ -45,6 +45,10 @@ class CreateCompaniesTable extends Migration
             $table->string('contact_mobile_2')->nullable();
             $table->string('contact_mobile_3')->nullable();
             $table->string('contact_mobile_4')->nullable();
+            $table->string('contact_designation_1')->nullable();
+            $table->string('contact_designation_2')->nullable();
+            $table->string('contact_designation_3')->nullable();
+            $table->string('contact_designation_4')->nullable();
             $table->text('contact_comments')->nullable();
             $table->text('address')->nullable();
             $table->string('city')->nullable();
@@ -57,7 +61,6 @@ class CreateCompaniesTable extends Migration
             $table->string('rough_deals')->nullable();
             $table->text('size_comments')->nullable();
             $table->text('shape_comments')->nullable();
-            $table->text('colors')->nullable();
             $table->text('color_comments')->nullable();
             $table->text('clarity_comments')->nullable();
             $table->text('cut_comments')->nullable();
