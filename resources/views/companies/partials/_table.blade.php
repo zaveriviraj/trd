@@ -65,14 +65,14 @@
         @forelse ($companies as $company)
             <tr>
                 <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority->color }}">{{ $company->priority->name }}</span></td>
-                <td>RapNet</td>
-                <td>{{ $company->rapnet }}</td>
+                <td>{{ $company->divisions }}</td>
+                <td>{{ $company->associations }}</td>
                 <td>{{ $company->name }}</td>
                 <td>{{ $company->email }}</td>
                 <td>{{ $company->phone }}</td>
                 <td>{{ $company->website }}</td>
                 <td>{{ $company->companysize->name }}</td>
-                <td>{{ $company->companytype->name }}</td>
+                <td>{!! implode(', ' , $company->companytypes->pluck('name')->toArray()) !!}</td>
                 <td>{!! implode(', ' , $company->companydeals->pluck('name')->toArray()) !!}</td>
                 <td>{{ $company->promotions }}</td>
                 <td>{{ $company->brands }}</td>

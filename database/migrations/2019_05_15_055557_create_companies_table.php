@@ -21,7 +21,6 @@ class CreateCompaniesTable extends Migration
             $table->string('phone')->nullable();
             $table->string('website')->nullable();
             $table->unsignedBigInteger('companysize_id');
-            $table->unsignedBigInteger('companytype_id');
             $table->text('promotions')->nullable();
             $table->text('brands')->nullable();
             $table->string('rapnet')->nullable();

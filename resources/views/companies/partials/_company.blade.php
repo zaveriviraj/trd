@@ -24,11 +24,11 @@
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Company Phone">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="website">Website</label>
-                <input type="text" class="form-control" id="website" name="website" placeholder="Enter Company Website">
-            </div>
             <div class="form-row">
+                <div class="form-group col">
+                    <label for="website">Website</label>
+                    <input type="text" class="form-control" id="website" name="website" placeholder="Enter Company Website">
+                </div>
                 <div class="form-group col">
                     <label for="companysize_id">Company Size</label>
                     <select name="companysize_id" id="companysize_id" class="form-control">
@@ -37,14 +37,16 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col">
-                    <label for="companytype_id">Company Type</label>
-                    <select name="companytype_id" id="companytype_id" class="form-control">
-                        @foreach ($companytypes as $companytype)
-                            <option value="{{ $companytype->id }}">{{ $companytype->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                <br>
+                @foreach ($companytypes as $companytype)
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        <input class="custom-control-input" type="checkbox" id="{{ $companytype->name }}" name="companytypes[]" value="{{ $companytype->id }}">
+                        <label class="custom-control-label" for="{{ $companytype->name }}">{{ $companytype->name }}</label>
+                    </div>
+                @endforeach
             </div>
             <div class="form-group">
                 <label>Deals In</label>

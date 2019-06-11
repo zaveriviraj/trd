@@ -30,7 +30,7 @@ class CompanyController extends Controller
         $companies = Company::latest()->with(
             'priority',
             'companysize',
-            'companytype',
+            'companytypes',
             'companydeals',
             'state',
             'sizes',
@@ -108,6 +108,7 @@ class CompanyController extends Controller
         $company->shapes()->sync($request->shapes);
         $company->colors()->sync($request->colors);
         $company->sizes()->sync($request->sizes);
+        $company->companytypes()->sync($request->companytypes);
 
         return redirect()->route('companies.index');
     }

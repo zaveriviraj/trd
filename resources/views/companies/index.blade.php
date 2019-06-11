@@ -47,6 +47,7 @@
                 collectionLayout: 'fixed four-column'
             }
         ],
+        order: [[ 3, "asc" ]],
         scrollX:        true,
         scrollCollapse: true,
         columnDefs: [{
