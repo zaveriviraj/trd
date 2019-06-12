@@ -17,6 +17,8 @@ use App\Cut;
 use App\Cert;
 use App\Product;
 use App\Color;
+use App\Imports\CompaniesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CompanyController extends Controller
 {
@@ -156,5 +158,12 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         //
+    }
+
+    public function import() 
+    {
+        Excel::import(new CompaniesImport, 'companies.csv');
+        
+        return redirect('/')->with('success', 'All good!');
     }
 }

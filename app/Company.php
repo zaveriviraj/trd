@@ -72,23 +72,21 @@ class Company extends Model
 
     public function getDivisionsAttribute()
     {
-        $division = $this->rapnet ? 'RapNet' : '';
-        $division .= $this->gia ? '/GIA' : '';
-        $division .= $this->auctions ? '/Auctions' : '';
-        $division .= $this->raplab ? '/RapLab' : '';
-        $division .= $this->advt ? '/Advt' : '';
+        $linksArray = [$this->rapnet ? 'RapNet' : '', $this->gia ? 'GIA' : '', $this->auctions ? 'Auctions' : '', $this->raplab ? 'RapLab' : '', $this->advt ? 'Advt' : ''];
+        $linksArray = array_filter($linksArray, function($value) { return $value !== ''; });
+
+        $linksArray = implode('/', $linksArray);
         
-        return $division;
+        return $linksArray;
     }
 
     public function getAssociationsAttribute()
     {
-        $division = $this->rapnet ?: '';
-        $division .= $this->gia ? '/' . $this->gia : '';
-        $division .= $this->auctions ? '/' . $this->auctions : '';
-        $division .= $this->raplab ? '/' . $this->raplab : '';
-        $division .= $this->advt ? '/' . $this->advt : '';
+        $linksArray = [$this->rapnet ?: '', $this->gia ?: '', $this->auctions ?: '', $this->raplab ?: '', $this->advt ?: ''];
+        $linksArray = array_filter($linksArray, function($value) { return $value !== ''; });
+
+        $linksArray = implode('/', $linksArray);
         
-        return $division;
+        return $linksArray;
     }
 }

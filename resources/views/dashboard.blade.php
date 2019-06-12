@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <a href="{{ route('import') }}">Import</a>
                 </div>
             </div>
         </div>

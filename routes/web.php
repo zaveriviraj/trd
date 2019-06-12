@@ -36,3 +36,5 @@ Route::resource('buyers', 'BuyerController');
 Route::resource('sellers', 'SellerController');
 Route::get('link', 'PagesController@link')->name('link');
 Route::get('inventory', 'PagesController@inventory')->name('inventory');
+
+Route::get('import', 'CompanyController@import')->name('import');

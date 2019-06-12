@@ -15,12 +15,12 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('priority_id');
+            $table->unsignedBigInteger('priority_id')->nullable();
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('website')->nullable();
-            $table->unsignedBigInteger('companysize_id');
+            $table->unsignedBigInteger('companysize_id')->nullable();
             $table->text('promotions')->nullable();
             $table->text('brands')->nullable();
             $table->string('rapnet')->nullable();
@@ -52,7 +52,7 @@ class CreateCompaniesTable extends Migration
             $table->text('address')->nullable();
             $table->string('city')->nullable();
             $table->string('zip')->nullable();
-            $table->unsignedBigInteger('state_id');
+            $table->unsignedBigInteger('state_id')->nullable();
             $table->string('rough')->nullable();
             $table->boolean('sight_holder')->default(0);
             $table->string('sight_details')->nullable();

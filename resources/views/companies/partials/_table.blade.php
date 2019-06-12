@@ -20,20 +20,24 @@
             <th>Country</th>
             <th>Country Code</th>
             <th>State Code</th>
-            <th>Individual 1 Name</th>
             <th>Individual 1 Title</th>
+            <th>Individual 1 Name</th>
+            <th>Individual 1 Designation</th>
             <th>Individual 1 Email</th>
             <th>Individual 1 Conact</th>
-            <th>Individual 2 Name</th>
             <th>Individual 2 Title</th>
+            <th>Individual 2 Name</th>
+            <th>Individual 2 Designation</th>
             <th>Individual 2 Email</th>
             <th>Individual 2 Conact</th>
-            <th>Individual 3 Name</th>
             <th>Individual 3 Title</th>
+            <th>Individual 3 Name</th>
+            <th>Individual 3 Designation</th>
             <th>Individual 3 Email</th>
             <th>Individual 3 Conact</th>
-            <th>Individual 4 Name</th>
             <th>Individual 4 Title</th>
+            <th>Individual 4 Name</th>
+            <th>Individual 4 Designation</th>
             <th>Individual 4 Email</th>
             <th>Individual 4 Conact</th>
             <th>Rough</th>
@@ -64,14 +68,14 @@
     <tbody>
         @forelse ($companies as $company)
             <tr>
-                <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority->color }}">{{ $company->priority->name }}</span></td>
+                <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority ? $company->priority->color : '' }}">{{ $company->priority ? $company->priority->name : '' }}</span></td>
                 <td>{{ $company->divisions }}</td>
                 <td>{{ $company->associations }}</td>
                 <td>{{ $company->name }}</td>
                 <td>{{ $company->email }}</td>
                 <td>{{ $company->phone }}</td>
                 <td>{{ $company->website }}</td>
-                <td>{{ $company->companysize->name }}</td>
+                <td>{{ $company->companysize ? $company->companysize->name : '' }}</td>
                 <td>{!! implode(', ' , $company->companytypes->pluck('name')->toArray()) !!}</td>
                 <td>{!! implode(', ' , $company->companydeals->pluck('name')->toArray()) !!}</td>
                 <td>{{ $company->promotions }}</td>
@@ -79,24 +83,28 @@
                 <td>{{ $company->address }}</td>
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->zip }}</td>
-                <td>{{ $company->state->name }}</td>
+                <td>{{ $company->state ? $company->state->name : '' }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>{{ $company->contact_name_1 }}</td>
                 <td>{{ $company->contact_title_1 }}</td>
+                <td>{{ $company->contact_name_1 }}</td>
+                <td>{{ $company->contact_designation_1 }}</td>
                 <td>{{ $company->contact_email_1 }}</td>
                 <td>{{ $company->contact_mobile_1 }}</td>
-                <td>{{ $company->contact_name_2 }}</td>
                 <td>{{ $company->contact_title_2 }}</td>
+                <td>{{ $company->contact_name_2 }}</td>
+                <td>{{ $company->contact_designation_2 }}</td>
                 <td>{{ $company->contact_email_2 }}</td>
                 <td>{{ $company->contact_mobile_2 }}</td>
-                <td>{{ $company->contact_name_3 }}</td>
                 <td>{{ $company->contact_title_3 }}</td>
+                <td>{{ $company->contact_name_3 }}</td>
+                <td>{{ $company->contact_designation_3 }}</td>
                 <td>{{ $company->contact_email_3 }}</td>
                 <td>{{ $company->contact_mobile_3 }}</td>
-                <td>{{ $company->contact_name_4 }}</td>
                 <td>{{ $company->contact_title_4 }}</td>
+                <td>{{ $company->contact_name_4 }}</td>
+                <td>{{ $company->contact_designation_4 }}</td>
                 <td>{{ $company->contact_email_4 }}</td>
                 <td>{{ $company->contact_mobile_4 }}</td>
                 <td>{{ $company->rough }}</td>
