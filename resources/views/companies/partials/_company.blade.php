@@ -74,25 +74,40 @@
     <div class="card mt-4">
         <div class="card-header">RAP Division</div>
         <div class="card-body">
-            <div class="form-group">
-                <label for="rapnet">RapNet</label>
-                <input type="text" class="form-control" id="rapnet" name="rapnet" placeholder="Enter RapNet Account #">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="rapnet">RapNet</label>
+                        <input type="text" class="form-control" id="rapnet" name="rapnet" placeholder="Enter RapNet Account #">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="gia">GIA Lab Direct</label>
+                        <input type="text" class="form-control" id="gia" name="gia" placeholder="Enter GIA Lab Direct Account #">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="auctions">Auctions</label>
+                        <input type="text" class="form-control" id="auctions" name="auctions" placeholder="Enter Auctions Account #">
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="gia">GIA Lab Direct</label>
-                <input type="text" class="form-control" id="gia" name="gia" placeholder="Enter GIA Lab Direct Account #">
-            </div>
-            <div class="form-group">
-                <label for="auctions">Auctions</label>
-                <input type="text" class="form-control" id="auctions" name="auctions" placeholder="Enter Auctions Account #">
-            </div>
-            <div class="form-group">
-                <label for="raplab">RapLab</label>
-                <input type="text" class="form-control" id="raplab" name="raplab" placeholder="Enter RapLab Account #">
-            </div>
-            <div class="form-group">
-                <label for="advt_acc">ADVT</label>
-                <input type="text" class="form-control" id="advt_acc" name="advt" placeholder="Enter ADVT Account #">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="raplab">RapLab</label>
+                        <input type="text" class="form-control" id="raplab" name="raplab" placeholder="Enter RapLab Account #">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="advt_acc">ADVT</label>
+                        <input type="text" class="form-control" id="advt_acc" name="advt" placeholder="Enter ADVT Account #">
+                    </div>
+                </div>
+                <div class="col"></div>
             </div>
             <div class="form-group d-flex justify-content-end">
                 {{-- <a class="btn btn-primary next-tab" href="#">Add Individual Details</a> --}}

@@ -8,6 +8,8 @@ class PagesController extends Controller
 {
     public function dashboard()
     {
+        // $keywords = preg_split("/[\/,]+/", "Manufacturer, Importer / Exporter");
+        // print_r($keywords);
         return view('dashboard');
     }
 

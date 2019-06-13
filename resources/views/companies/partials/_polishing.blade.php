@@ -86,10 +86,10 @@
                 <label for="certs_comments">Certs Extra Comments</label>
                 <textarea class="form-control" id="certs_comments" name="certs_comments" placeholder="Enter Certs Extra Comments"></textarea>
             </div>
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="branches_comments">Branches Extra Comments</label>
                 <textarea class="form-control" id="branches_comments" name="branches_comments" placeholder="Enter Branches Extra Comments"></textarea>
-            </div> --}}
+            </div>
             <div class="form-group">
                 <label for="product_comments">Product Extra Comments</label>
                 <textarea class="form-control" id="product_comments" name="product_comments" placeholder="Enter Product Extra Comments"></textarea>

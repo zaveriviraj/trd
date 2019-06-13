@@ -15,7 +15,7 @@ class CreateStatesTable extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('country_id')->default(1);
             $table->string('name');
             $table->string('code')->nullable(); // Gujara - GJ
             $table->string('phone_code')->nullable();

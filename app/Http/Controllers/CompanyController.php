@@ -162,7 +162,7 @@ class CompanyController extends Controller
 
     public function import() 
     {
-        Excel::import(new CompaniesImport, 'companies.csv');
+        Excel::import(new CompaniesImport, 'master.csv');
         
         return redirect('/')->with('success', 'All good!');
     }
