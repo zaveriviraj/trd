@@ -10,18 +10,28 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Company Name">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Company Name">
+                </div>
+                <div class="form-group col">
+                    <label for="owner_name">Owner Name</label>
+                    <input type="text" class="form-control" id="owner_name" name="owner_name" placeholder="Enter Owner Name">
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Company Email">
+                    <label for="landline">Landline</label>
+                    <input type="text" class="form-control" id="landline" name="landline" placeholder="Enter Company Landline Number">
                 </div>
                 <div class="form-group col">
-                    <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Company Phone">
+                    <label for="mobile">Mobile</label>
+                    <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile Number">
+                </div>
+                <div class="form-group col">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Company Email">
                 </div>
             </div>
             <div class="form-row">
@@ -60,13 +70,21 @@
             </div>
             <div class="form-row">
                 <div class="form-group col">
-                    <label for="promotions">Promotions &amp; Trade Shows</label>
-                    <input type="text" class="form-control" id="promotions" name="promotions" placeholder="Please add names of Trade Shows manually">
+                    <label for="exhibitions">Exhibitions</label>
+                    <input type="text" class="form-control" id="exhibitions" name="exhibitions" placeholder="Please add names of Exhibition company participates">
                 </div>
                 <div class="form-group col">
                     <label for="brands">Brands</label>
                     <input type="text" class="form-control" id="brands" name="brands" placeholder="Enter Company's Brands">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="deals_comments">Deals Comments</label>
+                <textarea class="form-control" id="deals_comments" name="deals_comments" placeholder="Enter Deals Comments"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="company_comments">Company Comments</label>
+                <textarea class="form-control" id="company_comments" name="company_comments" placeholder="Enter Deals Comments"></textarea>
             </div>
         </div>
     </div>

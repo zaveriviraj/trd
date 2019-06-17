@@ -7,7 +7,7 @@
             <div class="col-9">
                 <div class="tab-content" id="nav-tabContent">
                     @include('companies.partials._company')
-                    @include('companies.partials._contact')
+                    {{-- @include('companies.partials._contact') --}}
                     @include('companies.partials._additional')
                     @include('companies.partials._trading')
                     @include('companies.partials._polishing')
@@ -17,7 +17,7 @@
             <div class="col-3">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-company-list" data-toggle="list" href="#list-company">Company Details</a>
-                    <a class="list-group-item list-group-item-action" id="list-contact-list" data-toggle="list" href="#list-contact">Individual Details</a>
+                    {{-- <a class="list-group-item list-group-item-action" id="list-contact-list" data-toggle="list" href="#list-contact">Individual Details</a> --}}
                     <a class="list-group-item list-group-item-action" id="list-additional-list" data-toggle="list" href="#list-additional">Additional Details</a>
                     <a class="list-group-item list-group-item-action" id="list-trading-list" data-toggle="list" href="#list-trading">Rough Details</a>
                     <a class="list-group-item list-group-item-action" id="list-polishing-list" data-toggle="list" href="#list-polishing">Polished Details</a>

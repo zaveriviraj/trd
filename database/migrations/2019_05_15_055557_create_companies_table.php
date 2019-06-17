@@ -26,7 +26,6 @@ class CreateCompaniesTable extends Migration
             $table->unsignedBigInteger('companysize_id')->nullable();
             $table->text('exhibitions')->nullable();
             $table->text('brands')->nullable();
-            $table->text('deals_in')->nullable();
             $table->string('rapnet')->nullable();
             $table->string('gia')->nullable();
             $table->string('auctions')->nullable();
@@ -45,7 +44,7 @@ class CreateCompaniesTable extends Migration
             $table->unsignedBigInteger('state_id')->nullable();
             $table->string('rough_details')->nullable();
             $table->string('sight_details')->nullable();
-            $table->string('tender_details')->nullable();
+            // $table->string('tender_details')->nullable();
             $table->text('size_comments')->nullable();
             $table->text('shape_comments')->nullable();
             $table->text('color_comments')->nullable();

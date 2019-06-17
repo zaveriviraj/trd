@@ -9,6 +9,7 @@ use App\Companytype;
 use App\Companysize;
 use App\Shape;
 use App\Cert;
+use App\Companydeal;
 
 class CompaniesImport implements ToModel
 {
@@ -37,14 +38,14 @@ class CompaniesImport implements ToModel
             'rough_details'     => $row[19],
             'manufacturing_units'     => $row[21],
             'branches_comments'     => $row[22],
-            'deals_comments'     => $row[24],
-            'exhibitions'     => $row[25],
-            'company_comments'     => $row[27],
+            'deals_comments'     => $row[25],
+            'exhibitions'     => $row[26],
+            'company_comments'     => $row[28],
         ]);
 
         if ($row[7] != '')
         {
-            $state = State::firstOrCreate(['name' => $row[6]]);
+            $state = State::firstOrCreate(['name' => $row[7]]);
             $company->state_id = $state->id;
         }
 
@@ -54,7 +55,7 @@ class CompaniesImport implements ToModel
             $company->companysize_id = $companysize->id;
         }
 
-        if (strtolower($row[26]) == 'yes')
+        if (strtolower($row[27]) == 'yes')
         {
             $company->jewelry_manufacturing = true;
         }
@@ -121,6 +122,16 @@ class CompaniesImport implements ToModel
             {
                 $type = Cert::firstOrCreate(['name' => $cert]);
                 $company->certs()->attach($type);
+            }
+        }
+
+        $dealsin = preg_split("/[\/,]+/", $row[24]);
+        foreach ($dealsin as $deal)
+        {
+            if ($deal != '')
+            {
+                $type = Companydeal::firstOrCreate(['name' => $deal]);
+                $company->companydeals()->attach($type);
             }
         }
 
