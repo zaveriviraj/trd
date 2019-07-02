@@ -60,7 +60,7 @@ class CompanyController extends Controller
         $states = State::oldest('name')->get();
         $countries = Country::oldest('name')->get();
 
-        $sizes = Size::oldest()->get();
+        $sizes = Size::oldest('id')->get();
         $shapes = Shape::oldest()->get();
         $colors = Color::oldest('id')->get();
         $clarities = Clarity::oldest()->get();

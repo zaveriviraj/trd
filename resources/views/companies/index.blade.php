@@ -48,8 +48,13 @@
             }
         ],
         order: [[ 3, "asc" ]],
+        scrollY:        600,
         scrollX:        true,
         scrollCollapse: true,
+        paging:         false,
+        fixedColumns:   {
+            leftColumns: 4
+        },
         columnDefs: [{
             targets: [0],
             visible: false
