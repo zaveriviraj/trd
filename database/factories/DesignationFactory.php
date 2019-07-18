@@ -2,12 +2,11 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Cut;
+use App\Designation;
 use Faker\Generator as Faker;
 
-$factory->define(Cut::class, function (Faker $faker) {
+$factory->define(Designation::class, function (Faker $faker) {
     return [
-        'abbr' => $faker->name,
         'name' => $faker->name,
     ];
 });

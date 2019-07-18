@@ -11,6 +11,12 @@ class SizesTableSeeder extends Seeder
      */
     public function run()
     {
+        factory('App\Size')->create(['name' => '0.003-0.008']);
+        factory('App\Size')->create(['name' => '0.009-0.023']);
+        factory('App\Size')->create(['name' => '0.027-0.035']);
+        factory('App\Size')->create(['name' => '0.040-0.075']);
+        factory('App\Size')->create(['name' => '0.080-0.135']);
+        factory('App\Size')->create(['name' => '0.150-0.180']);
         factory('App\Size')->create(['name' => '0.18-0.22']);
         factory('App\Size')->create(['name' => '0.23-0.29']);
         factory('App\Size')->create(['name' => '0.30-0.39']);

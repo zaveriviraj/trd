@@ -68,6 +68,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('inventory') }}">{{ __('Inventory') }}</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a id="searchDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Searches') }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="searchDropdown">
+                                <a class="dropdown-item" href="{{ route('searches.create') }}">{{ __('New Search') }}</a>
+                                <a class="dropdown-item" href="{{ route('searches.index') }}">{{ __('Saved Search') }}</a>
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -6,23 +6,36 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = [
-        'priority_id','name','owner_name','owner_designation','landline','mobile','email','website','companysize_id','exhibitions','brands','rapnet','gia','auctions','raplab','advt','other_landline','other_mobile','other_email','contact_comments','deals_comments','manufacturing_units','company_comments','address','city','zip','state_id','rough_details','sight_details','size_comments','shape_comments','color_comments','clarity_comments','cut_comments','certs_comments','branches_comments','products_comments','jewelry_manufacturing','jewelry_locations','jewelry_comments'
-    ];
+    protected $guarded = [];
 
-    public function priority()
-    {
-        return $this->belongsTo(Priority::class);
-    }
+    // public function priority()
+    // {
+    //     return $this->belongsTo(Priority::class);
+    // }
+
+    // public function designation()
+    // {
+    //     return $this->belongsTo(Designation::class);
+    // }
 
     public function companysize()
     {
         return $this->belongsTo(Companysize::class);
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
     public function state()
     {
         return $this->belongsTo(State::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
     public function companydeals()
@@ -60,6 +73,16 @@ class Company extends Model
         return $this->belongsToMany(Color::class)->withTimestamps();
     }
 
+    public function roughs()
+    {
+        return $this->belongsToMany(Rough::class)->withTimestamps();
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
+
     public function sizes()
     {
         return $this->belongsToMany(Size::class)->withTimestamps();
@@ -68,6 +91,10 @@ class Company extends Model
     public function companytypes()
     {
         return $this->belongsToMany(Companytype::class)->withTimestamps();
+    }
+
+    public function getPersonAttribute() {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     public function getDivisionsAttribute()

@@ -10,6 +10,7 @@ use App\Companysize;
 use App\Shape;
 use App\Cert;
 use App\Companydeal;
+use App\Rough;
 
 class CompaniesImport implements ToModel
 {
@@ -21,118 +22,85 @@ class CompaniesImport implements ToModel
     public function model(array $row)
     {
         $company = new Company([
-            'name'     => $row[2],
-            'owner_name' => $row[3],
-            'owner_designation' => $row[4],
-            'address'     => $row[5],
-            'city'     => $row[6],
-            'zip'     => $row[8],
-            'landline'     => $row[9],
-            'mobile'     => $row[10],
-            'email'     => $row[11],
-            'website'     => $row[12],
-            'other_landline'     => $row[13],
-            'other_mobile'     => $row[14],
-            'other_email'     => $row[15],
-            'sight_details'     => $row[18],
-            'rough_details'     => $row[19],
-            'manufacturing_units'     => $row[21],
-            'branches_comments'     => $row[22],
-            'deals_comments'     => $row[25],
-            'exhibitions'     => $row[26],
-            'company_comments'     => $row[28],
+            'rapnet'     => $row[0],
+            'first_name'     => $row[1],
+            'last_name'     => $row[2],
+            'job_title'     => $row[3],
+            'company_name' => $row[4],
+            'country' => $row[9],
+            'website' => $row[10],
+            'deals_size' => $row[15],
+            'deals_color' => $row[16],
+            'deals_clarity' => $row[17],
+            'deals_makes' => $row[18],
+            'manufacturing_units' => $row[19],
+            'branches' => $row[20],
+            'comments' => $row[22],
+            'website_comments' => $row[23],
+            'exhibiting_markets' => $row[24],
+            'relationship' => $row[27],
+            'address' => $row[28],
+            'city' => $row[29],
+            'state' => $row[30],
+            'zip' => $row[31],
+            'cell_numbers' => $row[32],
+            'emails' => $row[33],
+            'office' => $row[34],
+            'phones' => $row[35],
+            'fax' => $row[36],
         ]);
 
-        if ($row[7] != '')
+        if ($row[11] != '')
         {
-            $state = State::firstOrCreate(['name' => $row[7]]);
-            $company->state_id = $state->id;
-        }
-
-        if ($row[16] != '')
-        {
-            $companysize = Companysize::firstOrCreate(['name' => $row[16]]);
+            $companysize = Companysize::firstOrCreate(['name' => trim($row[11], " ")]);
             $company->companysize_id = $companysize->id;
         }
 
-        if (strtolower($row[27]) == 'yes')
+        if (strtolower($row[12]) == 'yes')
         {
-            $company->jewelry_manufacturing = true;
+            $company->sight_holder = true;
         }
 
-        $departments = explode('/', $row[1]);
-        $assoc = explode('/', $row[0]);
-        
-        if (count($departments) > count($assoc)) {
-            $assoc = array_pad($assoc, count($departments), '-');
-        } else if (count($departments) < count($assoc)) {
-            $departments = array_pad($departments, count($assoc), '-');
-        }
-        
-        foreach ($departments as $key => $department)
-        {
-            if (strtolower($department) == 'rapnet') {
-                $company->rapnet = $assoc[$key];
-            }
-            
-            if (strtolower($department) == 'gia') {
-                $company->gia = $assoc[$key];
-            }
-
-            if (strtolower($department) == 'raplab') {
-                $company->raplab = $assoc[$key];
-            }
-
-            if (strtolower($department) == 'advt') {
-                $company->advt = $assoc[$key];
-            }
-
-            if (strtolower($department) == 'auctions' || strtolower($department) == 'auction') {
-                $company->auctions = $assoc[$key];
-            }
-        }
-        
         $company->save();
-        
-        // $companytypes = explode('/', $row[22]);
-        $companytypes = preg_split("/[\/,]+/", $row[17]);
-        foreach ($companytypes as $companytype)
+
+        $roughs = preg_split("/[\/,]+/", $row[13]);
+        foreach ($roughs as $rough)
         {
-            if ($companytype != '')
+            if ($rough != '')
             {
-                $type = Companytype::firstOrCreate(['name' => $companytype]);
-                $company->companytypes()->attach($type);
+                $type = Rough::firstOrCreate(['name' => trim($rough)]);
+                $company->roughs()->attach($type);
             }
         }
 
-        $shapes = preg_split("/[\/,]+/", $row[20]);
+        $shapes = preg_split("/[\/,]+/", $row[14]);
         foreach ($shapes as $shape)
         {
             if ($shape != '')
             {
-                $type = Shape::firstOrCreate(['name' => $shape]);
+                $type = Shape::firstOrCreate(['name' => trim($shape)]);
                 $company->shapes()->attach($type);
             }
         }
 
-        $certs = preg_split("/[\/,]+/", $row[23]);
+        $certs = preg_split("/[\/,]+/", $row[21]);
         foreach ($certs as $cert)
         {
             if ($cert != '')
             {
-                $type = Cert::firstOrCreate(['name' => $cert]);
+                $type = Cert::firstOrCreate(['name' => trim($cert)]);
                 $company->certs()->attach($type);
             }
         }
 
-        $dealsin = preg_split("/[\/,]+/", $row[24]);
-        foreach ($dealsin as $deal)
+        if (strtolower($row[25]) == 'yes')
         {
-            if ($deal != '')
-            {
-                $type = Companydeal::firstOrCreate(['name' => $deal]);
-                $company->companydeals()->attach($type);
-            }
+            $company->jewellery_manufacturing = true;
+        }
+
+        if (strtolower($row[26]) == 'yes')
+        {
+            $company->jewellery_trading = true;
         }
 
         return $company;

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCutsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateCutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cuts', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('abbr');
+            $table->unsignedBigInteger('company_id');
             $table->string('name');
+            $table->string('job_title')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateCutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cuts');
+        Schema::dropIfExists('contacts');
     }
 }

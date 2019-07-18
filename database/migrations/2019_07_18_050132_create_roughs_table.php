@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCutsTable extends Migration
+class CreateRoughsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCutsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cuts', function (Blueprint $table) {
+        Schema::create('roughs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('abbr');
+            $table->string('short_name')->nullable();
             $table->string('name');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateCutsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cuts');
+        Schema::dropIfExists('roughs');
     }
 }

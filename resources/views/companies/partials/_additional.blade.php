@@ -4,68 +4,58 @@
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col">
-                    <label for="other_landlines">Other Landline Numbers</label>
-                    <input type="text" class="form-control" id="other_landlines" name="other_landlines" placeholder="Enter Company Landline Numbers">
+                    @include('comps.input', ['name' => 'cell_numbers', 'label' => 'Cell Number', 'placeholder' => 'Enter Cell Number'])
                 </div>
                 <div class="form-group col">
-                    <label for="other_mobiles">Other Mobile Numbers</label>
-                    <input type="text" class="form-control" id="other_mobiles" name="other_mobiles" placeholder="Enter Mobile Numbers">
+                    @include('comps.input', ['name' => 'emails', 'label' => 'Email Address', 'placeholder' => 'Enter Email Address'])
                 </div>
                 <div class="form-group col">
-                    <label for="other_emails">Other Emails</label>
-                    <input type="email" class="form-control" id="other_emails" name="other_emails" placeholder="Enter Company Emails">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <textarea class="form-control" id="address" name="address" placeholder="Enter Company Address"></textarea>
-            </div>
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter City Name">
-                </div>
-                <div class="form-group col">
-                    <label for="zip">Zip Code</label>
-                    <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter Zip Code">
+                    @include('comps.input', ['name' => 'phones', 'label' => 'Phone Number', 'placeholder' => 'Enter Phone Number'])
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
-                    <label for="state_id">State</label>
-                    <select name="state_id" id="state_id" class="form-control custom-select">
-                        @foreach ($states as $state)
-                            <option value="{{ $state->id }}">{{ $state->name }}</option>
-                        @endforeach
-                    </select>
+                    @include('comps.input', ['name' => 'website', 'label' => 'Company Website', 'placeholder' => 'Enter Company Website'])
                 </div>
                 <div class="form-group col">
-                    <label for="country_id">Country</label>
-                    <select name="country_id" id="country_id" class="form-control custom-select">
-                        @foreach ($countries as $country)
-                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                        @endforeach
-                    </select>
+                    @include('comps.input', ['name' => 'fax', 'label' => 'Fax Number', 'placeholder' => 'Enter Fax Number'])
+                </div>
+                <div class="form-group col">
+                    @include('comps.input', ['name' => 'office', 'label' => 'Offices', 'placeholder' => 'Enter Offices'])
                 </div>
             </div>
-            {{-- <div class="form-row">
+            <div class="form-row">
                 <div class="form-group col">
-                    <label for="country-code">Country Code</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="country-code-addon">+</span>
-                        </div>
-                        <input type="text" id="country-code" class="form-control" placeholder="Enter Country Code">
-                    </div>
+                    @include('comps.input', ['name' => 'branches', 'label' => 'Branches', 'placeholder' => 'Enter Branches'])
                 </div>
                 <div class="form-group col">
-                    <label for="state-code">State Code</label>
-                    <input type="text" class="form-control" id="state-code" placeholder="Enter State Code">
+                    @include('comps.input', ['name' => 'manufacturing_units', 'label' => 'Manufacturing Units', 'placeholder' => 'Enter Manufacturing Units'])
                 </div>
-            </div> --}}
+            </div>
+             <div class="form-row">
+                <div class="form-group col">
+                    @include('comps.input', ['name' => 'other_names', 'label' => 'Other Names', 'placeholder' => 'Enter Comma Separated Names'])
+                </div>
+                <div class="form-group col">
+                    @include('comps.input', ['name' => 'other_job_titles', 'label' => 'Other Job Titles', 'placeholder' => 'Enter Comma Separated Job Titles'])
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    @include('comps.input', ['name' => 'other_landlines', 'label' => 'Other Landline Numbers', 'placeholder' => 'Enter Company Landline Numbers'])
+                </div>
+                <div class="form-group col">
+                    @include('comps.input', ['name' => 'other_mobiles', 'label' => 'Other Mobile Numbers', 'placeholder' => 'Enter Company Mobile Numbers'])
+                </div>
+                <div class="form-group col">
+                    @include('comps.input', ['name' => 'other_emails', 'label' => 'Other Emails', 'placeholder' => 'Enter Company Emails'])
+                </div>
+            </div>
             <div class="form-group">
-                <label for="manufacturing_units">Manufacturing Units Details</label>
-                <textarea class="form-control" id="manufacturing_units" name="manufacturing_units" placeholder="Enter Manufacturing Units Details"></textarea>
+                @include('comps.textarea', ['name' => 'comments', 'label' => 'Company Comments', 'placeholder' => 'Enter Company Comments'])
+            </div>
+            <div class="form-group">
+                @include('comps.textarea', ['name' => 'website_comments', 'label' => 'Website Comments', 'placeholder' => 'Enter Website Comments'])
             </div>
             <div class="form-group d-flex justify-content-end">
                 {{-- <a class="btn btn-primary next-tab" href="#">Add Trading Details</a> --}}

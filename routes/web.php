@@ -38,3 +38,6 @@ Route::get('link', 'PagesController@link')->name('link');
 Route::get('inventory', 'PagesController@inventory')->name('inventory');
 
 Route::get('import', 'CompanyController@import')->name('import');
+
+Route::resource('searches', 'SearchController');
+Route::post('search', 'SearchController@search')->name('search');

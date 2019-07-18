@@ -11,9 +11,10 @@ class CutsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Cut')->create(['name' => 'Ideal']);
-        factory('App\Cut')->create(['name' => 'EX']);
-        factory('App\Cut')->create(['name' => 'VG']);
-        factory('App\Cut')->create(['name' => 'GD']);
+        factory('App\Cut')->create(['abbr' => 'EX', 'name' => 'Excellent']);
+        factory('App\Cut')->create(['abbr' => 'VG', 'name' => 'Very Good']);
+        factory('App\Cut')->create(['abbr' => 'GD', 'name' => 'Good']);
+        factory('App\Cut')->create(['abbr' => 'FR', 'name' => 'Fair']);
+        factory('App\Cut')->create(['abbr' => 'PR', 'name' => 'Poor']);
     }
 }

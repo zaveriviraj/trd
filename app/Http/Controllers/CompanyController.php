@@ -19,6 +19,8 @@ use App\Product;
 use App\Color;
 use App\Imports\CompaniesImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Designation;
+use App\Rough;
 
 class CompanyController extends Controller
 {
@@ -30,7 +32,6 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::latest()->with(
-            'priority',
             'companysize',
             'companytypes',
             'companydeals',
@@ -41,6 +42,7 @@ class CompanyController extends Controller
             'cuts',
             'certs',
             'products',
+            'roughs',
         )->get();
         return view('companies.index', compact('companies'));
     }
@@ -54,6 +56,7 @@ class CompanyController extends Controller
     {
         $priorities = Priority::oldest('name')->get();
         $companysizes = Companysize::oldest('name')->get();
+        $designations = Designation::oldest('name')->get();
         $companytypes = Companytype::oldest('name')->get();
         $companydeals = Companydeal::oldest('name')->get();
 
@@ -66,11 +69,13 @@ class CompanyController extends Controller
         $clarities = Clarity::oldest()->get();
         $cuts = Cut::oldest()->get();
         $certs = Cert::oldest()->get();
+        $roughs = Rough::oldest()->get();
 
         $products = Product::oldest()->get();
 
         return view('companies.create', compact(
             'priorities',
+            'designations',
             'companysizes',
             'companytypes',
             'companydeals',
@@ -82,6 +87,7 @@ class CompanyController extends Controller
             'clarities',
             'cuts',
             'certs',
+            'roughs',
             'products',
         ));
     }
@@ -162,7 +168,7 @@ class CompanyController extends Controller
 
     public function import() 
     {
-        Excel::import(new CompaniesImport, 'master.csv');
+        Excel::import(new CompaniesImport, 'amit_master.csv');
         
         return redirect('/')->with('success', 'All good!');
     }
