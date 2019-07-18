@@ -15,7 +15,7 @@ class CreateCutsTable extends Migration
     {
         Schema::create('cuts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('abbr');
+            $table->string('abbr')->nullable();
             $table->string('name');
             $table->timestamps();
         });

@@ -76,6 +76,22 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
+        // $sizes = preg_split("/[-]+/", $request->sizes);
+        // $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
+        // return $companies->pluck('deals_size', 'company_name');
+
+        // $colors = preg_split("/[-]+/", $request->colors);
+        // $companies = Company::where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0])->get();
+        // return $companies->pluck('deals_color', 'company_name');
+
+        // $clarities = preg_split("/[-]+/", $request->clarities);
+        // $companies = Company::where('deals_clarity_to', '>=', $clarities[1])->where('deals_clarity_from', '<=', $clarities[0])->get();
+        // return $companies->pluck('deals_clarity', 'company_name');
+
+        $cuts = preg_split("/[-]+/", $request->cuts);
+        $companies = Company::where('deals_make_to', '>=', $cuts[1])->where('deals_make_from', '<=', $cuts[0])->get();
+        return $companies->pluck('deals_make', 'company_name');
+
         // return $request;
         $companies = Company::latest();
         if ($request->has('company_size')) {
@@ -87,9 +103,9 @@ class SearchController extends Controller
             });
         }
         if ($request->has('sizes')) {
-            $companies = $companies->whereHas('sizes', function($query) use ($request) {
-                $query->whereIn('size_id', $request->sizes);
-            });
+            // $sizes = preg_split("/[-]+/", $request->sizes);
+            // $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
+            // return $companies->pluck('deals_size', 'company_name');
         }
         if ($request->has('company_deal')) {
             $companies = $companies->whereHas('companydeals', function($query) use ($request) {
@@ -102,9 +118,9 @@ class SearchController extends Controller
             });
         }
         if ($request->has('colors')) {
-            $companies = $companies->whereHas('colors', function($query) use ($request) {
-                $query->whereIn('color_id', $request->colors);
-            });
+            // $colors = preg_split("/[-]+/", $request->colors);
+            // $companies = Company::where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0])->get();
+            // return $companies->pluck('deals_color', 'company_name');
         }
         if ($request->has('cuts')) {
             $companies = $companies->whereHas('cuts', function($query) use ($request) {

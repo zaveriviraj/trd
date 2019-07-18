@@ -49,9 +49,9 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="sizes">Sizes</label>
-                                <select name="sizes[]" id="sizes" class="form-control custom-select select2" multiple>
+                                <select name="sizes" id="sizes" class="form-control custom-select">
                                     @foreach ($sizes as $size)
-                                        <option value="{{ $size->id }}">{{ $size->name }}</option>
+                                        <option value="{{ $size->name }}">{{ $size->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -65,28 +65,39 @@
                             </div>
                             <div class="form-group col">
                                 <label for="colors">Colors</label>
-                                <select name="colors[]" id="colors" class="form-control custom-select select2" multiple>
-                                    @foreach ($colors as $color)
-                                        <option value="{{ $color->id }}">{{ $color->name }}</option>
-                                    @endforeach
+                                <select name="colors" id="colors" class="form-control custom-select">
+                                    <option value="d-f">D-F</option>
+                                    <option value="g-i">G-I</option>
+                                    <option value="j-k">J-K</option>
+                                    <option value="l-p">L-P</option>
+                                    <option value="q-z">Q-Z</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="clarities">Clarities</label>
-                                <select name="clarities[]" id="clarities" class="form-control custom-select select2" multiple>
-                                    @foreach ($clarities as $clarity)
-                                        <option value="{{ $clarity->id }}">{{ $clarity->name }}</option>
-                                    @endforeach
+                                <select name="clarities" id="clarities" class="form-control custom-select">
+                                    <option value="1-2">FL-IF</option>
+                                    <option value="1-4">FL-VS</option>
+                                    <option value="1-7">FL-I1</option>
+                                    <option value="3-4">VVS-VS</option>
+                                    <option value="3-5">VVS-SI</option>
                                 </select>
                             </div>
                             <div class="form-group col">
                                 <label for="cuts">Cuts</label>
-                                <select name="cuts[]" id="cuts" class="form-control custom-select select2" multiple>
-                                    @foreach ($cuts as $cut)
-                                        <option value="{{ $cut->id }}">{{ $cut->name }}</option>
-                                    @endforeach
+                                <select name="cuts" id="cuts" class="form-control custom-select">
+                                    <option value="1-2">EX-VG</option>
+                                    <option value="1-3">EX-GD</option>
+                                    <option value="1-4">EX-FR</option>
+                                    <option value="1-5">EX-PR</option>
+                                    <option value="2-3">VG-GD</option>
+                                    <option value="2-4">VG-FR</option>
+                                    <option value="2-5">VG-PR</option>
+                                    <option value="3-4">GD-FR</option>
+                                    <option value="3-5">GD-PR</option>
+                                    <option value="4-5">FR-PR</option>
                                 </select>
                             </div>
                             <div class="form-group col">

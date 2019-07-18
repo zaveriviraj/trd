@@ -48,7 +48,7 @@
             }
         ],
         order: [[ 2, "asc" ]],
-        scrollY:        800,
+        scrollY:        "50vh",
         scrollX:        true,
         scrollCollapse: true,
         paging:         false,

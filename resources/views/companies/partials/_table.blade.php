@@ -96,7 +96,7 @@
                 <td>{{ $company->deals_size }}</td>
                 <td>{{ $company->deals_color }}</td>
                 <td>{{ $company->deals_clarity }}</td>
-                <td>{{ $company->deals_makes }}</td>
+                <td>{{ $company->deals_make }}</td>
                 <td>{{ $company->manufacturing_units }}</td>
                 <td>{{ $company->branches }}</td>
                 <td>{!! implode(', ' , $company->certs->pluck('name')->toArray()) !!}</td>

@@ -27,9 +27,17 @@ class CreateCompaniesTable extends Migration
             $table->unsignedBigInteger('companysize_id')->nullable();
             $table->boolean('sight_holder')->default(0);
             $table->string('deals_size')->nullable();
+            $table->float('deals_size_from')->nullable();
+            $table->float('deals_size_to')->nullable();
             $table->string('deals_color')->nullable();
+            $table->string('deals_color_from')->nullable();
+            $table->string('deals_color_to')->nullable();
             $table->string('deals_clarity')->nullable();
-            $table->string('deals_makes')->nullable();
+            $table->string('deals_clarity_from')->nullable();
+            $table->string('deals_clarity_to')->nullable();
+            $table->string('deals_make')->nullable();
+            $table->string('deals_make_from')->nullable();
+            $table->string('deals_make_to')->nullable();
             $table->text('manufacturing_units')->nullable();
             $table->text('branches')->nullable();
             $table->text('comments')->nullable();
