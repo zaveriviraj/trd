@@ -52,9 +52,7 @@
         scrollX:        true,
         scrollCollapse: true,
         paging:         false,
-        colReorder: {
-            fixedColumnsLeft: 3,
-        },
+        colReorder: true,
         fixedColumns:   {
             leftColumns: 3
         },

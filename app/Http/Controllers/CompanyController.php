@@ -58,7 +58,7 @@ class CompanyController extends Controller
         $companysizes = Companysize::oldest('name')->get();
         $designations = Designation::oldest('name')->get();
         $companytypes = Companytype::oldest('name')->get();
-        $companydeals = Companydeal::oldest('name')->get();
+        $companydeals = Companydeal::oldest('id')->get();
 
         $states = State::oldest('name')->get();
         $countries = Country::oldest('name')->get();
