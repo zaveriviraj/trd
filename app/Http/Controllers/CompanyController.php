@@ -64,9 +64,9 @@ class CompanyController extends Controller
         $countries = Country::oldest('name')->get();
 
         $sizes = Size::oldest('id')->get();
-        $shapes = Shape::oldest()->get();
+        $shapes = Shape::oldest('id')->get();
         $colors = Color::oldest('id')->get();
-        $clarities = Clarity::oldest()->get();
+        $clarities = Clarity::oldest('id')->get();
         $cuts = Cut::oldest()->get();
         $certs = Cert::oldest()->get();
         $roughs = Rough::oldest()->get();

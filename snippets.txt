@@ -9,3 +9,6 @@
         <option value="">Buyer confirmed delivery</option>
     </select>
 </div>
+$sizes = preg_split("/[-]+/", $request->sizes);
+$companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
+return $companies->pluck('deals_size', 'company_name');

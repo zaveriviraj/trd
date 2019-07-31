@@ -100,13 +100,13 @@
                 <td>{{ $company->manufacturing_units }}</td>
                 <td>{{ $company->branches }}</td>
                 <td>{!! implode(', ' , $company->certs->pluck('name')->toArray()) !!}</td>
-                <td>{{ $company->comments }}</td>
-                <td>{{ $company->website_comments }}</td>
+                <td title="{{ $company->comments }}">{{ str_limit($company->comments, 50) }}</td>
+                <td title="{{ $company->website_comments }}">{{ str_limit($company->website_comments, 50) }}</td>
                 <td>{{ $company->exhibiting_markets }}</td>
                 <td>{{ $company->jewellery_manufacturing ? 'Yes' : 'No' }}</td>
                 <td>{{ $company->jewellery_trading ? 'Yes' : 'No' }}</td>
                 <td>{{ $company->relationship }}</td>
-                <td>{{ $company->address }}</td>
+                <td title="{{ $company->address }}">{{ str_limit($company->address, 50) }}</td>
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->state }}</td>
                 <td>{{ $company->zip }}</td>

@@ -13,7 +13,7 @@
     <form action="{{ route('companies.store') }}" method="POST">
         @csrf
         <div class="row">
-            <div class="col-9">
+            <div class="col-10">
                 <div class="tab-content" id="nav-tabContent">
                     @include('companies.partials._company')
                     {{-- @include('companies.partials._contact') --}}
@@ -21,7 +21,7 @@
                     @include('companies.partials._diamond')
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-company-list" data-toggle="list" href="#list-company">Company Details</a>
                     {{-- <a class="list-group-item list-group-item-action" id="list-contact-list" data-toggle="list" href="#list-contact">Individual Details</a> --}}

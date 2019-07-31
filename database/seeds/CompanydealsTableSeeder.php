@@ -18,10 +18,10 @@ class CompanydealsTableSeeder extends Seeder
         factory('App\Companydeal')->create(['name' => 'Dossiers']);
         factory('App\Companydeal')->create(['name' => 'Carat Plus']);
         factory('App\Companydeal')->create(['name' => 'Large Stones']);
-        factory('App\Companydeal')->create(['name' => 'Fancy']);
+        factory('App\Companydeal')->create(['name' => 'Fancy Color']);
         factory('App\Companydeal')->create(['name' => 'Gem Stones']);
         factory('App\Companydeal')->create(['name' => 'Jewelry']);
         factory('App\Companydeal')->create(['name' => 'Trader']);
-        factory('App\Companydeal')->create(['name' => 'CVD']);
+        factory('App\Companydeal')->create(['name' => 'Lab Grown']);
     }
 }
