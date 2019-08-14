@@ -47,14 +47,14 @@
                 collectionLayout: 'fixed four-column'
             }
         ],
-        order: [[ 2, "asc" ]],
+        order: [[ 1, "asc" ]],
         scrollY:        "80vh",
         scrollX:        true,
         scrollCollapse: true,
         paging:         false,
         colReorder: true,
         fixedColumns:   {
-            leftColumns: 3
+            leftColumns: 2
         },
         /*columnDefs: [{
             targets: [0],

@@ -31,8 +31,6 @@
                 <div class="form-group col">
                     @include('comps.input', ['name' => 'manufacturing_units', 'label' => 'Manufacturing Units', 'placeholder' => 'Enter Manufacturing Units'])
                 </div>
-            </div>
-             <div class="form-row">
                 <div class="form-group col">
                     @include('comps.input', ['name' => 'other_names', 'label' => 'Other Names', 'placeholder' => 'Enter Comma Separated Names'])
                 </div>

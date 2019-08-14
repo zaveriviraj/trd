@@ -35,18 +35,18 @@
         <div class="card-header">Jewelry Details</div>
         <div class="card-body">
             <div class="form-row">
-                <div class="form-group col">
+                <div class="form-group col-2">
                     @include('comps.radio', ['name' => 'jewellery_manufacturing', 'label' => 'Jewelry Manufacturing'])
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-2">
                     @include('comps.radio', ['name' => 'jewellery_trading', 'label' => 'Jewelry Trading'])
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-2">
                     @include('comps.input', ['name' => 'jewelry_locations', 'label' => 'Jewelry Store Locations', 'placeholder' => 'Enter Jewelry Store Locations'])
                 </div>
-            </div>
-            <div class="form-group">
-                @include('comps.checks', ['name' => 'products', 'rows' => $products, 'label' => 'Jewelry Products'])
+                <div class="form-group col">
+                    @include('comps.checks', ['name' => 'products', 'rows' => $products, 'label' => 'Jewelry Products'])
+                </div>
             </div>
             <div class="form-group d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary">Save Information</button>

@@ -129,7 +129,20 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        $company->load(
+            'companysize',
+            'companytypes',
+            'companydeals',
+            'state',
+            'sizes',
+            'shapes',
+            'colors',
+            'cuts',
+            'certs',
+            'products',
+            'roughs',
+        );
+        return view('companies.show', compact('company'));
     }
 
     /**

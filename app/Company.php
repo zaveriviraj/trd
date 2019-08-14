@@ -116,4 +116,18 @@ class Company extends Model
         
         return $linksArray;
     }
+
+    public function getRelationshipClassAttribute()
+    {
+        if ($this->relationship > 7)
+        {
+            return 'success';
+        } else if ($this->relationship > 4)
+        {
+            return 'warning';
+        } else
+        {
+            return 'danger';
+        }
+    }
 }

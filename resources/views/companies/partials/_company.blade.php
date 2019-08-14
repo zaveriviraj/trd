@@ -9,8 +9,6 @@
                 <div class="form-group col">
                     @include('comps.dropdown', ['name' => 'companysize_id', 'rows' => $companysizes, 'label' => 'Company Size'])
                 </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group col">
                     @include('comps.input', ['name' => 'first_name', 'label' => 'First Name', 'placeholder' => 'Enter First Name'])
                 </div>
@@ -19,10 +17,10 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col">
+                <div class="form-group col-2">
                     @include('comps.input', ['name' => 'job_title', 'label' => 'Job Title', 'placeholder' => 'Enter Job Title'])
                 </div>
-                <div class="form-group col">
+                <div class="form-group col-4">
                     <label>Relations</label> <br>
                     @for ($i = 1; $i <= 10; $i++)
                         <div class="custom-control custom-radio custom-control-inline">
@@ -31,8 +29,6 @@
                         </div>
                     @endfor
                 </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group col">
                     @include('comps.multiple', ['name' => 'company_type', 'rows' => $companytypes, 'label' => 'Company Type'])
                 </div>
@@ -54,8 +50,6 @@
                 <div class="form-group col">
                     @include('comps.input', ['name' => 'zip', 'label' => 'Zip Code', 'placeholder' => 'Enter Zip Code'])
                 </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group col">
                     @include('comps.input', ['name' => 'state', 'label' => 'State', 'placeholder' => 'Enter State Name'])
                 </div>
@@ -82,8 +76,6 @@
                         <input type="text" class="form-control" id="gia" name="gia" placeholder="Enter GIA Lab Direct Account #">
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col">
                     <div class="form-group">
                         <label for="raplab">RapLab</label>

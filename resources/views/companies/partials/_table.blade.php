@@ -2,10 +2,10 @@
     <thead>
         <tr>
             {{-- <th>Priority</th> --}}
-            <th>RAP Division</th>
-            <th>Account #</th>
+            <th>OFC #</th>
             <th>Company Name</th>
-            <th>Owner Name</th>
+            <th>RAP Division</th>
+            <th>Contact Person</th>
             <th>Job Title</th>
             <th>Company Size</th>
             <th>Country</th>
@@ -82,9 +82,9 @@
         @forelse ($companies as $company)
             <tr>
                 {{-- <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority ? $company->priority->color : '' }}">{{ $company->priority ? $company->priority->name : '' }}</span></td> --}}
-                <td>{{ $company->divisions }}</td>
                 <td>{{ $company->associations }}</td>
-                <td>{{ $company->company_name }}</td>
+                <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->company_name }}</a></td>
+                <td>{{ $company->divisions }}</td>
                 <td>{{ $company->person }}</td>
                 <td>{{ $company->job_title }}</td>
                 <td>{{ $company->companysize ? $company->companysize->name : '' }}</td>
