@@ -15,7 +15,10 @@
                     @endif
 
                     You are logged in!
-                    <a href="{{ route('import') }}">Import</a>
+                    <a href="{{ route('import') }}">Import 1</a>
+                    <a href="{{ route('import2') }}">Import 2</a>
+                    <a href="{{ route('import3') }}">Import 3</a>
+                    <a href="{{ route('import4') }}">Import 4</a>
                 </div>
             </div>
         </div>

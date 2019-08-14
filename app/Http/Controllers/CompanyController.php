@@ -185,4 +185,25 @@ class CompanyController extends Controller
         
         return redirect('/')->with('success', 'All good!');
     }
+
+    public function import2() 
+    {
+        Excel::import(new CompaniesImport, 'amit_master_2.csv');
+        
+        return redirect('/')->with('success', 'All good!');
+    }
+
+    public function import3() 
+    {
+        Excel::import(new CompaniesImport, 'amit_master_3.csv');
+        
+        return redirect('/')->with('success', 'All good!');
+    }
+
+    public function import4() 
+    {
+        Excel::import(new CompaniesImport, 'amit_master_4.csv');
+        
+        return redirect('/')->with('success', 'All good!');
+    }
 }
