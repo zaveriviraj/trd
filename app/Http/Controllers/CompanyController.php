@@ -42,7 +42,7 @@ class CompanyController extends Controller
             'cuts',
             'certs',
             'products',
-            'roughs',
+            'roughs'
         )->get();
         return view('companies.index', compact('companies'));
     }
@@ -88,7 +88,7 @@ class CompanyController extends Controller
             'cuts',
             'certs',
             'roughs',
-            'products',
+            'products'
         ));
     }
 
@@ -140,7 +140,7 @@ class CompanyController extends Controller
             'cuts',
             'certs',
             'products',
-            'roughs',
+            'roughs'
         );
         return view('companies.show', compact('company'));
     }
