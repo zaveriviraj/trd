@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-3">
                     <p class="card-text">OFC #</p>
-                    <h5 class="card-title">{{ $company->associations }} <small>{{ $company->divisions }}</small></h5>
+                    <h5 class="card-title"><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a> <small>{{ $company->divisions }}</small></h5>
                 </div>
                 <div class="col-md-3">
                     <p class="card-text">Company Size</p>
@@ -79,7 +79,7 @@
                         <dd class="col-md-9">{{ $company->person ?: '-' }} <small>{{ $company->job_title ? '('. $company->job_title .')' : '' }}</small>
                         @isset($company->relationship)<span class="badge badge-{{ $company->relationship_class }}">{{ $company->relationship }}</span>@endisset</dd>
                         <dt class="col-md-3">OFC #</dt>
-                        <dd class="col-md-9">{{ $company->associations }} <small>{{ $company->divisions }}</small></dd>
+                        <dd class="col-md-9"><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a> <small>{{ $company->divisions }}</small></dd>
                         <dt class="col-md-3">Company Size</dt>
                         <dd class="col-md-9">{{ $company->companysize ? $company->companysize->name : '' }}</dd>
                         <dt class="col-md-3">Address</dt>
