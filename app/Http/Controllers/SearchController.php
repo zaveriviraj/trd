@@ -43,7 +43,7 @@ class SearchController extends Controller
 
         $sizes = Size::oldest('id')->get();
         $shapes = Shape::oldest('id')->get();
-        $colors = Color::oldest('id')->get();
+        $colors = Color::oldest('id')->where('id', '<', 24)->get();
 
         $clarities = Clarity::oldest('id')->get();
         $cuts = Cut::oldest('id')->get();
@@ -76,6 +76,7 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
+        // return $request;
         // $sizes = preg_split("/[-]+/", $request->sizes);
         // $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
         // return $companies->pluck('deals_size', 'company_name');
