@@ -88,9 +88,9 @@ class SearchController extends Controller
         // $companies = Company::where('deals_clarity_to', '>=', $clarities[1])->where('deals_clarity_from', '<=', $clarities[0])->get();
         // return $companies->pluck('deals_clarity', 'company_name');
 
-        $cuts = preg_split("/[-]+/", $request->cuts);
-        $companies = Company::where('deals_make_to', '>=', $cuts[1])->where('deals_make_from', '<=', $cuts[0])->get();
-        return $companies->pluck('deals_make', 'company_name');
+        $sizes = preg_split("/[-]+/", $request->sizes);
+        $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
+        return $companies->pluck('deals_size', 'company_name');
 
         // return $request;
         $companies = Company::latest();
