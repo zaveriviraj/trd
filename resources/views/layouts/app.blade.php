@@ -70,7 +70,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="searchDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ __('Searches') }} <span class="caret"></span>
+                                {{ __('Search') }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="searchDropdown">

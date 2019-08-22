@@ -59,7 +59,7 @@ class SearchController extends Controller
             'colors',
             'clarities',
             'cuts',
-            'certs',
+            'certs'
         ));
     }
 
