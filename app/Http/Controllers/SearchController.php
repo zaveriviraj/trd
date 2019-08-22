@@ -88,9 +88,9 @@ class SearchController extends Controller
         // $companies = Company::where('deals_clarity_to', '>=', $clarities[1])->where('deals_clarity_from', '<=', $clarities[0])->get();
         // return $companies->pluck('deals_clarity', 'company_name');
 
-        $sizes = preg_split("/[-]+/", $request->sizes);
-        $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
-        return $companies->pluck('deals_size', 'company_name');
+        // $sizes = preg_split("/[-]+/", $request->sizes);
+        // $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
+        // return $companies->pluck('deals_size', 'company_name');
 
         // return $request;
         $companies = Company::latest();
@@ -103,40 +103,40 @@ class SearchController extends Controller
             });
         }
         if ($request->has('sizes')) {
-            // $sizes = preg_split("/[-]+/", $request->sizes);
-            // $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
+            $sizes = preg_split("/[-]+/", $request->sizes);
+            $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0]);
             // return $companies->pluck('deals_size', 'company_name');
         }
-        if ($request->has('company_deal')) {
-            $companies = $companies->whereHas('companydeals', function($query) use ($request) {
-                $query->whereIn('companydeal_id', $request->company_deal);
-            });
-        }
-        if ($request->has('shapes')) {
-            $companies = $companies->whereHas('shapes', function($query) use ($request) {
-                $query->whereIn('shape_id', $request->shapes);
-            });
-        }
+        // if ($request->has('company_deal')) {
+        //     $companies = $companies->whereHas('companydeals', function($query) use ($request) {
+        //         $query->whereIn('companydeal_id', $request->company_deal);
+        //     });
+        // }
+        // if ($request->has('shapes')) {
+        //     $companies = $companies->whereHas('shapes', function($query) use ($request) {
+        //         $query->whereIn('shape_id', $request->shapes);
+        //     });
+        // }
         if ($request->has('colors')) {
-            // $colors = preg_split("/[-]+/", $request->colors);
-            // $companies = Company::where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0])->get();
+            $colors = preg_split("/[-]+/", $request->colors);
+            $companies = Company::where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0]);
             // return $companies->pluck('deals_color', 'company_name');
         }
-        if ($request->has('cuts')) {
-            $companies = $companies->whereHas('cuts', function($query) use ($request) {
-                $query->whereIn('cut_id', $request->cuts);
-            });
-        }
-        if ($request->has('clarities')) {
-            $companies = $companies->whereHas('clarities', function($query) use ($request) {
-                $query->whereIn('clarity_id', $request->clarities);
-            });
-        }
-        if ($request->has('certs')) {
-            $companies = $companies->whereHas('certs', function($query) use ($request) {
-                $query->whereIn('cert_id', $request->certs);
-            });
-        }
+        // if ($request->has('cuts')) {
+        //     $companies = $companies->whereHas('cuts', function($query) use ($request) {
+        //         $query->whereIn('cut_id', $request->cuts);
+        //     });
+        // }
+        // if ($request->has('clarities')) {
+        //     $companies = $companies->whereHas('clarities', function($query) use ($request) {
+        //         $query->whereIn('clarity_id', $request->clarities);
+        //     });
+        // }
+        // if ($request->has('certs')) {
+        //     $companies = $companies->whereHas('certs', function($query) use ($request) {
+        //         $query->whereIn('cert_id', $request->certs);
+        //     });
+        // }
         $companies = $companies->get();
         // return $companies;
         return view('companies.index', compact('companies'));
