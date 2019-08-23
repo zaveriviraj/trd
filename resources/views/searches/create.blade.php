@@ -23,7 +23,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-2">
-                                <h5>Colors:</h5>
+                                <h5>Color:</h5>
                                 <a href="#" id="clear-colors"><small>Clear Search</small></a>
                             </div>
                             <div class="col-10">
@@ -67,7 +67,7 @@
 
         $('#clear-colors').on('click', function(e) {
             e.preventDefault();
-            $('#colors-list div').addClass('bg-secondary').removeClass('bg-primary selected');
+            $('#colors-list div').addClass('bg-secondary').removeClass('bg-primary selected-color');
             $('#colors').val('');
         })
     </script>
