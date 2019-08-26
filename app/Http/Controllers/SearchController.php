@@ -76,24 +76,6 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
-        // return $request;
-        // $sizes = preg_split("/[-]+/", $request->sizes);
-        // $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
-        // return $companies->pluck('deals_size', 'company_name');
-
-        // $colors = preg_split("/[-]+/", $request->colors);
-        // $companies = Company::where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0])->get();
-        // return $companies->pluck('deals_color', 'company_name');
-
-        // $clarities = preg_split("/[-]+/", $request->clarities);
-        // $companies = Company::where('deals_clarity_to', '>=', $clarities[1])->where('deals_clarity_from', '<=', $clarities[0])->get();
-        // return $companies->pluck('deals_clarity', 'company_name');
-
-        // $sizes = preg_split("/[-]+/", $request->sizes);
-        // $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0])->get();
-        // return $companies->pluck('deals_size', 'company_name');
-
-        // return $request;
         $companies = Company::latest();
         if ($request->has('company_size')) {
             $companies = $companies->whereIn('companysize_id', $request->company_size);
@@ -103,43 +85,23 @@ class SearchController extends Controller
                 $query->whereIn('companytype_id', $request->company_type);
             });
         }
-        if ($request->has('sizes')) {
+        if ($request->has('sizes') && $request->sizes != null) {
             $sizes = preg_split("/[-]+/", $request->sizes);
-            $companies = Company::where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0]);
-            // return $companies->pluck('deals_size', 'company_name');
+            $companies = $companies->where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0]);
         }
-        // if ($request->has('company_deal')) {
-        //     $companies = $companies->whereHas('companydeals', function($query) use ($request) {
-        //         $query->whereIn('companydeal_id', $request->company_deal);
-        //     });
-        // }
-        // if ($request->has('shapes')) {
-        //     $companies = $companies->whereHas('shapes', function($query) use ($request) {
-        //         $query->whereIn('shape_id', $request->shapes);
-        //     });
-        // }
-        if ($request->has('colors')) {
+        if ($request->has('makes') && $request->makes != null) {
+            $makes = preg_split("/[-]+/", $request->makes);
+            $companies = $companies->where('deals_make_to', '>=', $makes[1])->where('deals_make_from', '<=', $makes[0]);
+        }
+        if ($request->has('colors') && $request->colors != null) {
             $colors = preg_split("/[-]+/", $request->colors);
-            $companies = Company::where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0]);
-            // return $companies->pluck('deals_color', 'company_name');
+            $companies = $companies->where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0]);
         }
-        // if ($request->has('cuts')) {
-        //     $companies = $companies->whereHas('cuts', function($query) use ($request) {
-        //         $query->whereIn('cut_id', $request->cuts);
-        //     });
-        // }
-        // if ($request->has('clarities')) {
-        //     $companies = $companies->whereHas('clarities', function($query) use ($request) {
-        //         $query->whereIn('clarity_id', $request->clarities);
-        //     });
-        // }
-        // if ($request->has('certs')) {
-        //     $companies = $companies->whereHas('certs', function($query) use ($request) {
-        //         $query->whereIn('cert_id', $request->certs);
-        //     });
-        // }
+        if ($request->has('clarities') && $request->clarities != null) {
+            $clarities = preg_split("/[-]+/", $request->clarities);
+            $companies = $companies->where('deals_clarity_to', '>=', $clarities[1])->where('deals_clarity_from', '<=', $clarities[0]);
+        }
         $companies = $companies->get();
-        // return $companies;
         return view('companies.index', compact('companies'));
     }
 

@@ -12,6 +12,7 @@ use App\Cert;
 use App\Companydeal;
 use App\Rough;
 use App\Clarity;
+use App\Color;
 use App\Cut;
 
 class CompaniesImport implements ToModel
@@ -80,8 +81,8 @@ class CompaniesImport implements ToModel
             if (strpos($color, 'to') !== false)
             {
                 $colorsTemp = preg_split("/[to]+/", $color);
-                $company->deals_color_from = trim($colorsTemp['0']);
-                $company->deals_color_to = trim($colorsTemp['1']);
+                $company->deals_color_from = Color::firstOrCreate(['name' => trim($colorsTemp['0'])])->id;
+                $company->deals_color_to = Color::firstOrCreate(['name' => trim($colorsTemp['1'])])->id;
             }
         }
 
