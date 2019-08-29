@@ -40,10 +40,7 @@ class CompanyController extends Controller
             'companytypes',
             'companydeals',
             'state',
-            'sizes',
             'shapes',
-            'colors',
-            'cuts',
             'certs',
             'products',
             'roughs'

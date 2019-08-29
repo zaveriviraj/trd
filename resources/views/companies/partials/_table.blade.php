@@ -69,10 +69,10 @@
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->state }}</td>
                 <td>{{ $company->zip }}</td>
-                <td>{{ $company->cell }}</td>
-                <td>{{ $company->email }}</td>
+                <td>{{ $company->cell_numbers }}</td>
+                <td>{{ $company->emails }}</td>
                 <td>{{ $company->office }}</td>
-                <td>{{ $company->phone }}</td>
+                <td>{{ $company->phones }}</td>
                 <td>{{ $company->fax }}</td>
             </tr>
         @empty

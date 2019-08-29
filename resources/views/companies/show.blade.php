@@ -49,15 +49,15 @@
             <div class="row">
                 <div class="col-md-3">
                     <p class="card-text">Cell</p>
-                    <p class="card-text">{{ $company->cell ?: '-' }}</p>
+                    <p class="card-text">{{ $company->cell_numbers ?: '-' }}</p>
                 </div>
                 <div class="col-md-3">
                     <p class="card-text">Email</p>
-                    <p class="card-text">{{ $company->email ?: '-' }}</p>
+                    <p class="card-text">{{ $company->emails ?: '-' }}</p>
                 </div>
                 <div class="col-md-3">
                     <p class="card-text">Phone</p>
-                    <p class="card-text">{{ $company->phone ?: '-' }}</p>
+                    <p class="card-text">{{ $company->phones ?: '-' }}</p>
                 </div>
                 <div class="col-md-3">
                     <p class="card-text">Fax</p>
@@ -101,11 +101,11 @@
                         <dt class="col-md-3">Office</dt>
                         <dd class="col-md-9">{{ $company->office ?: '-' }}</dd>
                         <dt class="col-md-3">Cell</dt>
-                        <dd class="col-md-9">{{ $company->cell ?: '-' }}</dd>
+                        <dd class="col-md-9">{{ $company->cell_numbers ?: '-' }}</dd>
                         <dt class="col-md-3">Email</dt>
-                        <dd class="col-md-9">{{ $company->email ?: '-' }}</dd>
+                        <dd class="col-md-9">{{ $company->emails ?: '-' }}</dd>
                         <dt class="col-md-3">Phone</dt>
-                        <dd class="col-md-9">{{ $company->phone ?: '-' }}</dd>
+                        <dd class="col-md-9">{{ $company->phones ?: '-' }}</dd>
                         <dt class="col-md-3">Fax</dt>
                         <dd class="col-md-9">{{ $company->fax ?: '-' }}</dd>
                     </dl>
