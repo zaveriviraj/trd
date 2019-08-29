@@ -35,35 +35,6 @@
 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [
             {
-                extend: 'collection',
-                text: 'Table Control',
-                buttons: [
-                    {
-                        extend: 'colvisGroup',
-                        text: 'Color info',
-                        show: [ 12, 18, 19 ],
-                        hide: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        text: 'Contact info',
-                        show: [ 3, 4, 6, 7, 24, 25, 26, 27, 28, 29, 30, 31, 32 ],
-                        hide: [ 2, 5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
-                    },
-                    {
-                        extend: 'colvisGroup',
-                        text: 'Rough info',
-                        show: [ 2, 5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ],
-                        hide: [ 3, 4, 6, 7, 24, 25, 26, 27, 28, 29, 30, 31, 32 ]
-                    }
-                ]
-            },
-            {
-                extend: 'colvisGroup',
-                text: 'Show all',
-                show: ':hidden'
-            },
-            {
                 extend: 'csv',
                 text: 'Excel',
                 exportOptions: {
@@ -97,5 +68,17 @@
             visible: false
         }]*/
     });
+
+    $('body').delegate('.trimmed', 'click', function(e) {
+        let $elem = $(this);
+        $elem.text($elem.data('full'));
+        $elem.addClass('table-active untrimmed').removeClass('trimmed');
+    })
+
+    $('body').delegate('.untrimmed', 'click', function(e) {
+        let $elem = $(this);
+        $elem.text($elem.data('short'));
+        $elem.addClass('trimmed').removeClass('table-active untrimmed');
+    })
 </script>
 @endpush

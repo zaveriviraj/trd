@@ -76,7 +76,9 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
-        $companies = Company::latest()->with(
+        // return $request;
+        
+        $companies = Company::oldest('company_name')->with(
             'companysize',
             'companytypes',
             'companydeals',
@@ -86,6 +88,12 @@ class SearchController extends Controller
             'products',
             'roughs'
         );
+        // if ($request->has('makes') && $request->makes != null) {
+        //     $makes = preg_split("/[-]+/", $request->makes);
+        //     $companies = $companies->where('deals_make_to', '>=', $makes[1])->where('deals_make_from', '<=', $makes[0]);
+        // }
+        // $companies = $companies->take(10)->get();
+        // return $companies;
         if ($request->has('company_size')) {
             $companies = $companies->whereIn('companysize_id', $request->company_size);
         }
@@ -106,10 +114,18 @@ class SearchController extends Controller
         if ($request->has('makes') && $request->makes != null) {
             $makes = preg_split("/[-]+/", $request->makes);
             $companies = $companies->where('deals_make_to', '>=', $makes[1])->where('deals_make_from', '<=', $makes[0]);
+            // $companies = $companies->whereBetween('deals_make_from', [$makes[0], $makes[1]])->orWhereBetween('deals_make_to', [$makes[0], $makes[1]]);
         }
         if ($request->has('colors') && $request->colors != null) {
             $colors = preg_split("/[-]+/", $request->colors);
             $companies = $companies->where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0]);
+        }
+        if ($request->has('browns') && $request->browns == 1) {
+            $companies = $companies->where('deals_color', 'LIKE', "%brown%");
+        }
+        if ($request->has('fancy_colors') && $request->fancy_colors == 1) {
+            // return 'here';
+            $companies = $companies->where('deals_color', 'LIKE', "%fancy%");
         }
         if ($request->has('clarities') && $request->clarities != null) {
             $clarities = preg_split("/[-]+/", $request->clarities);
