@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <style>
         .option-box { cursor: pointer; display: flex; justify-content: center; align-items: center; color: #fff; text-align: center; }
         .d-grid { display: grid; grid-gap: 10px; grid-auto-rows: minmax(45px, auto); }
@@ -36,7 +38,7 @@
                                         <div class="bg-secondary option-box" data-selected-id="{{ $shape->id }}">{{ $shape->name }}</div>
                                     @endforeach
                                 </div>
-                                <input type="text" name="shapes" class="invisible search-input">
+                                <input type="text" name="shapes[]" class="invisible search-input">
                             </div>
                         </div>
 
@@ -100,6 +102,34 @@
                             </div>
                         </div>
 
+                        <div class="row search-single mb-4">
+                            <div class="col-2">
+                                <h5>Certs:</h5>
+                                <a href="#" class="clear-search"><small>Clear</small></a>
+                            </div>
+                            <div class="col-10">
+                                <div class="options-list d-grid d-grid-6">
+                                    @foreach ($certs as $cert)
+                                        <div class="bg-secondary option-box" data-selected-id="{{ $cert->id }}">{{ $cert->name }}</div>
+                                    @endforeach
+                                </div>
+                                <input type="text" name="certs[]" class="invisible search-input">
+                            </div>
+                        </div>
+
+                        <div class="row search-single mb-4">
+                            <div class="col-2">
+                                <h5>Company Size:</h5>
+                            </div>
+                            <div class="col-10">
+                                <select name="company_size[]" id="company_size" class="form-control custom-select select2" multiple>
+                                    @foreach ($companysizes as $companysize)
+                                        <option value="{{ $companysize->id }}">{{ $companysize->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Search</button>
                         </div>
@@ -133,45 +163,40 @@
             val = $parameter.find('.selected-parameter:first').data('start-id') + '-' + $parameter.find('.selected-parameter:last').data('end-id');
             $parameter.find('.search-input').val(val);
         });
-        $('.search-parameter .clear-search').on('click', function(e) {
+
+        $('.search-single .option-box').on('click', function(e) {
             e.preventDefault();
-            $(this).parents('.search-parameter').find('.options-list div').addClass('bg-secondary').removeClass('bg-primary selected-parameter');
-            $(this).parents('.search-parameter').find('.search-input').val('');
+
+            let $element = $(this);
+            let selected = $element.hasClass('selected-parameter');
+            let $parameter = $element.parents('.search-single');
+            let val = '';
+
+            if ( selected ) {
+                $element.addClass('bg-secondary').removeClass('bg-primary selected-parameter');
+            } else {
+                $element.addClass('bg-primary selected-parameter').removeClass('bg-secondary');
+            }
+
+            if ($parameter.find('.selected-parameter').length) {
+                $parameter.find('.selected-parameter').each(function() {
+                    if (val) {
+                        val += ',' + $(this).data('selected-id');
+                    } else {
+                        val =  $(this).data('selected-id');
+                    }
+                });
+            } else {
+                val = '';
+            }
+
+            $parameter.find('.search-input').val(val);
+        })
+
+        $('.clear-search').on('click', function(e) {
+            e.preventDefault();
+            $(this).parents('.row').find('.options-list div').addClass('bg-secondary').removeClass('bg-primary selected-parameter');
+            $(this).parents('.row').find('.search-input').val('');
         });
-        // $('.search-parameter .option-box').on('click', function(e) {
-            // e.preventDefault();
-            // let $element = $(this);
-            // let $parent = $element.parent();
-            // let $parameter = $element.parents('.search-parameter');
-            // let val = '';
-// 
-            // if ( $element.is($parameter.find('.selected-parameter:first')) || $element.is($parameter.find('.selected-parameter:last')) )
-            // {
-                // console.log('here');
-                // $element.removeClass('bg-primary selected-parameter').addClass('bg-secondary');
-                // val = $parameter.find('.selected-parameter:first').data('start-id') + '-' + $parameter.find('.selected-parameter:last').data('end-id');
-                // console.log($parameter.find('.search-input').val());
-                // return;
-            // }
-// 
-            // let $exist = $parent.find('.bg-primary');
-            // $element.removeClass('bg-secondary').addClass('bg-primary selected-parameter');
-//             
-            // if ($exist.length) {
-                // $parameter.find('.selected-parameter:first').nextUntil($parameter.find('.selected-parameter:last')).removeClass('bg-secondary').addClass('bg-primary selected-parameter');
-                // val = $parameter.find('.selected-parameter:first').data('start-id') + '-' + $parameter.find('.selected-parameter:last').data('end-id');
-            // } else {
-                // val = $parameter.find('.selected-parameter').data('start-id') + '-' + $parameter.find('.selected-parameter').data('end-id');
-            // }
-//             
-            // $parameter.find('.search-input').val(val);
-            // console.log($parameter.find('.search-input').val());
-        // });
-// 
-        // $('.search-parameter .clear-search').on('click', function(e) {
-            // e.preventDefault();
-            // $(this).parents('.search-parameter').find('.options-list div').addClass('bg-secondary').removeClass('bg-primary selected-parameter');
-            // $(this).parents('.search-parameter').find('.search-input').val('');
-        // });
     </script>
 @endpush

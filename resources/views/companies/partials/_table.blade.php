@@ -50,14 +50,14 @@
                 <td>{{ $company->country }}</td>
                 <td>{{ $company->website }}</td>
                 <td>{{ $company->sight_holder ? 'Yes' : 'No' }}</td>
-                <td>{!! implode(', ' , $company->roughs->pluck('name')->toArray()) !!}</td>
+                <td>{!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 50) !!}</td>
                 <td>{!! implode(', ' , $company->shapes->pluck('name')->toArray()) !!}</td>
                 <td>{{ $company->deals_size }}</td>
                 <td>{{ $company->deals_color }}</td>
                 <td>{{ $company->deals_clarity }}</td>
                 <td>{{ $company->deals_make }}</td>
                 <td>{{ $company->manufacturing_units }}</td>
-                <td>{{ $company->branches }}</td>
+                <td>{{ str_limit($company->branches, 25) }}</td>
                 <td>{!! implode(', ' , $company->certs->pluck('name')->toArray()) !!}</td>
                 <td title="{{ $company->comments }}">{{ str_limit($company->comments, 50) }}</td>
                 <td title="{{ $company->website_comments }}">{{ str_limit($company->website_comments, 50) }}</td>
@@ -69,8 +69,8 @@
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->state }}</td>
                 <td>{{ $company->zip }}</td>
-                <td>{{ $company->cell_numbers }}</td>
-                <td>{{ $company->emails }}</td>
+                <td>{{ str_limit($company->cell_numbers, 50) }}</td>
+                <td>{{ str_limit($company->emails, 50) }}</td>
                 <td>{{ $company->office }}</td>
                 <td>{{ $company->phones }}</td>
                 <td>{{ $company->fax }}</td>

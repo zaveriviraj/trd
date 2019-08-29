@@ -76,13 +76,28 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
-        $companies = Company::latest();
+        $companies = Company::latest()->with(
+            'companysize',
+            'companytypes',
+            'companydeals',
+            'state',
+            'shapes',
+            'certs',
+            'products',
+            'roughs'
+        );
         if ($request->has('company_size')) {
             $companies = $companies->whereIn('companysize_id', $request->company_size);
         }
         if ($request->has('company_type')) {
             $companies = $companies->whereHas('companytypes', function($query) use ($request) {
                 $query->whereIn('companytype_id', $request->company_type);
+            });
+        }
+        if ($request->has('shapes') && !empty($request->shapes[0])) {
+            return $request;
+            $companies = $companies->whereHas('shapes', function($query) use ($request) {
+                $query->whereIn('shape_id', $request->shapes);
             });
         }
         if ($request->has('sizes') && $request->sizes != null) {
@@ -100,6 +115,11 @@ class SearchController extends Controller
         if ($request->has('clarities') && $request->clarities != null) {
             $clarities = preg_split("/[-]+/", $request->clarities);
             $companies = $companies->where('deals_clarity_to', '>=', $clarities[1])->where('deals_clarity_from', '<=', $clarities[0]);
+        }
+        if ($request->has('certs')  && !empty($request->certs[0])) {
+            $companies = $companies->whereHas('certs', function($query) use ($request) {
+                $query->whereIn('cert_id', $request->certs);
+            });
         }
         $companies = $companies->get();
         return view('companies.index', compact('companies'));

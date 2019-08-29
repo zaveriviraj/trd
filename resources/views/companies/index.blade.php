@@ -3,6 +3,9 @@
 @push('styles')
 <!-- Datatables -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-colvis-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/r-2.2.2/sc-2.0.0/datatables.min.css"/>
+<style>
+    table { white-space: nowrap; }
+</style>
 @endpush
 
 @section('content')
@@ -10,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Companies List</div>
+                <div class="card-header">Companies List: <strong>{{ $companies->count() }}</strong></div>
 
                 <div class="card-body">
                     @include('companies.partials._table')
@@ -77,10 +80,13 @@
             }
         ],
         order: [[ 1, "asc" ]],
-        scrollY:        "80vh",
+        scrollY:        "60vh",
         scrollX:        true,
         scrollCollapse: true,
-        paging:         false,
+        lengthMenu: [
+            [ 25, 50, 100, -1 ],
+            [ '25', '50', '100', 'All' ]
+        ],
         colReorder: true,
         fixedColumns:   {
             leftColumns: 2
