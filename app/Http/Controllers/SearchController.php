@@ -95,7 +95,6 @@ class SearchController extends Controller
             });
         }
         if ($request->has('shapes') && !empty($request->shapes[0])) {
-            return $request;
             $companies = $companies->whereHas('shapes', function($query) use ($request) {
                 $query->whereIn('shape_id', $request->shapes);
             });
