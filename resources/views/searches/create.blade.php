@@ -117,7 +117,7 @@
                             </div>
                         </div>
 
-                        <div class="row search-single mb-4">
+                        <div class="row mb-4">
                             <div class="col-2">
                                 <h5>Company Size:</h5>
                             </div>
@@ -127,6 +127,15 @@
                                         <option value="{{ $companysize->id }}">{{ $companysize->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <h5>Country:</h5>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" name="country" id="country">
                             </div>
                         </div>
 

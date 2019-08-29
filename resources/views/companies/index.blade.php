@@ -65,6 +65,7 @@
             },
             {
                 extend: 'csv',
+                text: 'Excel',
                 exportOptions: {
                     columns: ':visible'
                 }

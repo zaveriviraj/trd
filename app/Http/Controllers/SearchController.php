@@ -121,6 +121,9 @@ class SearchController extends Controller
                 $query->whereIn('cert_id', $request->certs);
             });
         }
+        if ($request->has('country') && $request->country != null) {
+            $companies = $companies->where('country', 'LIKE', "%{$request->country}%");
+        }
         $companies = $companies->get();
         return view('companies.index', compact('companies'));
     }
