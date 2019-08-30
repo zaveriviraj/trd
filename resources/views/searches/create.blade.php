@@ -44,9 +44,23 @@
                             </div>
                         </div>
 
-                        <div class="row search-parameter mb-4">
+                        {{-- <div class="row search-parameter mb-4">
                             <div class="col-2">
                                 <h5>Size:</h5>
+                                <a href="#" class="clear-search">Clear</a>
+                            </div>
+                            <div class="col-10">
+                                <div class="options-list d-grid d-grid-6">
+                                    @foreach ($sizes as $size)
+                                        <div class="bg-secondary option-box" data-start-id="{{ $size->size_start }}" data-end-id="{{ $size->size_end }}">{{ $size->name }}</div>
+                                    @endforeach
+                                </div>
+                                <input type="text" name="sizes" class="invisible search-input">
+                            </div>
+                        </div> --}}
+                        <div class="row search-parameter mb-4">
+                            <div class="col-2">
+                                <h5>Sizes:</h5>
                                 <a href="#" class="clear-search">Clear</a>
                             </div>
                             <div class="col-10">
@@ -168,7 +182,7 @@
             let $parameter = $element.parents('.search-parameter');
             let val = '';
 
-            if ( selected && ( $element.is($parameter.find('.selected-parameter:first')) ||$element.is($parameter.find('.selected-parameter:last')) ) ) {
+            if ( selected && ( $element.is($parameter.find('.selected-parameter:first')) || $element.is($parameter.find('.selected-parameter:last')) ) ) {
                 $element.addClass('bg-secondary').removeClass('bg-primary selected-parameter');
             } else {
                 $element.addClass('bg-primary selected-parameter').removeClass('bg-secondary');
@@ -177,13 +191,14 @@
             if ($parameter.find('.selected-parameter').length > 1) {
                 $parameter.find('.selected-parameter:first').nextUntil($parameter.find('.selected-parameter:last')).removeClass('bg-secondary').addClass('bg-primary selected-parameter');
             }
-            if ($parameter.find('.selected-parameter:first').data('start-id')) {
+            if ($parameter.find('.selected-parameter:first').data('start-id') != undefined) {
                 console.log('here');
                 val = $parameter.find('.selected-parameter:first').data('start-id') + '-' + $parameter.find('.selected-parameter:last').data('end-id');
             } else {
                 val = '';
             }
             $parameter.find('.search-input').val(val);
+            console.log($parameter.find('.search-input').val());
         });
 
         $('.search-single .option-box').on('click', function(e) {
@@ -219,6 +234,8 @@
             e.preventDefault();
             $(this).parents('.search-parameter').find('.options-list div').addClass('bg-secondary').removeClass('bg-primary selected-parameter');
             $(this).parents('.search-parameter').find('input').val('');
+            $(this).parents('.search-single').find('.options-list div').addClass('bg-secondary').removeClass('bg-primary selected-parameter');
+            $(this).parents('.search-single').find('input').val('');
         });
 
         $('.special-box').on('click', function(e) {

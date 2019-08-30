@@ -94,7 +94,7 @@ class SearchController extends Controller
         // }
         // $companies = $companies->take(10)->get();
         // return $companies;
-        if ($request->has('company_size')) {
+        if ($request->has('company_size') && $request->company_size != null) {
             $companies = $companies->whereIn('companysize_id', $request->company_size);
         }
         if ($request->has('company_type')) {
@@ -109,16 +109,15 @@ class SearchController extends Controller
         }
         if ($request->has('sizes') && $request->sizes != null) {
             $sizes = preg_split("/[-]+/", $request->sizes);
-            $companies = $companies->where('deals_size_to', '>=', $sizes[1])->where('deals_size_from', '<=', $sizes[0]);
+            $companies = $this->custom($companies, 'size', (int) $sizes[0], (int) $sizes[1]);
         }
         if ($request->has('makes') && $request->makes != null) {
             $makes = preg_split("/[-]+/", $request->makes);
-            $companies = $companies->where('deals_make_to', '>=', $makes[1])->where('deals_make_from', '<=', $makes[0]);
-            // $companies = $companies->whereBetween('deals_make_from', [$makes[0], $makes[1]])->orWhereBetween('deals_make_to', [$makes[0], $makes[1]]);
+            $companies = $this->custom($companies, 'make', (int) $makes[0], (int) $makes[1]);
         }
         if ($request->has('colors') && $request->colors != null) {
             $colors = preg_split("/[-]+/", $request->colors);
-            $companies = $companies->where('deals_color_to', '>=', $colors[1])->where('deals_color_from', '<=', $colors[0]);
+            $companies = $this->custom($companies, 'color', (int) $colors[0], (int) $colors[1]);
         }
         if ($request->has('browns') && $request->browns == 1) {
             $companies = $companies->where('deals_color', 'LIKE', "%brown%");
@@ -129,7 +128,7 @@ class SearchController extends Controller
         }
         if ($request->has('clarities') && $request->clarities != null) {
             $clarities = preg_split("/[-]+/", $request->clarities);
-            $companies = $companies->where('deals_clarity_to', '>=', $clarities[1])->where('deals_clarity_from', '<=', $clarities[0]);
+            $companies = $this->custom($companies, 'clarity', (int) $clarities[0], (int) $clarities[1]);
         }
         if ($request->has('certs')  && !empty($request->certs[0])) {
             $companies = $companies->whereHas('certs', function($query) use ($request) {
@@ -141,6 +140,22 @@ class SearchController extends Controller
         }
         $companies = $companies->get();
         return view('companies.index', compact('companies'));
+    }
+
+    public function custom($companies, $column, $from, $to)
+    {
+        $companies->where(function($query) use ($column, $from, $to) {
+            $query->where('deals_' . $column . '_from', '>=', $from)
+                ->where('deals_' . $column . '_to', '<=', $to);
+        })->orWhere(function($query) use ($column, $from, $to) {
+            $query->where('deals_' . $column . '_from', '<=', $from)
+                ->where('deals_' . $column . '_to', '>=', $to);
+        })->orWhere(function($query) use ($column, $from, $to) {
+            $query->whereBetween('deals_' . $column . '_from', [$from, $to])
+                ->orWhereBetween('deals_' . $column . '_to', [$from, $to]);
+        });
+
+        return $companies;
     }
 
     /**
