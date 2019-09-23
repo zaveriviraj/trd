@@ -40,7 +40,8 @@ class LayoutController extends Controller
             'name' => 'required',
         ]);
 
-        Layout::create($request->all());
+        // Layout::create($request->all());
+        auth()->user()->layouts()->create($request->all());
 
         return redirect()->route('layouts.index');
     }

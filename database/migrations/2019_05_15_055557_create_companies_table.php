@@ -45,7 +45,6 @@ class CreateCompaniesTable extends Migration
             $table->text('exhibiting_markets')->nullable();
             $table->boolean('jewellery_manufacturing')->default(0);
             $table->boolean('jewellery_trading')->default(0);
-            $table->integer('relationship')->nullable();
             $table->text('address')->nullable();
             $table->string('zip')->nullable();
             $table->string('cell_numbers')->nullable();

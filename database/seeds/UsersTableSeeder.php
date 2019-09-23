@@ -12,5 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory('App\User')->create(['email' => 'viraj@d.net', 'name' => 'Viraj Zaveri']);
+        factory('App\User')->create(['email' => 'shimon@d.net', 'name' => 'Shimon Gerstensang']);
+        factory('App\User')->create(['email' => 'amit@d.net', 'name' => 'Amit Kronfeld']);
     }
 }

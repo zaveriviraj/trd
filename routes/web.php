@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('import2', 'CompanyController@import2')->name('import2');
     Route::get('import3', 'CompanyController@import3')->name('import3');
     Route::get('import4', 'CompanyController@import4')->name('import4');
+    Route::get('import5', 'CompanyController@import5')->name('import5');
 
     Route::resource('searches', 'SearchController');
     Route::post('search', 'SearchController@search')->name('search');

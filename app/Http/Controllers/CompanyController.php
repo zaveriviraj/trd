@@ -208,4 +208,11 @@ class CompanyController extends Controller
         
         return redirect('/')->with('success', 'All good!');
     }
+
+    public function import5() 
+    {
+        Excel::import(new CompaniesImport, 'DBS- JZ17092019-200.csv');
+        
+        return redirect('/')->with('success', 'All good!');
+    }
 }

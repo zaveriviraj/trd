@@ -19,6 +19,7 @@ class CreateLayoutsTable extends Migration
             $table->text('layout_order');
             $table->text('visible_columns');
             $table->text('hidden_columns');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
