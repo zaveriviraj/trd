@@ -25,7 +25,6 @@
             <th>Exhibiting / Markets</th>
             <th>Jewlery Manufacturing</th>
             <th>Jewlery Trading</th>
-            <th>Relation</th>
             <th>Address</th>
             <th>City</th>
             <th>State</th>
@@ -42,7 +41,7 @@
             <tr>
                 {{-- <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority ? $company->priority->color : '' }}">{{ $company->priority ? $company->priority->name : '' }}</span></td> --}}
                 <td><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a></td>
-                <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->company_name }}</a></td>
+                <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
                 <td>{{ $company->divisions }}</td>
                 <td>{{ $company->person }}</td>
                 <td>{{ $company->job_title }}</td>
@@ -72,7 +71,6 @@
                 <td>{{ $company->exhibiting_markets }}</td>
                 <td>{{ $company->jewellery_manufacturing ? 'Yes' : 'No' }}</td>
                 <td>{{ $company->jewellery_trading ? 'Yes' : 'No' }}</td>
-                <td>{{ $company->relationship }}</td>
                 <td class="trimmed" data-full="{{ $company->address }}" data-short="{{ str_limit($company->address, 50) }}">{{ str_limit($company->address, 50) }}</td>
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->state }}</td>

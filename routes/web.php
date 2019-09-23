@@ -44,4 +44,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('searches', 'SearchController');
     Route::post('search', 'SearchController@search')->name('search');
+
+    Route::resource('layouts', 'LayoutController');
+
+    Route::view('sort', 'sort');
 });

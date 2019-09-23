@@ -94,7 +94,12 @@ class Company extends Model
     }
 
     public function getPersonAttribute() {
-        return $this->first_name . ' ' . $this->last_name;
+        $person = $this->first_name . ' ' . $this->last_name;
+        return ucwords(strtolower($person));
+    }
+
+    public function getNameAttribute() {
+        return ucwords(strtolower($this->company_name));
     }
 
     public function getDivisionsAttribute()

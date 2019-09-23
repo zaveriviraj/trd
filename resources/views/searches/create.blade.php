@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('search') }}" method="POST">
+                    <form action="{{ route('searches.store') }}" method="POST">
                         @csrf
 
                         <div class="row search-single mb-4 more-data" data-items="12">
@@ -157,6 +157,20 @@
                             </div>
                             <div class="col-10">
                                 <input type="text" class="form-control" name="country" id="country">
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <h5>Layout:</h5>
+                            </div>
+                            <div class="col-10">
+                                <select name="layout_id" id="layout_id" class="form-control custom-select">
+                                    <option value="" selected disabled>Select From Dropdown</option>
+                                    @foreach ($layouts as $layout)
+                                        <option value="{{ $layout->id }}">{{ $layout->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

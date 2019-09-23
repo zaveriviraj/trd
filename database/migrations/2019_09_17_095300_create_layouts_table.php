@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSearchesTable extends Migration
+class CreateLayoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateSearchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('searches', function (Blueprint $table) {
+        Schema::create('layouts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->longText('search_query');
-            $table->unsignedBigInteger('layout_id')->nullable();
+            $table->text('layout_order');
+            $table->text('visible_columns');
+            $table->text('hidden_columns');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateSearchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('searches');
+        Schema::dropIfExists('layouts');
     }
 }

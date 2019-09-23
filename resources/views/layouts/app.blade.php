@@ -40,6 +40,8 @@
                             <div class="dropdown-menu" aria-labelledby="companiesDropdown">
                                 <a class="dropdown-item" href="{{ route('companies.index') }}">{{ __('Company List') }}</a>
                                 <a class="dropdown-item" href="{{ route('companies.create') }}">{{ __('Add New') }}</a>
+                                <a class="dropdown-item" href="{{ route('layouts.create') }}">{{ __('New Layout') }}</a>
+                                <a class="dropdown-item" href="{{ route('layouts.index') }}">{{ __('Saved Layouts') }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

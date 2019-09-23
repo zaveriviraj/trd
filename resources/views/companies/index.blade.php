@@ -36,19 +36,10 @@
         buttons: [
             {
                 extend: 'csv',
-                text: 'Excel',
+                text: 'Export To Excel',
                 exportOptions: {
                     columns: ':visible'
                 }
-            }, {
-                extend: 'print',
-                exportOptions: {
-                    columns: ':visible'
-                }
-            }, {
-                extend: 'colvis',
-                text: 'Select Columns',
-                collectionLayout: 'fixed four-column'
             }
         ],
         order: [[ 1, "asc" ]],
@@ -59,14 +50,16 @@
             [ 25, 50, 100, -1 ],
             [ '25', '50', '100', 'All' ]
         ],
-        colReorder: true,
+        columnDefs: [{
+            targets: [ {{ $layout->hidden_columns ?? '' }} ],
+            visible: false
+        }],
+        colReorder: {
+            order: [ {{ $layout->layout_order ?? '' }} ]
+        },
         fixedColumns:   {
             leftColumns: 2
         },
-        /*columnDefs: [{
-            targets: [0],
-            visible: false
-        }]*/
     });
 
     $('body').delegate('.trimmed', 'click', function(e) {
