@@ -211,7 +211,7 @@ class CompanyController extends Controller
 
     public function import5() 
     {
-        Excel::import(new CompaniesImport, 'DBS- JZ17092019-200.csv');
+        Excel::import(new CompaniesImport, 'DBS- JZ23092019.csv');
         
         return redirect('/')->with('success', 'All good!');
     }
