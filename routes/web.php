@@ -30,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('certs', 'CertController');
     Route::resource('products', 'ProductController');
 
+    Route::get('companies/favorites', 'FavoriteController@index')->name('companies.favorites');
+    Route::get('companies/{company}/favorite', 'FavoriteController@create')->name('companies.favorite.create');
+    Route::get('companies/{company}/unfavorite', 'FavoriteController@remove')->name('companies.favorite.remove');
     Route::resource('companies', 'CompanyController');
 
     Route::resource('buyers', 'BuyerController');

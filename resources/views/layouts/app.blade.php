@@ -40,6 +40,9 @@
                             <div class="dropdown-menu" aria-labelledby="companiesDropdown">
                                 <a class="dropdown-item" href="{{ route('companies.index') }}">{{ __('Company List') }}</a>
                                 <a class="dropdown-item" href="{{ route('companies.create') }}">{{ __('Add New') }}</a>
+                                <a class="dropdown-item" href="{{ route('companies.favorites') }}">{{ __('Favorite Companies') }}</a>
+                                <div class="dropdown-divider"></div>
+                                <h6 class="dropdown-header">Layouts</h6>
                                 <a class="dropdown-item" href="{{ route('layouts.create') }}">{{ __('New Layout') }}</a>
                                 <a class="dropdown-item" href="{{ route('layouts.index') }}">{{ __('Saved Layouts') }}</a>
                             </div>

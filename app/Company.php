@@ -135,4 +135,19 @@ class Company extends Model
             return 'danger';
         }
     }
+
+    public function favorited()
+    {
+        return $this->belongsToMany(User::class, 'company_user')->withTimestamps();
+    }
+
+    public function isFavorited()
+    {
+        return ! ! $this->favorited()->where('user_id', auth()->id())->count();
+    }
+
+    public function getIsFavoritedAttribute()
+    {
+        return $this->isFavorited();
+    }
 }

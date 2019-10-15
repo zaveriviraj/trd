@@ -8,12 +8,11 @@
             <th>Contact Person</th>
             <th>Job Title</th>
             <th>Company Size</th>
-            <th>Country</th>
             <th>Website</th>
             <th>Sight</th>
-            <th>Roughs</th>
+            <th>Rough</th>
             <th>Shapes</th>
-            <th>Sizes</th>
+            <th>Size</th>
             <th>Color</th>
             <th>Clarity</th>
             <th>Makes</th>
@@ -28,6 +27,7 @@
             <th>Address</th>
             <th>City</th>
             <th>State</th>
+            <th>Country</th>
             <th>ZIP</th>
             <th>Cell</th>
             <th>Email</th>
@@ -46,7 +46,6 @@
                 <td>{{ $company->person }}</td>
                 <td>{{ $company->job_title }}</td>
                 <td>{{ $company->companysize ? $company->companysize->name : '' }}</td>
-                <td>{{ $company->country }}</td>
                 @if (strtolower($company->website) == 'no website' || strtolower($company->website) == 'no websites' || $company->website == '')
                     <td>{{ $company->website }}</td>
                 @else
@@ -74,6 +73,7 @@
                 <td class="trimmed" data-full="{{ $company->address }}" data-short="{{ str_limit($company->address, 50) }}">{{ str_limit($company->address, 50) }}</td>
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->state }}</td>
+                <td>{{ $company->country }}</td>
                 <td>{{ $company->zip }}</td>
                 <td class="trimmed" data-full="{{ $company->cell_numbers }}" data-short="{{ str_limit($company->cell_numbers, 25) }}">{{ str_limit($company->cell_numbers, 25) }}</td>
                 <td class="trimmed" data-full="{{ $company->emails }}" data-short="{{ str_limit($company->emails, 25) }}">{{ str_limit($company->emails, 25) }}</td>

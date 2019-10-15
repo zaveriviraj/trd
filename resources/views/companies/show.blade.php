@@ -3,7 +3,16 @@
 @section('content')
 <div class="container-fluid">
     <div class="card mb-4">
-        <div class="card-header">Company Details</div>
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <span>Company Details</span>
+                @if ($company->isFavorited)
+                    <a href="{{ route('companies.favorite.remove', $company->id) }}" class="btn btn-outline-danger btn-sm">Remove From Favorite</a>
+                @else
+                    <a href="{{ route('companies.favorite.create', $company->id) }}" class="btn btn-outline-primary btn-sm">Add to Favorite</a>
+                @endif
+            </div>
+        </div>
         <div class="card-body">
             <div class="row mb-4">
                 <div class="col-md-3">

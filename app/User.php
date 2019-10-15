@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Layout::class);
     }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Company::class, 'company_user')->withTimestamps();
+    }
 }
