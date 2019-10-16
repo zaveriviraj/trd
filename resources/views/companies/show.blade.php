@@ -23,7 +23,7 @@
                     <p class="card-text">Contact Person</p>
                     <h5 class="card-title">
                         {{ $company->person ?: '-' }} <small>{{ $company->job_title ? '('. $company->job_title .')' : '' }}</small>
-                        @isset($company->relationship)<span class="badge badge-{{ $company->relationship_class }}">{{ $company->relationship }}</span>@endisset
+                        @isset($company->hasRelationship)<span class="badge badge-{{ $company->relationship_class }}">{{ $company->relationship }}</span>@endisset
                     </h5>
                 </div>
                 <div class="col-md-3">
@@ -86,7 +86,7 @@
                         <dd class="col-md-9">{{ $company->company_name }}</dd>
                         <dt class="col-md-3">Contact Person</dt>
                         <dd class="col-md-9">{{ $company->person ?: '-' }} <small>{{ $company->job_title ? '('. $company->job_title .')' : '' }}</small>
-                        @isset($company->relationship)<span class="badge badge-{{ $company->relationship_class }}">{{ $company->relationship }}</span>@endisset</dd>
+                        @isset($company->hasRelationship)<span class="badge badge-{{ $company->relationship_class }}">{{ $company->relationship }}</span>@endisset</dd>
                         <dt class="col-md-3">OFC #</dt>
                         <dd class="col-md-9"><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a> <small>{{ $company->divisions }}</small></dd>
                         <dt class="col-md-3">Company Size</dt>
@@ -122,5 +122,28 @@
             </div>
         </div>
     </div>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">Company Relationship</div>
+                <div class="card-body">
+                    <form action="{{ route('companies.relationship.create', $company->id) }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label>Relations</label> <br>
+                            @for ($i = 1; $i <= 10; $i++)
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="relationship" id="{{ $i }}" class="custom-control-input" value="{{ $i }}" {{ $i == $company->relationship ? 'checked' : '' }}>
+                                    <label class="custom-control-label" for="{{ $i }}">{{ $i }}</label>
+                                </div>
+                            @endfor
+                            <button class="btn btn-primary">Save Relation</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection

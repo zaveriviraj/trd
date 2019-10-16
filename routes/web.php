@@ -1,5 +1,7 @@
 <?php
 
+use App\Company;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('companies/favorites', 'FavoriteController@index')->name('companies.favorites');
     Route::get('companies/{company}/favorite', 'FavoriteController@create')->name('companies.favorite.create');
     Route::get('companies/{company}/unfavorite', 'FavoriteController@remove')->name('companies.favorite.remove');
+    Route::post('companies/{company}/relationship', 'RelationshipController@create')->name('companies.relationship.create');
     Route::resource('companies', 'CompanyController');
 
     Route::resource('buyers', 'BuyerController');
