@@ -13,7 +13,23 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Companies List: <strong>{{ $companies->count() }}</strong></div>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>Companies List: <strong>{{ $companies->count() }}</strong></span>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Choose Layout
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['layout' => 0]) }}">Default Layout</a>
+                                @foreach ($layouts as $single)
+                                    <a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['layout' => $single->id]) }}">{{ $single->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     @include('companies.partials._table')
