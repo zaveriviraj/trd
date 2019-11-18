@@ -56,6 +56,64 @@
                 exportOptions: {
                     columns: ':visible'
                 }
+            },
+            {
+                text: 'Add To Favorites',
+                action: function ( e, dt, node, config ) {
+                    let ids = $.map(table.rows('.table-active').nodes(), function (item) {
+                        return $(item).data("company-id");
+                    });
+
+                    console.log(ids);
+
+                    $.ajax({
+                        method: "POST",
+                        url: "{{ route('add.multiple.favorites') }}",
+                        data: {
+                            "company_ids": ids,
+                            "_token": "{{ csrf_token() }}",
+                        }
+                    })
+                    .done(function() {
+                        alert('Companies added to favorite list');
+                        table.rows('.table-active').nodes().to$().removeClass('table-active');
+                    })
+                    .fail(function(data) {
+                        alert('Please try again later');
+                    });
+                }
+            },
+            {
+                text: 'Remove From Favorites',
+                action: function ( e, dt, node, config ) {
+                    let ids = $.map(table.rows('.table-active').nodes(), function (item) {
+                        return $(item).data("company-id");
+                    });
+
+                    console.log(ids);
+
+                    $.ajax({
+                        method: "POST",
+                        url: "{{ route('remove.multiple.favorites') }}",
+                        data: {
+                            "company_ids": ids,
+                            "_token": "{{ csrf_token() }}",
+                        }
+                    })
+                    .done(function() {
+                        alert('Companies removed from favorite list.');
+                        table.rows('.table-active').nodes().to$().removeClass('table-active');
+                    })
+                    .fail(function(data) {
+                        alert('Please try again later.');
+                    });
+                }
+            },
+            {
+                text: 'Deselect',
+                action: function(e, dt, node, config) {
+                    table.rows().nodes().to$().removeClass('table-active');
+                }
             }
         ],
         order: [[ 1, "asc" ]],
@@ -76,6 +134,10 @@
         fixedColumns:   {
             leftColumns: 2
         },
+    });
+
+    $('table tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('table-active');
     });
 
     $('body').delegate('.trimmed', 'click', function(e) {

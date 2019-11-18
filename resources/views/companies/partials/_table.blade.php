@@ -9,6 +9,7 @@
             <th>Job Title</th>
             <th>Company Size</th>
             <th>Website</th>
+            <th>Country</th>
             <th>Sight</th>
             <th>Rough</th>
             <th>Shapes</th>
@@ -27,7 +28,6 @@
             <th>Address</th>
             <th>City</th>
             <th>State</th>
-            <th>Country</th>
             <th>ZIP</th>
             <th>Cell</th>
             <th>Email</th>
@@ -38,7 +38,7 @@
     </thead>
     <tbody>
         @forelse ($companies as $company)
-            <tr>
+            <tr data-company-id={{ $company->id }} class="{{ $company->isFavorited() ? 'table-warning' : '' }}">
                 {{-- <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority ? $company->priority->color : '' }}">{{ $company->priority ? $company->priority->name : '' }}</span></td> --}}
                 <td><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a></td>
                 <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
@@ -51,6 +51,7 @@
                 @else
                     <td><a href="{{ $company->website }}" target="_blank">{{ $company->website }}</a></td>
                 @endif
+                <td>{{ $company->country }}</td>
                 <td>{{ $company->sight_holder ? 'Yes' : 'No' }}</td>
                 <td class="trimmed" data-full="{!! implode(', ' , $company->roughs->pluck('name')->toArray()) !!}" data-short="{!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 25) !!}">
                     {!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 25) !!}
@@ -73,7 +74,6 @@
                 <td class="trimmed" data-full="{{ $company->address }}" data-short="{{ str_limit($company->address, 50) }}">{{ str_limit($company->address, 50) }}</td>
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->state }}</td>
-                <td>{{ $company->country }}</td>
                 <td>{{ $company->zip }}</td>
                 <td class="trimmed" data-full="{{ $company->cell_numbers }}" data-short="{{ str_limit($company->cell_numbers, 25) }}">{{ str_limit($company->cell_numbers, 25) }}</td>
                 <td class="trimmed" data-full="{{ $company->emails }}" data-short="{{ str_limit($company->emails, 25) }}">{{ str_limit($company->emails, 25) }}</td>

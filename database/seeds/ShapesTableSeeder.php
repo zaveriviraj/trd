@@ -20,7 +20,7 @@ class ShapesTableSeeder extends Seeder
         factory('App\Shape')->create(['name' => 'Cushion']);
         factory('App\Shape')->create(['name' => 'Heart']);
         factory('App\Shape')->create(['name' => 'Princess']);
-        factory('App\Shape')->create(['name' => 'Emrald']);
+        factory('App\Shape')->create(['name' => 'Emerald']);
         factory('App\Shape')->create(['name' => 'Asscher']);
         factory('App\Shape')->create(['name' => 'Radiant']);
         factory('App\Shape')->create(['name' => 'Baguettes']);

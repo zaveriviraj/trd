@@ -14,7 +14,7 @@ class LayoutController extends Controller
      */
     public function index()
     {
-        $layouts = Layout::latest()->get();
+        $layouts = Layout::latest()->withCount('searches')->get();
         return view('layouts.index', compact('layouts'));
     }
 
@@ -95,6 +95,10 @@ class LayoutController extends Controller
      */
     public function destroy(Layout $layout)
     {
-        //
+        if (! count($layout->searches)) {
+            $layout->delete();
+        }
+
+        return back();
     }
 }

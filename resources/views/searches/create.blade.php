@@ -95,21 +95,6 @@
 
                         <div class="row search-parameter mb-4">
                             <div class="col-2">
-                                <h5>Make:</h5>
-                                <a href="#" class="clear-search">Clear</a>
-                            </div>
-                            <div class="col-10">
-                                <div class="options-list d-grid d-grid-6">
-                                    @foreach ($cuts as $cut)
-                                        <div class="bg-secondary option-box" data-start-id="{{ $cut->id }}" data-end-id="{{ $cut->id }}">{{ $cut->name }}</div>
-                                    @endforeach
-                                </div>
-                                <input type="text" name="makes" class="invisible search-input">
-                            </div>
-                        </div>
-
-                        <div class="row search-parameter mb-4">
-                            <div class="col-2">
                                 <h5>Clarity:</h5>
                                 <a href="#" class="clear-search">Clear</a>
                             </div>
@@ -120,6 +105,21 @@
                                     @endforeach
                                 </div>
                                 <input type="text" name="clarities" class="invisible search-input">
+                            </div>
+                        </div>
+
+                        <div class="row search-parameter mb-4">
+                            <div class="col-2">
+                                <h5>Make:</h5>
+                                <a href="#" class="clear-search">Clear</a>
+                            </div>
+                            <div class="col-10">
+                                <div class="options-list d-grid d-grid-6">
+                                    @foreach ($cuts as $cut)
+                                        <div class="bg-secondary option-box" data-start-id="{{ $cut->id }}" data-end-id="{{ $cut->id }}">{{ $cut->name }}</div>
+                                    @endforeach
+                                </div>
+                                <input type="text" name="makes" class="invisible search-input">
                             </div>
                         </div>
 

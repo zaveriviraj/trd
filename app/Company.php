@@ -122,43 +122,14 @@ class Company extends Model
         return $linksArray;
     }
 
-    public function relationship()
+    public function relations()
     {
-        return $this->belongsToMany(User::class, 'company_user_relationship')->withPivot('relationship')->withTimestamps();
+        return $this->hasMany(Relation::class);
     }
 
-    public function hasRelationship()
+    public function notes()
     {
-        return ! ! $this->relationship()->where('user_id', auth()->id())->count();
-    }
-
-    public function getHasRelationshipAttribute()
-    {
-        return $this->hasRelationship();
-    }
-
-    public function getRelationshipAttribute()
-    {
-        return $this->hasRelationship ? $this->relationship()->where('user_id', auth()->id())->first()->pivot->relationship : null;
-    }
-
-    public function getRelationshipClassAttribute()
-    {
-        if ($this->hasRelationship)
-        {
-            if ($this->relationship > 7)
-            {
-                return 'success';
-            } else if ($this->relationship > 4)
-            {
-                return 'warning';
-            } else
-            {
-                return 'danger';
-            }
-        }
-
-        return null;
+        return $this->morphMany(Note::class, 'notable')->latest();
     }
 
     public function favorited()

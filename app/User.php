@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Company::class, 'company_user')->withTimestamps();
     }
+
+    public function relations()
+    {
+        return $this->hasMany(Relation::class);
+    }
+
+    public function notes()
+    {
+        return $this->morphMany(Note::class, 'notable');
+    }
 }

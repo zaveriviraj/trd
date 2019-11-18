@@ -26,7 +26,14 @@
                                 <tr>
                                     <td>{{ $layout->name }}</td>
                                     <td>{{ $layout->created_at->diffForHumans() }}</td>
-                                    <td class="text-right"><a href="{{ route('layouts.edit', $layout->id) }}" class="btn"><i class="far fa-edit fa-fw"></i></a></td>
+                                    <td class="text-right">
+                                        <form action="{{ route('layouts.destroy', $layout->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{ route('layouts.edit', $layout->id) }}" class="btn"><i class="far fa-edit fa-fw"></i></a>
+                                            <button class="btn delete-btn" type="submit" {{ $layout->searches_count ? 'disabled' : '' }}><i class="fa fa-trash fa-fw"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -41,3 +48,15 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.delete-btn').on('click', function(e) {
+            e.preventDefault();
+            let confirmDialog = confirm('Are you sure?');
+            if (confirmDialog) {
+                $(this).parent('form').submit();
+            }
+        });
+    </script>
+@endpush

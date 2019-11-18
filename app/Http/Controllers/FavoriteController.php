@@ -33,4 +33,18 @@ class FavoriteController extends Controller
         $company->favorited()->detach(auth()->id());
         return redirect()->back();
     }
+
+    public function multiple()
+    {
+        auth()->user()->favorites()->syncWithoutDetaching(request()->company_ids);
+
+        return 'success';
+    }
+
+    public function removeMultiple()
+    {
+        auth()->user()->favorites()->detach(request()->company_ids);
+
+        return 'success';
+    }
 }

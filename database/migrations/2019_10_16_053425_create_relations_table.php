@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CompanyUserRelationshipTable extends Migration
+class CreateRelationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CompanyUserRelationshipTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_user_relationship', function (Blueprint $table) {
+        Schema::create('relations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('relationship');
+            $table->integer('number');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CompanyUserRelationshipTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_user_relationship');
+        Schema::dropIfExists('relations');
     }
 }

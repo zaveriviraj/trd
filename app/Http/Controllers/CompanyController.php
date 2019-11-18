@@ -142,7 +142,8 @@ class CompanyController extends Controller
             'cuts',
             'certs',
             'products',
-            'roughs'
+            'roughs',
+            'relations'
         );
         return view('companies.show', compact('company'));
     }

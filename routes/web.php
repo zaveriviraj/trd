@@ -34,8 +34,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('companies/favorites', 'FavoriteController@index')->name('companies.favorites');
     Route::get('companies/{company}/favorite', 'FavoriteController@create')->name('companies.favorite.create');
+    Route::post('companies/favorites/add', 'FavoriteController@multiple')->name('add.multiple.favorites');
+    Route::post('companies/favorites/remove', 'FavoriteController@removeMultiple')->name('remove.multiple.favorites');
     Route::get('companies/{company}/unfavorite', 'FavoriteController@remove')->name('companies.favorite.remove');
-    Route::post('companies/{company}/relationship', 'RelationshipController@create')->name('companies.relationship.create');
+    Route::post('companies/{company}/relationship', 'RelationController@store')->name('companies.relationship.create');
+    Route::post('companies/{company}/note', 'NoteController@store')->name('companies.notes.create');
     Route::resource('companies', 'CompanyController');
 
     Route::resource('buyers', 'BuyerController');
