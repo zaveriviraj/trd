@@ -124,7 +124,7 @@ class Company extends Model
 
     public function relations()
     {
-        return $this->hasMany(Relation::class);
+        return $this->hasMany(Relation::class)->latest('updated_at');
     }
 
     public function notes()
