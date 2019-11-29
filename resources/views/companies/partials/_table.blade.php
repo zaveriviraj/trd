@@ -12,16 +12,16 @@
             <th>Country</th>
             <th>Sight</th>
             <th>Rough</th>
-            <th>Shapes</th>
+            <th>Shape</th>
             <th>Size</th>
             <th>Color</th>
             <th>Clarity</th>
-            <th>Makes</th>
+            <th>Make</th>
             <th>Manufacturing Units</th>
             <th>Branches</th>
-            <th>Certs</th>
+            <th>Cert</th>
             <th>Comments</th>
-            <th>Website Comments</th>
+            <th>Website Comment</th>
             <th>Exhibiting / Markets</th>
             <th>Jewlery Manufacturing</th>
             <th>Jewlery Trading</th>
@@ -38,7 +38,7 @@
     </thead>
     <tbody>
         @forelse ($companies as $company)
-            <tr data-company-id={{ $company->id }} class="{{ $company->isFavorited() ? 'table-warning' : '' }}">
+            <tr data-company-id={{ $company->id }} class="{{ $company->isFavorited ? 'table-warning' : '' }}">
                 {{-- <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority ? $company->priority->color : '' }}">{{ $company->priority ? $company->priority->name : '' }}</span></td> --}}
                 <td><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a></td>
                 <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>

@@ -63,24 +63,7 @@
                     let ids = $.map(table.rows('.table-active').nodes(), function (item) {
                         return $(item).data("company-id");
                     });
-
-                    console.log(ids);
-
-                    $.ajax({
-                        method: "POST",
-                        url: "{{ route('add.multiple.favorites') }}",
-                        data: {
-                            "company_ids": ids,
-                            "_token": "{{ csrf_token() }}",
-                        }
-                    })
-                    .done(function() {
-                        alert('Companies added to favorite list');
-                        table.rows('.table-active').nodes().to$().removeClass('table-active');
-                    })
-                    .fail(function(data) {
-                        alert('Please try again later');
-                    });
+                    showModal(ids);
                 }
             },
             {
@@ -144,12 +127,30 @@
         let $elem = $(this);
         $elem.text($elem.data('full'));
         $elem.addClass('table-active untrimmed').removeClass('trimmed');
-    })
+    });
 
     $('body').delegate('.untrimmed', 'click', function(e) {
         let $elem = $(this);
         $elem.text($elem.data('short'));
         $elem.addClass('trimmed').removeClass('table-active untrimmed');
-    })
+    });
+
+    function showModal(ids) {
+        $.ajax({
+            method: "POST",
+            url: "{{ route('add.multiple.favorites') }}",
+            data: {
+                "company_ids": ids,
+                "_token": "{{ csrf_token() }}",
+            }
+        })
+        .done(function() {
+            alert('Companies added to favorite list');
+            table.rows('.table-active').nodes().to$().removeClass('table-active');
+        })
+        .fail(function(data) {
+            alert('Please try again later');
+        });
+    }
 </script>
 @endpush

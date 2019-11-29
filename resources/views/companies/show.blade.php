@@ -4,7 +4,7 @@
 <div class="container-fluid">
     
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card mb-4">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
@@ -80,35 +80,25 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="row mb-4">
                 <div class="col">
                     <div class="card mb-4">
-                        <div class="card-header">Add New Note</div>
-                        <div class="card-body">
+                        <div class="card-header">Notes From Rapaport Users</div>
+                        <div class="card-body" style="max-height: 30rem; overflow-y: auto">
+                            @forelse ($company->notes as $note)
+                                <single-note :data="{{ $note }}" :editable-flag="{{ $note->user->id == auth()->id() ? 1 : 0 }}"></single-note>
+                            @empty
+                            @endforelse
+                        </div>
+                        <div class="card-footer">
                             <form action="{{ route('companies.notes.create', $company->id) }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <textarea name="body" id="body" rows="5" class="form-control"></textarea>
+                                    <textarea name="body" id="body" rows="2" class="form-control"></textarea>
                                 </div>
-                                <button class="btn btn-primary">Save Note</button>
+                                <button class="btn btn-primary">Add New Note</button>
                             </form>
-                        </div>
-                    </div>
-
-                    <div class="card mb-4">
-                        <div class="card-header">Notes From Rapaport Users</div>
-                        <div class="card-body" style="max-height: 20rem; overflow-y: auto">
-                            @forelse ($company->notes as $note)
-                                <div class="mb-4 pb-2">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <strong>{{ $note->user->name }} said...</strong>
-                                        <p class="text-muted">{{ $note->created_at->diffForHumans() }}</p>
-                                    </div>
-                                    <p>{{ $note->body }}</p>
-                                </div>
-                            @empty
-                            @endforelse
                         </div>
                     </div>
 
@@ -128,11 +118,11 @@
                                             <label class="custom-control-label" for="{{ $i }}">{{ $i }}</label>
                                         </div>
                                     @endfor
-                                    <button class="btn btn-primary">Save Relation</button>
                                     @if ($company->relations->contains('user_id', auth()->id()))
                                         <p class="mt-4">Current Relation: {{ $company->relations->firstWhere('user_id', auth()->id())->number }}</p>
                                     @endif
                                 </div>
+                                <button class="btn btn-primary">Save Relation</button>
                             </form>
                         </div>
                     </div>
@@ -144,8 +134,8 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Name</th>
-                                        <th>Rating</th>
-                                        <th>Updated</th>
+                                        <th class="text-center">Rating</th>
+                                        <th class="text-right">Updated</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -154,10 +144,10 @@
                                             <td>
                                                 <strong>{{ $relation->user->name }}</strong>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <span>{{ $relation->number }}</span>
                                             </td>
-                                            <td>{{ $relation->updated_at->diffForHumans() }}</td>
+                                            <td class="text-right">{{ $relation->updated_at->diffForHumans() }}</td>
                                         </tr>
                                     @empty
                                     @endforelse

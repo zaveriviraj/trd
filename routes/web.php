@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('companies/{company}/unfavorite', 'FavoriteController@remove')->name('companies.favorite.remove');
     Route::post('companies/{company}/relationship', 'RelationController@store')->name('companies.relationship.create');
     Route::post('companies/{company}/note', 'NoteController@store')->name('companies.notes.create');
+    Route::patch('notes/{note}', 'NoteController@update')->name('notes.update');
     Route::resource('companies', 'CompanyController');
 
     Route::resource('buyers', 'BuyerController');

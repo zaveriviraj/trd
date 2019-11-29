@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CompanyUserTable extends Migration
+class CreateFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CompanyUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('company_user', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('user_id');
+            $table->unique(['company_id', 'user_id']);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CompanyUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company_user');
+        Schema::dropIfExists('favorites');
     }
 }

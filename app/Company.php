@@ -129,17 +129,17 @@ class Company extends Model
 
     public function notes()
     {
-        return $this->morphMany(Note::class, 'notable')->latest();
+        return $this->morphMany(Note::class, 'notable')->latest('updated_at');
     }
 
-    public function favorited()
+    public function favorites()
     {
-        return $this->belongsToMany(User::class, 'company_user')->withTimestamps();
+        return $this->hasMany(Favorite::class);
     }
 
     public function isFavorited()
     {
-        return ! ! $this->favorited()->where('user_id', auth()->id())->count();
+        return ! ! $this->favorites->where('user_id', auth()->id())->count();
     }
 
     public function getIsFavoritedAttribute()

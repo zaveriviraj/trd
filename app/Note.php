@@ -8,6 +8,12 @@ class Note extends Model
 {
     protected $guarded = [];
     protected $with = ['user'];
+    protected $appends = ['path'];
+
+    public function getPathAttribute()
+    {
+        return route('notes.update', $this->id);
+    }
 
     public function notable()
     {

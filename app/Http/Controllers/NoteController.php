@@ -72,7 +72,12 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        if (auth()->id() == $note->user_id) {
+            $note->body = $request->body;
+            $note->save();
+        }
+        
+        return $note->load(['user']);
     }
 
     /**
