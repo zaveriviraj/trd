@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('cuts', 'CutController');
     Route::resource('certs', 'CertController');
     Route::resource('products', 'ProductController');
+    
+    Route::resource('favoritelists', 'FavoritelistController');
 
     Route::get('companies/favorites', 'FavoriteController@index')->name('companies.favorites');
     Route::get('companies/{company}/favorite', 'FavoriteController@create')->name('companies.favorite.create');
@@ -40,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('companies/{company}/relationship', 'RelationController@store')->name('companies.relationship.create');
     Route::post('companies/{company}/note', 'NoteController@store')->name('companies.notes.create');
     Route::patch('notes/{note}', 'NoteController@update')->name('notes.update');
+    Route::delete('notes/{note}', 'NoteController@destroy')->name('notes.destroy');
     Route::resource('companies', 'CompanyController');
 
     Route::resource('buyers', 'BuyerController');

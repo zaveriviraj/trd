@@ -1772,6 +1772,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['data', 'editableFlag'],
@@ -1801,6 +1804,15 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         console.log(error);
       });
+    },
+    deleteNote: function deleteNote() {
+      var confrimation = confirm('Are you sure you want to delete the note?');
+
+      if (confrimation) {
+        axios.delete('/notes/' + this.note.id).then(function () {
+          location.reload();
+        });
+      }
     }
   }
 });
@@ -63086,7 +63098,7 @@ var render = function() {
     !_vm.editing
       ? _c("p", [
           _c(
-            "a",
+            "span",
             {
               directives: [
                 {
@@ -63096,8 +63108,8 @@ var render = function() {
                   expression: "editable"
                 }
               ],
-              staticClass: "mr-2",
-              attrs: { href: "#" },
+              staticClass: "text-primary mr-2",
+              staticStyle: { cursor: "pointer" },
               on: {
                 click: function($event) {
                   $event.preventDefault()
@@ -63106,6 +63118,29 @@ var render = function() {
               }
             },
             [_vm._v("Edit")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.editable,
+                  expression: "editable"
+                }
+              ],
+              staticClass: "text-danger mr-2",
+              staticStyle: { cursor: "pointer" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.deleteNote($event)
+                }
+              }
+            },
+            [_vm._v("Delete")]
           )
         ])
       : _vm._e(),

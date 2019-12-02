@@ -53,30 +53,26 @@
                 @endif
                 <td>{{ $company->country }}</td>
                 <td>{{ $company->sight_holder ? 'Yes' : 'No' }}</td>
-                <td class="trimmed" data-full="{!! implode(', ' , $company->roughs->pluck('name')->toArray()) !!}" data-short="{!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 25) !!}">
-                    {!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 25) !!}
-                </td>
-                <td class="trimmed" data-full="{!! implode(', ' , $company->shapes->pluck('name')->toArray()) !!}" data-short="{!! str_limit(implode(', ' , $company->shapes->pluck('name')->toArray()), 25) !!}">
-                    {!! str_limit(implode(', ' , $company->shapes->pluck('name')->toArray()), 25) !!}
-                </td>
+                <td>{!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 25) !!}</td>
+                <td>{!! str_limit(implode(', ' , $company->shapes->pluck('name')->toArray()), 25) !!}</td>
                 <td>{{ $company->deals_size }}</td>
                 <td>{{ $company->deals_color }}</td>
                 <td>{{ $company->deals_clarity }}</td>
                 <td>{{ $company->deals_make }}</td>
                 <td>{{ $company->manufacturing_units }}</td>
-                <td class="trimmed" data-full="{{ $company->branches }}" data-short="{{ str_limit($company->branches, 25) }}">{{ str_limit($company->branches, 25) }}</td>
+                <td>{{ str_limit($company->branches, 25) }}</td>
                 <td>{!! implode(', ' , $company->certs->pluck('name')->toArray()) !!}</td>
-                <td class="trimmed" data-full="{{ $company->comments }}" data-short="{{ str_limit($company->comments, 50) }}">{{ str_limit($company->comments, 50) }}</td>
-                <td class="trimmed" data-full="{{ $company->website_comments }}" data-short="{{ str_limit($company->website_comments, 50) }}">{{ str_limit($company->website_comments, 50) }}</td>
+                <td>{{ str_limit($company->comments, 50) }}</td>
+                <td>{{ str_limit($company->website_comments, 50) }}</td>
                 <td>{{ $company->exhibiting_markets }}</td>
                 <td>{{ $company->jewellery_manufacturing ? 'Yes' : 'No' }}</td>
                 <td>{{ $company->jewellery_trading ? 'Yes' : 'No' }}</td>
-                <td class="trimmed" data-full="{{ $company->address }}" data-short="{{ str_limit($company->address, 50) }}">{{ str_limit($company->address, 50) }}</td>
+                <td>{{ str_limit($company->address, 50) }}</td>
                 <td>{{ $company->city }}</td>
                 <td>{{ $company->state }}</td>
                 <td>{{ $company->zip }}</td>
-                <td class="trimmed" data-full="{{ $company->cell_numbers }}" data-short="{{ str_limit($company->cell_numbers, 25) }}">{{ str_limit($company->cell_numbers, 25) }}</td>
-                <td class="trimmed" data-full="{{ $company->emails }}" data-short="{{ str_limit($company->emails, 25) }}">{{ str_limit($company->emails, 25) }}</td>
+                <td>{{ str_limit($company->cell_numbers, 25) }}</td>
+                <td>{{ str_limit($company->emails, 25) }}</td>
                 <td>{{ $company->office }}</td>
                 <td>{{ $company->phones }}</td>
                 <td>{{ $company->fax }}</td>

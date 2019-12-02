@@ -42,9 +42,9 @@ class User extends Authenticatable
         return $this->hasMany(Layout::class);
     }
 
-    public function favorites()
+    public function favoritelists()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->hasMany(Favoritelist::class);
     }
 
     public function relations()

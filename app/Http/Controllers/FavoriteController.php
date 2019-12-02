@@ -46,10 +46,9 @@ class FavoriteController extends Controller
     {
         $inserts = [];
         foreach (request()->company_ids as $company) {
-            $attributes = ['user_id' => auth()->id(), 'company_id' => $company];
+            $attributes = ['favoritelist_id' => request()->favoritelist_id, 'company_id' => $company];
             array_push($inserts, $attributes);
         }
-        
 
         Favorite::insertOrIgnore($inserts);
 
@@ -60,7 +59,7 @@ class FavoriteController extends Controller
     {
         foreach (request()->company_ids as $company) {
             $company = Company::find($company);
-            $attributes = ['user_id' => auth()->id()];
+            $attributes = ['favoritelist_id' => request()->favoritelist_id];
             $company->favorites()->where($attributes)->get()->each->delete();
         }
 

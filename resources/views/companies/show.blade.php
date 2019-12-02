@@ -4,83 +4,203 @@
 <div class="container-fluid">
     
     <div class="row">
-        <div class="col-md-9">
-            <div class="card mb-4">
+        <div class="col-xl-9">
+            
+            <div class="card mb-4" id="company-details">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Company Details</span>
-                        @if ($company->isFavorited)
-                            <a href="{{ route('companies.favorite.remove', $company->id) }}" class="btn btn-outline-danger btn-sm">Remove From Favorite</a>
-                        @else
-                            <a href="{{ route('companies.favorite.create', $company->id) }}" class="btn btn-outline-primary btn-sm">Add to Favorite</a>
-                        @endif
+                        <div>
+                            <a href="{{ url()->previous() }}" class="btn btn-link btn-sm">Go Back</a>
+                            <a href="{{ route('companies.edit', $company->id) }}" class="btn btn-outline-primary btn-sm">Edit Company</a>
+                            
+                        </div>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row mb-4">
                         <div class="col-md-3">
-                            <p class="card-text">Comapny Name</p>
+                            <div class="card-text text-muted">Comapny Name</div>
                             <h5 class="card-title">{{ $company->company_name }}</h5>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Contact Person</p>
+                            <div class="card-text text-muted">Contact Person</div>
                             <h5 class="card-title">
                                 {{ $company->person ?: '-' }} <small>{{ $company->job_title ? '('. $company->job_title .')' : '' }}</small>
                                 {{-- @isset($company->hasRelationship)<span class="badge badge-{{ $company->relationship_class }}">{{ $company->relationship }}</span>@endisset --}}
                             </h5>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">OFC #</p>
-                            <h5 class="card-title"><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a> <small>{{ $company->divisions }}</small></h5>
+                            <div class="card-text text-muted">OFC #</div>
+                            <h5 class="card-title">
+                                <a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">
+                                    {{ $company->associations }}
+                                    <small><i class="fas fa-external-link-alt fa-sm"></i></small>
+                                </a>
+                                {{-- <small>{{ $company->divisions }}</small> --}}
+                            </h5>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Company Size</p>
+                            <div class="card-text text-muted">Company Size</div>
                             <h5 class="card-title">{{ $company->companysize ? $company->companysize->name : '' }}</h5>
                         </div>
                     </div>
         
                     <div class="row mb-4">
                         <div class="col-md-3">
-                            <p class="card-text">Address</p>
-                            <p class="card-text">{{ $company->address }}</p>
+                            <div class="card-text text-muted">Address</div>
+                            <div class="card-text">{{ $company->address }} <br> {{ $company->city }} {{ $company->state }} - {{ $company->zip }}</div>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Country</p>
-                            <p class="card-text">{{ $company->city }} {{ $company->state }} {{ $company->country }} - {{ $company->zip }}</p>
+                            <div class="card-text text-muted">Country</div>
+                            <h5 class="card-title"> {{ $company->country }}</h5>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Website</p>
-                            <h5 class="card-title">{{ $company->website }}</h5>
+                            <div class="card-text text-muted">Website</div>
+                            <div class="card-text">
+                                @isset($company->website)
+                                    <a href="{{ $company->website }}" target="_blank">
+                                        {{ $company->website }}
+                                        <small><i class="fas fa-external-link-alt fa-sm"></i></small>
+                                    </a>    
+                                @endisset
+                            </div>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Office</p>
-                            <p class="card-text">{{ $company->office }}</p>
+                            <div class="card-text text-muted">Office</div>
+                            <div class="card-text">{{ $company->office }}</div>
                         </div>
                     </div>
         
                     <div class="row">
                         <div class="col-md-3">
-                            <p class="card-text">Cell</p>
-                            <p class="card-text">{{ $company->cell_numbers ?: '-' }}</p>
+                            <div class="card-text text-muted">Cell</div>
+                            <div class="card-text">{{ $company->cell_numbers ?: '-' }}</div>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Email</p>
-                            <p class="card-text">{{ $company->emails ?: '-' }}</p>
+                            <div class="card-text text-muted">Email</div>
+                            <div class="card-text">{{ $company->emails ?: '-' }}</div>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Phone</p>
-                            <p class="card-text">{{ $company->phones ?: '-' }}</p>
+                            <div class="card-text text-muted">Phone</div>
+                            <div class="card-text">{{ $company->phones ?: '-' }}</div>
                         </div>
                         <div class="col-md-3">
-                            <p class="card-text">Fax</p>
-                            <p class="card-text">{{ $company->fax ?: '-' }}</p>
+                            <div class="card-text text-muted">Fax</div>
+                            <div class="card-text">{{ $company->fax ?: '-' }}</div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="card mb-4" id="diamond-details">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>Diamond Details</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Sight</div>
+                            <h5 class="card-title">{{ $company->sight_holder ? 'Yes' : 'No' }}</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Rough</div>
+                            <div class="card-text">{!! implode(', ' , $company->roughs->pluck('name')->toArray()) !!}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Trader</div>
+                            <h5 class="card-title">Yes / No</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Shapes</div>
+                            <div class="card-text">{!! implode(', ' , $company->shapes->pluck('name')->toArray()) !!}</div>
+                        </div>
+                    </div>
+        
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Size</div>
+                            <div class="card-text">{{ $company->deals_size }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Color</div>
+                            <div class="card-text">{{ $company->deals_color }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Clarity</div>
+                            <div class="card-text">{{ $company->deals_clarity }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Make</div>
+                            <div class="card-text">{{ $company->deals_make }}</div>
+                        </div>
+                    </div>
+        
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Cert</div>
+                            <div class="card-text">{!! implode(', ' , $company->certs->pluck('name')->toArray()) !!}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Manufacturing Units</div>
+                            <div class="card-text">{{ $company->manufacturing_units }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Branches</div>
+                            <div class="card-text">{{ $company->branches }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Exhibiting Markets</div>
+                            <div class="card-text">{{ $company->exhibiting_markets }}</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Jewelry Manufacturing</div>
+                            <div class="card-text">{{ $company->jewellery_manufacturing ? 'Yes' : 'No' }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-text text-muted">Jewelry Trading</div>
+                            <div class="card-text">{{ $company->jewellery_trading ? 'Yes' : 'No' }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            
+                        </div>
+                        <div class="col-md-3">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="company-comments">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>Comments</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card-text text-muted">Comments</div>
+                            <div class="card-text">{{ $company->comments }}</div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="card-text text-muted">Website Comments</div>
+                            <div class="card-text">{{ $company->website_comments }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="col-md-3">
+        <aside class="col-xl-3">
             <div class="row mb-4">
                 <div class="col">
                     <div class="card mb-4">
@@ -89,6 +209,7 @@
                             @forelse ($company->notes as $note)
                                 <single-note :data="{{ $note }}" :editable-flag="{{ $note->user->id == auth()->id() ? 1 : 0 }}"></single-note>
                             @empty
+                                <p>No data yet.</p>
                             @endforelse
                         </div>
                         <div class="card-footer">
@@ -157,7 +278,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </aside>
     </div>
     
     

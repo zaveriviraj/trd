@@ -20,6 +20,7 @@ use App\Color;
 use App\Imports\CompaniesImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Designation;
+use App\Favoritelist;
 use App\Layout;
 use App\Rough;
 

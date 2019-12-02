@@ -186,7 +186,7 @@ class SearchController extends Controller
             'certs',
             'products',
             'roughs',
-            'favorited'
+            'favorites'
         );
         if (isset($search_query->company_size) && $search_query->company_size != null) {
             $companies = $companies->whereIn('companysize_id', $search_query->company_size);

@@ -40,7 +40,7 @@
                             <div class="dropdown-menu" aria-labelledby="companiesDropdown">
                                 <a class="dropdown-item" href="{{ route('companies.index') }}">{{ __('Company List') }}</a>
                                 <a class="dropdown-item" href="{{ route('companies.create') }}">{{ __('Add New') }}</a>
-                                <a class="dropdown-item" href="{{ route('companies.favorites') }}">{{ __('Favorite Companies') }}</a>
+                                <a class="dropdown-item" href="{{ route('favoritelists.index') }}">{{ __('Favorite Lists') }}</a>
                                 <div class="dropdown-divider"></div>
                                 <h6 class="dropdown-header">Layouts</h6>
                                 <a class="dropdown-item" href="{{ route('layouts.create') }}">{{ __('New Layout') }}</a>
@@ -98,7 +98,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a id="mastersDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('Masters') }} <span class="caret"></span>
                                 </a>
@@ -119,7 +119,7 @@
                                     <a class="dropdown-item" href="{{ route('certs.index') }}">{{ __('Certs') }}</a>
                                     <a class="dropdown-item" href="{{ route('products.index') }}">{{ __('Products') }}</a>
                                 </div>
-                            </li>
+                            </li> --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
