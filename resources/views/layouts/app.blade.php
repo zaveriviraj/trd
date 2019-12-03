@@ -47,7 +47,7 @@
                                 <a class="dropdown-item" href="{{ route('layouts.index') }}">{{ __('Saved Layouts') }}</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a id="buyersDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Buy Requests') }} <span class="caret"></span>
                             </a>
@@ -72,7 +72,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('inventory') }}">{{ __('Inventory') }}</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item dropdown">
                             <a id="searchDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Search') }} <span class="caret"></span>
