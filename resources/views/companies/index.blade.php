@@ -34,9 +34,13 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['layout' => 0]) }}">Default Layout</a>
-                                @foreach ($layouts as $single)
+                                @forelse ($layouts as $single)
                                     <a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['layout' => $single->id]) }}">{{ $single->name }}</a>
-                                @endforeach
+                                @empty
+                                    
+                                @endforelse
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('layouts.create') }}">+ Add New</a>
                             </div>
                         </div>
                     </div>

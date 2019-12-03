@@ -41,7 +41,7 @@
         @forelse ($companies as $company)
             <tr data-company-id={{ $company->id }} class="{{ $company->isFavorited ? 'table-warning' : '' }}">
                 {{-- <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority ? $company->priority->color : '' }}">{{ $company->priority ? $company->priority->name : '' }}</span></td> --}}
-                <td><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->ofc }}" target="_blank">{{ $company->ofc }}</a></td>
+                <td><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->ofc }}" target="_blank">{{ $company->ofc }}</a> <small><i class="fas fa-external-link-alt fa-sm text-muted"></i></small></td>
                 <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
                 <td>{{ $company->rapnet }}</td>
                 <td>{{ $company->person }}</td>
@@ -51,7 +51,7 @@
                 @if (strtolower($company->website) == 'no website' || strtolower($company->website) == 'no websites' || $company->website == '')
                     <td>{{ $company->website }}</td>
                 @else
-                    <td><a href="{{ $company->website }}" target="_blank">{{ str_limit($company->website, 30) }}</a></td>
+                    <td><a href="{{ $company->website }}" target="_blank">{{ str_limit($company->website, 30) }}</a> <small><i class="fas fa-external-link-alt fa-sm text-muted"></i></small></td>
                 @endif
                 <td>{{ $company->sight_holder ? 'Yes' : 'No' }}</td>
                 <td>{!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 25) !!}</td>
