@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         View::composer('companies.index', function($view) {
             $layouts = Layout::latest()->get();
-            $favoritelists = Favoritelist::where('user_id', auth()->id())->get();
+            $favoritelists = Favoritelist::where('user_id', auth()->id())->latest()->get();
             $view->with('layouts', $layouts);
             $view->with('favoritelists', $favoritelists);
             

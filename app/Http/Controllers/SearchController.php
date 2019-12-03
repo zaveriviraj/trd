@@ -15,6 +15,7 @@ use App\Cut;
 use App\Cert;
 use App\Product;
 use App\Company;
+use App\Country;
 use App\Designation;
 use App\Layout;
 
@@ -27,7 +28,9 @@ class SearchController extends Controller
      */
     public function index()
     {
-        //
+        $searches = Search::latest()->where('user_id', '!=', auth()->id())->with('user')->paginate('25');
+        $userSearches = Search::latest()->where('user_id', auth()->id())->get();
+        return view('searches.index', compact('searches', 'userSearches'));
     }
 
     /**
@@ -41,6 +44,7 @@ class SearchController extends Controller
         $companytypes = Companytype::oldest('name')->get();
         $companydeals = Companydeal::oldest('name')->get();
         $designations = Designation::oldest('name')->get();
+        $countries = Country::oldest('name')->get();
         $layouts = Layout::latest()->get();
 
         $sizes = Size::oldest('id')->get();
@@ -62,7 +66,8 @@ class SearchController extends Controller
             'clarities',
             'cuts',
             'certs',
-            'layouts'
+            'layouts',
+            'countries'
         ));
     }
 
@@ -75,8 +80,9 @@ class SearchController extends Controller
     public function store(Request $request)
     {
         $search = new Search();
-        $search->name = 'Search ' . rand(1, 50);
+        $search->name = $request->name ?: 'Search ' . rand(1, 50);
         $search->layout_id = $request->layout_id;
+        $search->user_id = auth()->id();
         $search->search_query = serialize($request->all());
         $search->save();
 
@@ -188,13 +194,20 @@ class SearchController extends Controller
             'roughs',
             'favorites'
         );
+        
         if (isset($search_query->company_size) && $search_query->company_size != null) {
             $companies = $companies->whereIn('companysize_id', $search_query->company_size);
         }
         if (isset($search_query->company_type)) {
-            $companies = $companies->whereHas('companytypes', function($query) use ($search_query) {
-                $query->whereIn('companytype_id', $search_query->company_type);
-            });
+            if (in_array('jeweler', $search_query->company_type)) {
+                $companies = $companies->orWhere('jewellery_manufacturing', true)->orWhere('jewellery_trading', true);
+            }
+            if (in_array('trader', $search_query->company_type)) {
+                $companies = $companies->orWhere('trader', true);
+            }
+            if (in_array('manufacturer', $search_query->company_type)) {
+                $companies = $companies->orWhere('manufacturing_units', '!=', '');
+            }
         }
         if (isset($search_query->shapes) && !empty($search_query->shapes[0])) {
             $companies = $companies->whereHas('shapes', function($query) use ($search_query) {
@@ -215,11 +228,11 @@ class SearchController extends Controller
             // dd($companies->count());
         }
         if (isset($search_query->browns) && $search_query->browns == 1) {
-            $companies = $companies->where('deals_color', 'LIKE', "%brown%");
+            $companies = $companies->orWhere('deals_color', 'LIKE', "%browns%");
         }
         if (isset($search_query->fancy_colors) && $search_query->fancy_colors == 1) {
             // return 'here';
-            $companies = $companies->where('deals_color', 'LIKE', "%fancy%");
+            $companies = $companies->orWhere('deals_color', 'LIKE', "%fancy%");
         }
         if (isset($search_query->clarities) && $search_query->clarities != null) {
             $clarities = preg_split("/[-]+/", $search_query->clarities);
@@ -230,13 +243,22 @@ class SearchController extends Controller
                 $query->whereIn('cert_id', $search_query->certs);
             });
         }
-        if (isset($search_query->country) && $search_query->country != null) {
-            $companies = $companies->where('country', 'LIKE', "%{$search_query->country}%");
+        if (isset($search_query->country)) {
+            $countries = Country::whereIn('id', $search_query->country)->pluck('name');
+
+            if (count($search_query->country) == 1 && in_array('other', $search_query->country)) {
+                $companies->whereNotIn('country', Country::all()->pluck('name'));
+            } else {
+                $companies->whereIn('country', $countries);
+                if (in_array('other', $search_query->country)) {
+                    $companies->orWhereNotIn('country', Country::all()->pluck('name'));
+                }
+            }
         }
         $companies = $companies->get();
         $layout = Layout::find($search->layout_id);
 
-        return view('companies.index', compact('companies', 'layout'));
+        return view('companies.index', compact('companies', 'layout', 'search'));
     }
 
     /**
@@ -247,7 +269,7 @@ class SearchController extends Controller
      */
     public function edit(Search $search)
     {
-        //
+        return view('searches.edit', compact('search'));
     }
 
     /**
@@ -259,7 +281,13 @@ class SearchController extends Controller
      */
     public function update(Request $request, Search $search)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $search->update(['name' => $request->name]);
+
+        return redirect()->route('searches.index');
     }
 
     /**
@@ -270,6 +298,18 @@ class SearchController extends Controller
      */
     public function destroy(Search $search)
     {
-        //
+        $search->delete();
+
+        return redirect()->route('searches.index');
+    }
+
+    public function replicate(Search $search)
+    {
+        $copySearch = $search->replicate();
+        $copySearch->name = $search->name . ' copy';
+        $copySearch->user_id = auth()->id();
+        $copySearch->save();
+
+        return redirect()->route('searches.edit', $copySearch->id);
     }
 }

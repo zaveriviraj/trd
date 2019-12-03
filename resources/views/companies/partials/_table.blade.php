@@ -8,10 +8,11 @@
             <th>Contact Person</th>
             <th>Job Title</th>
             <th>Company Size</th>
-            <th>Website</th>
             <th>Country</th>
+            <th>Website</th>
             <th>Sight</th>
             <th>Rough</th>
+            <th>Trader</th>
             <th>Shape</th>
             <th>Size</th>
             <th>Color</th>
@@ -23,8 +24,8 @@
             <th>Comments</th>
             <th>Website Comment</th>
             <th>Exhibiting / Markets</th>
-            <th>Jewlery Manufacturing</th>
-            <th>Jewlery Trading</th>
+            <th>Jewelry Manufacturing</th>
+            <th>Jewelry Trading</th>
             <th>Address</th>
             <th>City</th>
             <th>State</th>
@@ -40,20 +41,21 @@
         @forelse ($companies as $company)
             <tr data-company-id={{ $company->id }} class="{{ $company->isFavorited ? 'table-warning' : '' }}">
                 {{-- <td><span class="badge badge-pill badge-primary" style="background-color: {{ $company->priority ? $company->priority->color : '' }}">{{ $company->priority ? $company->priority->name : '' }}</span></td> --}}
-                <td><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">{{ $company->associations }}</a></td>
+                <td><a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->ofc }}" target="_blank">{{ $company->ofc }}</a></td>
                 <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
-                <td>{{ $company->divisions }}</td>
+                <td>{{ $company->rapnet }}</td>
                 <td>{{ $company->person }}</td>
                 <td>{{ $company->job_title }}</td>
                 <td>{{ $company->companysize ? $company->companysize->name : '' }}</td>
+                <td>{{ $company->country }}</td>
                 @if (strtolower($company->website) == 'no website' || strtolower($company->website) == 'no websites' || $company->website == '')
                     <td>{{ $company->website }}</td>
                 @else
-                    <td><a href="{{ $company->website }}" target="_blank">{{ $company->website }}</a></td>
+                    <td><a href="{{ $company->website }}" target="_blank">{{ str_limit($company->website, 30) }}</a></td>
                 @endif
-                <td>{{ $company->country }}</td>
                 <td>{{ $company->sight_holder ? 'Yes' : 'No' }}</td>
                 <td>{!! str_limit(implode(', ' , $company->roughs->pluck('name')->toArray()), 25) !!}</td>
+                <td>{{ $company->trader ? 'Yes' : 'No' }}</td>
                 <td>{!! str_limit(implode(', ' , $company->shapes->pluck('name')->toArray()), 25) !!}</td>
                 <td>{{ $company->deals_size }}</td>
                 <td>{{ $company->deals_color }}</td>

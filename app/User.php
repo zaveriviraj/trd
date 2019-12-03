@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Relation::class);
     }
 
+    public function searches()
+    {
+        return $this->hasMany(Search::class);
+    }
+
     public function notes()
     {
         return $this->morphMany(Note::class, 'notable');

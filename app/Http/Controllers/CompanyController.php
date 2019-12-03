@@ -186,9 +186,9 @@ class CompanyController extends Controller
         //
     }
 
-    public function import() 
+    public function import(Request $request) 
     {
-        Excel::import(new CompaniesImport, 'amit_master.csv');
+        Excel::import(new CompaniesImport, $request->file('import_file'));
         
         return redirect('/')->with('success', 'All good!');
     }
@@ -216,7 +216,8 @@ class CompanyController extends Controller
 
     public function import5() 
     {
-        Excel::import(new CompaniesImport, 'DBS- JZ23092019.csv');
+        // Excel::import(new CompaniesImport, 'DBS- JZ23092019.csv');
+        Excel::import(new CompaniesImport, 'TRDNM-Data-031219.xlsx');
         
         return redirect('/')->with('success', 'All good!');
     }

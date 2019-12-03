@@ -15,6 +15,7 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('ofc')->unique()->nullable()->index();
             $table->string('rapnet')->nullable();
             $table->string('company_name')->index();
             $table->string('first_name')->nullable();
@@ -26,6 +27,7 @@ class CreateCompaniesTable extends Migration
             $table->string('website')->nullable();
             $table->unsignedBigInteger('companysize_id')->nullable();
             $table->boolean('sight_holder')->default(0);
+            $table->boolean('trader')->default(0);
             $table->string('deals_size')->nullable();
             $table->float('deals_size_from')->nullable();
             $table->float('deals_size_to')->nullable();

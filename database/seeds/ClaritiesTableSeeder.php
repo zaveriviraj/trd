@@ -22,5 +22,6 @@ class ClaritiesTableSeeder extends Seeder
         factory('App\Clarity')->create(['name' => 'I1']);
         factory('App\Clarity')->create(['name' => 'I2']);
         factory('App\Clarity')->create(['name' => 'I3']);
+        factory('App\Clarity')->create(['name' => 'Pique']);
     }
 }

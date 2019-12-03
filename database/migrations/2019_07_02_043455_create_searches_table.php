@@ -17,6 +17,7 @@ class CreateSearchesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->longText('search_query');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('layout_id')->nullable();
             $table->timestamps();
         });

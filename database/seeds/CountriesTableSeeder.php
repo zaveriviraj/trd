@@ -12,6 +12,9 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         factory('App\Country')->create(['name' => 'India']);
+        factory('App\Country')->create(['name' => 'Hong Kong']);
+        factory('App\Country')->create(['name' => 'USA']);
+        factory('App\Country')->create(['name' => 'Belgium']);
         factory('App\Country')->create(['name' => 'Israel']);
     }
 }

@@ -26,6 +26,15 @@
                 <div class="card-body">
                     <form action="{{ route('searches.store') }}" method="POST">
                         @csrf
+                        
+                        <div class="row mb-4">
+                            <div class="col-2">
+                                <h5>Name:</h5>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" class="form-control" name="name" id="name">
+                            </div>
+                        </div>
 
                         <div class="row search-single mb-4 more-data" data-items="12">
                             <div class="col-2">
@@ -153,10 +162,28 @@
 
                         <div class="row mb-4">
                             <div class="col-2">
+                                <h5>Company Type:</h5>
+                            </div>
+                            <div class="col-10">
+                                <select name="company_type[]" id="company_type" class="form-control custom-select select2" multiple>
+                                    <option value="manufacturer">Manufacturer</option>
+                                    <option value="jeweler">Jeweler</option>
+                                    <option value="trader">Trader</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-2">
                                 <h5>Country:</h5>
                             </div>
                             <div class="col-10">
-                                <input type="text" class="form-control" name="country" id="country">
+                                <select name="country[]" id="country" class="form-control custom-select select2" multiple>
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                    <option value="other">Other</option>
+                                </select>
                             </div>
                         </div>
 

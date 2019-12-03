@@ -186,13 +186,17 @@
                     <div class="row mb-4">
                         <div class="col-md-12">
                             <div class="card-text text-muted">Comments</div>
-                            <div class="card-text">{{ $company->comments }}</div>
+                            <div class="card-text">
+                                <p class="lead">{{ $company->comments }}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-12">
                             <div class="card-text text-muted">Website Comments</div>
-                            <div class="card-text">{{ $company->website_comments }}</div>
+                            <div class="card-text">
+                                <p class="lead">{{ $company->website_comments }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

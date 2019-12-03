@@ -20,6 +20,9 @@
                             @isset($favoritelist)
                                 <span>List: <strong>{{ $favoritelist->name }}</strong></span>
                             @endisset
+                            @isset($search)
+                                <span>Search: <strong>{{ $search->name }}</strong></span>
+                            @endisset
                             @isset($layout)
                                 <span>Layout: <strong>{{ $layout->name }}</strong></span>
                             @endisset
@@ -87,11 +90,25 @@
 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [
             {
-                extend: 'csv',
-                text: 'Export To Excel',
-                exportOptions: {
-                    columns: ':visible'
-                }
+                extend: 'collection',
+                text: 'Export',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: 'Export Selected To Excel',
+                        exportOptions: {
+                            columns: ':visible',
+                            rows: '.table-active',
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        text: 'Export All To Excel',
+                        exportOptions: {
+                            columns: ':visible',
+                        }
+                    },
+                ]
             },
             {
                 text: 'Add To Favorites',

@@ -14,9 +14,14 @@ use App\Rough;
 use App\Clarity;
 use App\Color;
 use App\Cut;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class CompaniesImport implements ToModel
+class CompaniesImport implements ToModel, WithStartRow
 {
+    public function startRow(): int
+    {
+        return 2;
+    }
     /**
     * @param array $row
     *
@@ -24,8 +29,15 @@ class CompaniesImport implements ToModel
     */
     public function model(array $row)
     {
-        $company = new Company([
-            'rapnet'     => $row[0],
+        if (empty($row[0])) {
+            $company = new Company();
+        } else {
+            $company = Company::firstOrNew(
+                ['ofc' => $row[0]],
+            );
+        }
+
+        $company->fill([
             'first_name'     => $row[1],
             'last_name'     => $row[2],
             'job_title'     => $row[3],
@@ -50,7 +62,12 @@ class CompaniesImport implements ToModel
             'office' => $row[33],
             'phones' => $row[34],
             'fax' => $row[35],
+            'rapnet' => $row[36],
         ]);
+
+        if (empty($row[0])) {
+            $company->ofc = null;
+        }
 
         if ($row[11] != '')
         {
@@ -73,15 +90,20 @@ class CompaniesImport implements ToModel
                 $company->deals_size_to = trim($sizesTemp['1']);
             }
         }
-
+        
         $colors = preg_split("/[\/,]+/", $row[16]);
         foreach ($colors as $color)
         {
             if (strpos($color, 'to') !== false)
             {
                 $colorsTemp = preg_split("/[to]+/", $color);
-                $company->deals_color_from = Color::firstOrCreate(['name' => trim($colorsTemp['0'])])->id;
-                $company->deals_color_to = Color::firstOrCreate(['name' => trim($colorsTemp['1'])])->id;
+                $color_from = Color::where('name', trim($colorsTemp['0']))->first();
+                $color_to = Color::where('name', trim($colorsTemp['1']))->first();
+
+                if (isset($color_from) && isset($color_to)) {
+                    $company->deals_color_from = $color_from->id;
+                    $company->deals_color_to = $color_to->id;
+                }
             }
         }
 
@@ -91,8 +113,12 @@ class CompaniesImport implements ToModel
             if (strpos($clarity, 'to') !== false)
             {
                 $claritiesTemp = preg_split("/[to]+/", $clarity);
-                $company->deals_clarity_from = Clarity::firstOrCreate(['name' => trim($claritiesTemp['0'])])->id;
-                $company->deals_clarity_to = Clarity::firstOrCreate(['name' => trim($claritiesTemp['1'])])->id;
+                $clarity_from = Clarity::where('name', trim($claritiesTemp['0']))->first();
+                $clarity_to = Clarity::where('name', trim($claritiesTemp['1']))->first();
+                if (isset($clarity_from) && isset($clarity_to)) {
+                    $company->deals_clarity_from = $clarity_from->id;
+                    $company->deals_clarity_to = $clarity_to->id;
+                }
             }
         }
 
@@ -102,14 +128,24 @@ class CompaniesImport implements ToModel
             if (strpos($make, 'to') !== false)
             {
                 $makesTemp = preg_split("/[to]+/", $make);
-                $company->deals_make_from = Cut::firstOrCreate(['abbr' => trim($makesTemp['0'])])->id;
-                $company->deals_make_to = Cut::firstOrCreate(['abbr' => trim($makesTemp['1'])])->id;
+                $makes_from = Cut::where('abbr', trim($makesTemp['0']))->first();
+                $makes_to = Cut::where('abbr', trim($makesTemp['1']))->first();
+                if (isset($makes_from) && isset($makes_to)) {
+                    $company->deals_make_from = $makes_from->id;
+                    $company->deals_make_to = $makes_to->id;
+                }
             }
+        }
+
+        if (strtolower($row[25]) != 'yes' && $row[19] == '')
+        {
+            $company->trader = true;
         }
 
         $company->save();
 
         $roughs = preg_split("/[\/,]+/", $row[13]);
+        $company->roughs()->detach();
         foreach ($roughs as $rough)
         {
             if ($rough != '')
@@ -120,22 +156,28 @@ class CompaniesImport implements ToModel
         }
 
         $shapes = preg_split("/[\/,]+/", $row[14]);
+        $company->shapes()->detach();
         foreach ($shapes as $shape)
         {
             if ($shape != '')
             {
-                $type = Shape::firstOrCreate(['name' => trim($shape)]);
-                $company->shapes()->attach($type);
+                $type = Shape::where('name', trim($shape))->first();
+                if (isset($type)) {
+                    $company->shapes()->attach($type);
+                }
             }
         }
 
         $certs = preg_split("/[\/,]+/", $row[21]);
+        $company->certs()->detach();
         foreach ($certs as $cert)
         {
             if ($cert != '')
             {
-                $type = Cert::firstOrCreate(['name' => trim($cert)]);
-                $company->certs()->attach($type);
+                $type = Cert::where('name', trim($cert))->first();
+                if (isset($type)) {
+                    $company->certs()->attach($type);
+                }
             }
         }
 
@@ -148,6 +190,8 @@ class CompaniesImport implements ToModel
         {
             $company->jewellery_trading = true;
         }
+
+        $company->save();
 
         return $company;
     }

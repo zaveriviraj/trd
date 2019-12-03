@@ -41,8 +41,8 @@
                                 </div>
                                 <div class="form-row mt-2">
                                     @include('layouts._selectbox', ['id' => 'sight', 'field_name' => 'Sight', 'value' => 8])
-                                    @include('layouts._selectbox', ['id' => 'rough', 'field_name' => 'Roughs', 'value' => 9])
-                                    @include('layouts._selectbox', ['id' => 'shape', 'field_name' => 'Shapes', 'value' => 10])
+                                    @include('layouts._selectbox', ['id' => 'rough', 'field_name' => 'Rough', 'value' => 9])
+                                    @include('layouts._selectbox', ['id' => 'shape', 'field_name' => 'Shape', 'value' => 10])
                                     @include('layouts._selectbox', ['id' => 'size', 'field_name' => 'Size', 'value' => 11])
                                 </div>
                                 <div class="form-row mt-2">
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-row mt-2">
                                     @include('layouts._selectbox', ['id' => 'branches', 'field_name' => 'Branches', 'value' => 16])
-                                    @include('layouts._selectbox', ['id' => 'certs', 'field_name' => 'Certs', 'value' => 17])
+                                    @include('layouts._selectbox', ['id' => 'certs', 'field_name' => 'Cert', 'value' => 17])
                                     @include('layouts._selectbox', ['id' => 'comments', 'field_name' => 'Comments', 'value' => 18])
                                     @include('layouts._selectbox', ['id' => 'website_comments', 'field_name' => 'Website Comments', 'value' => 19])
                                 </div>

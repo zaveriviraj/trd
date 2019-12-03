@@ -18,6 +18,7 @@ class CertsTableSeeder extends Seeder
         factory('App\Cert')->create(['name' => 'GSI']);
         factory('App\Cert')->create(['name' => 'AGS']);
         factory('App\Cert')->create(['name' => 'RapLab']);
+        factory('App\Cert')->create(['name' => 'NGTC']);
         factory('App\Cert')->create(['name' => 'None']);
     }
 }
