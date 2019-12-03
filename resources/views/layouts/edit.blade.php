@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Edit Layout - {{ $layout->name }} @endsection
 @section('content')
 <form action="{{ route('layouts.update', $layout->id) }}" method="POST" id="layout-form">
     @csrf
@@ -27,53 +27,40 @@
                                         <a href="#" id="check_none">Check None</a>
                                     </div>
                                 </div>
-                                <div class="form-row">
+                                <div class="form-row" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-row-gap: 0.5em;">
                                     @include('layouts._selectbox', ['id' => 'ofc', 'field_name' => 'OFC #', 'value' => 0, 'disabled' => 'disabled', 'checked' => 'checked'])
                                     @include('layouts._selectbox', ['id' => 'company_name', 'field_name' => 'Company Name', 'value' => 1, 'disabled' => 'disabled', 'checked' => 'checked'])
                                     @include('layouts._selectbox', ['id' => 'rap_division', 'field_name' => 'RAP Division', 'value' => 2])
-                                    @include('layouts._selectbox', ['id' => 'contact_person', 'field_name' => 'Contact Person', 'value' => 3 ])
-                                </div>
-                                <div class="form-row mt-2">
+                                    @include('layouts._selectbox', ['id' => 'contact_person', 'field_name' => 'Contact Person', 'value' => 3])
                                     @include('layouts._selectbox', ['id' => 'job_title', 'field_name' => 'Job Title', 'value' => 4])
                                     @include('layouts._selectbox', ['id' => 'company_size', 'field_name' => 'Company Size', 'value' => 5])
                                     @include('layouts._selectbox', ['id' => 'country', 'field_name' => 'Country', 'value' => 6])
                                     @include('layouts._selectbox', ['id' => 'website', 'field_name' => 'Website', 'value' => 7])
-                                </div>
-                                <div class="form-row mt-2">
                                     @include('layouts._selectbox', ['id' => 'sight', 'field_name' => 'Sight', 'value' => 8])
                                     @include('layouts._selectbox', ['id' => 'rough', 'field_name' => 'Rough', 'value' => 9])
-                                    @include('layouts._selectbox', ['id' => 'shape', 'field_name' => 'Shape', 'value' => 10])
-                                    @include('layouts._selectbox', ['id' => 'size', 'field_name' => 'Size', 'value' => 11])
-                                </div>
-                                <div class="form-row mt-2">
-                                    @include('layouts._selectbox', ['id' => 'color', 'field_name' => 'Color', 'value' => 12])
-                                    @include('layouts._selectbox', ['id' => 'clarity', 'field_name' => 'Clarity', 'value' => 13])
-                                    @include('layouts._selectbox', ['id' => 'make', 'field_name' => 'Make', 'value' => 14])
-                                    @include('layouts._selectbox', ['id' => 'manufacturing_unit', 'field_name' => 'Manufacturing Units', 'value' => 15])
-                                </div>
-                                <div class="form-row mt-2">
-                                    @include('layouts._selectbox', ['id' => 'branches', 'field_name' => 'Branches', 'value' => 16])
-                                    @include('layouts._selectbox', ['id' => 'certs', 'field_name' => 'Cert', 'value' => 17])
-                                    @include('layouts._selectbox', ['id' => 'comments', 'field_name' => 'Comments', 'value' => 18])
-                                    @include('layouts._selectbox', ['id' => 'website_comments', 'field_name' => 'Website Comments', 'value' => 19])
-                                </div>
-                                <div class="form-row mt-2">
-                                    @include('layouts._selectbox', ['id' => 'exhibiting', 'field_name' => 'Exhibiting / Markets', 'value' => 20])
-                                    @include('layouts._selectbox', ['id' => 'jewelry_manufacturing', 'field_name' => 'Jewlery Manufacturing', 'value' => 21])
-                                    @include('layouts._selectbox', ['id' => 'jewelry_trading', 'field_name' => 'Jewlery Trading', 'value' => 22])
-                                    @include('layouts._selectbox', ['id' => 'address', 'field_name' => 'Address', 'value' => 23])
-                                </div>
-                                <div class="form-row mt-2">
-                                    @include('layouts._selectbox', ['id' => 'city', 'field_name' => 'City', 'value' => 24])
-                                    @include('layouts._selectbox', ['id' => 'state', 'field_name' => 'State', 'value' => 25])
-                                    @include('layouts._selectbox', ['id' => 'zipcode', 'field_name' => 'ZIP', 'value' => 26])
-                                    @include('layouts._selectbox', ['id' => 'cell_number', 'field_name' => 'Cell', 'value' => 27])
-                                </div>
-                                <div class="form-row mt-2">
-                                    @include('layouts._selectbox', ['id' => 'email_address', 'field_name' => 'Email', 'value' => 28])
-                                    @include('layouts._selectbox', ['id' => 'office_locations', 'field_name' => 'Office', 'value' => 29])
-                                    @include('layouts._selectbox', ['id' => 'phone_numbers', 'field_name' => 'Phone', 'value' => 30])
-                                    @include('layouts._selectbox', ['id' => 'fax_number', 'field_name' => 'Fax', 'value' => 31])
+                                    @include('layouts._selectbox', ['id' => 'trader', 'field_name' => 'Trader', 'value' => 10])
+                                    @include('layouts._selectbox', ['id' => 'shape', 'field_name' => 'Shape', 'value' => 11])
+                                    @include('layouts._selectbox', ['id' => 'size', 'field_name' => 'Size', 'value' => 12])
+                                    @include('layouts._selectbox', ['id' => 'color', 'field_name' => 'Color', 'value' => 13])
+                                    @include('layouts._selectbox', ['id' => 'clarity', 'field_name' => 'Clarity', 'value' => 14])
+                                    @include('layouts._selectbox', ['id' => 'make', 'field_name' => 'Make', 'value' => 15])
+                                    @include('layouts._selectbox', ['id' => 'manufacturing_unit', 'field_name' => 'Manufacturing Units', 'value' => 16])
+                                    @include('layouts._selectbox', ['id' => 'branches', 'field_name' => 'Branches', 'value' => 17])
+                                    @include('layouts._selectbox', ['id' => 'certs', 'field_name' => 'Cert', 'value' => 18])
+                                    @include('layouts._selectbox', ['id' => 'comments', 'field_name' => 'Comments', 'value' => 19])
+                                    @include('layouts._selectbox', ['id' => 'website_comments', 'field_name' => 'Website Comments', 'value' => 20])
+                                    @include('layouts._selectbox', ['id' => 'exhibiting', 'field_name' => 'Exhibiting / Markets', 'value' => 21])
+                                    @include('layouts._selectbox', ['id' => 'jewelry_manufacturing', 'field_name' => 'Jewlery Manufacturing', 'value' => 22])
+                                    @include('layouts._selectbox', ['id' => 'jewelry_trading', 'field_name' => 'Jewlery Trading', 'value' => 23])
+                                    @include('layouts._selectbox', ['id' => 'address', 'field_name' => 'Address', 'value' => 24])
+                                    @include('layouts._selectbox', ['id' => 'city', 'field_name' => 'City', 'value' => 25])
+                                    @include('layouts._selectbox', ['id' => 'state', 'field_name' => 'State', 'value' => 26])
+                                    @include('layouts._selectbox', ['id' => 'zipcode', 'field_name' => 'ZIP', 'value' => 27])
+                                    @include('layouts._selectbox', ['id' => 'cell_number', 'field_name' => 'Cell', 'value' => 28])
+                                    @include('layouts._selectbox', ['id' => 'email_address', 'field_name' => 'Email', 'value' => 29])
+                                    @include('layouts._selectbox', ['id' => 'office_locations', 'field_name' => 'Office', 'value' => 30])
+                                    @include('layouts._selectbox', ['id' => 'phone_numbers', 'field_name' => 'Phone', 'value' => 31])
+                                    @include('layouts._selectbox', ['id' => 'fax_number', 'field_name' => 'Fax', 'value' => 32])
                                 </div>
                             </div>
                         </div>
@@ -144,7 +131,7 @@
             arr1.unshift("0", "1");
             $('#visible_columns').val(arr1);
             console.log(arr1);
-            let arr2 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"];
+            let arr2 = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
             let difference = arr2.filter(x => !arr1.includes(x));
             console.log(difference);
             $('#hidden_columns').val(difference);

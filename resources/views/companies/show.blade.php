@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Viewing : {{ $company->company_name }} @endsection
 @section('content')
 <div class="container-fluid">
     
@@ -33,11 +33,11 @@
                         <div class="col-md-3">
                             <div class="card-text text-muted">OFC #</div>
                             <h5 class="card-title">
-                                <a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->associations }}" target="_blank">
-                                    {{ $company->associations }}
+                                <a href="https://ofc.rapaport.com/Ofc3/CRM/Account.aspx?AccountID={{ $company->ofc }}" target="_blank">
+                                    {{ $company->ofc }}
                                     <small><i class="fas fa-external-link-alt fa-sm"></i></small>
                                 </a>
-                                {{-- <small>{{ $company->divisions }}</small> --}}
+                                <small>{{ $company->rapnet }}</small>
                             </h5>
                         </div>
                         <div class="col-md-3">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Edit Search - {{ $search->name }} @endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

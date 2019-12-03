@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') Create New Layout @endsection
 @section('content')
 <form action="{{ route('layouts.store') }}" method="POST" id="layout-form">
     @csrf

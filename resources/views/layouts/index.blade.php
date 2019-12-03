@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title') List of Layouts @endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
