@@ -175,6 +175,23 @@
 
                         <div class="row mb-4">
                             <div class="col-2">
+                                <h5>Rapnet:</h5>
+                            </div>
+                            <div class="col-10">
+                                <select name="rapnet[]" id="rapnet" class="form-control custom-select select2" multiple>
+                                    <option value="RapNet Trial">RapNet Trial</option>
+                                    <option value="Price sheet Monthly">Price sheet Monthly</option>
+                                    <option value="RapNet Dealer">RapNet Dealer</option>
+                                    <option value="RapNet Jeweler">RapNet Jeweler</option>
+                                    <option value="RapNet Light">RapNet Light</option>
+                                    <option value="RapNet Primary Supplier">RapNet Primary Supplier</option>
+                                    <option value="RapNet Trial">RapNet Trial</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-2">
                                 <h5>Country:</h5>
                             </div>
                             <div class="col-10">

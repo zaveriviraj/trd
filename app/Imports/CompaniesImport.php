@@ -62,7 +62,7 @@ class CompaniesImport implements ToModel, WithStartRow
             'office' => $row[33],
             'phones' => $row[34],
             'fax' => $row[35],
-            'rapnet' => $row[36],
+            'rapnet' => trim($row[36]),
         ]);
 
         if (empty($row[0])) {

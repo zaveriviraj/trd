@@ -209,6 +209,9 @@ class SearchController extends Controller
                 $companies = $companies->orWhere('manufacturing_units', '!=', '');
             }
         }
+        if (isset($search_query->rapnet)) {
+            $companies = $companies->whereIn('rapnet', $search_query->rapnet);
+        }
         if (isset($search_query->shapes) && !empty($search_query->shapes[0])) {
             $companies = $companies->whereHas('shapes', function($query) use ($search_query) {
                 $query->whereIn('shape_id', $search_query->shapes);
